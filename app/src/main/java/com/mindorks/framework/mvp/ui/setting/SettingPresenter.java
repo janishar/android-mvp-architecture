@@ -13,4 +13,22 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.ui.setting;
+
+import com.mindorks.framework.mvp.data.DataManager;
+import com.mindorks.framework.mvp.ui.base.BasePresenter;
+
+import javax.inject.Inject;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public class SettingPresenter<V extends SettingMvpView> extends BasePresenter<V>
+        implements SettingMvpPresenter<V> {
+
+    @Inject
+    public SettingPresenter(DataManager dataManager) {
+        super(dataManager);
+    }
+}

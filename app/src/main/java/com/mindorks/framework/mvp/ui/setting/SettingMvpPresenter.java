@@ -13,4 +13,17 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.ui.setting;
+
+
+import com.mindorks.framework.mvp.di.PerActivity;
+import com.mindorks.framework.mvp.ui.base.MvpPresenter;
+
+/**
+ * Created by janisharali on 28/01/17.
+ */
+
+@PerActivity
+public interface SettingMvpPresenter<V extends SettingMvpView> extends MvpPresenter<V> {
+
+}

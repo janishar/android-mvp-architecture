@@ -13,4 +13,16 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.data.remote;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public interface ApiHelper {
+
+    ApiHeader getApiHeader();
+
+    void setApiHeader(ApiHeader apiHeader);
+
+}

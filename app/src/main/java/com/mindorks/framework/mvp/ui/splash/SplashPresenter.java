@@ -13,4 +13,27 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.ui.splash;
+
+import com.mindorks.framework.mvp.data.DataManager;
+import com.mindorks.framework.mvp.ui.base.BasePresenter;
+
+import javax.inject.Inject;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V> implements SplashMvpPresenter<V> {
+
+    @Inject
+    public SplashPresenter(DataManager dataManager) {
+        super(dataManager);
+    }
+
+    @Override
+    public void onAttach(V mvpView) {
+        super.onAttach(mvpView);
+    }
+
+}

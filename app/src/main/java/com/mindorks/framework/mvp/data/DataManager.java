@@ -13,4 +13,17 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.data;
+
+
+import com.mindorks.framework.mvp.data.local.PreferencesHelper;
+import com.mindorks.framework.mvp.data.local.db.DbHelper;
+import com.mindorks.framework.mvp.data.remote.ApiHelper;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
+
+}

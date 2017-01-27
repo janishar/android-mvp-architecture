@@ -13,4 +13,17 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.ui.main;
+
+import com.mindorks.framework.mvp.ui.base.MvpView;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public interface MainMvpView extends MvpView {
+
+    void openLoginActivity();
+
+    void showSettingFragment();
+}

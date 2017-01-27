@@ -13,4 +13,15 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.data.remote;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public final class ApiEndPoint {
+
+    private ApiEndPoint() {
+        // This class is not publicly instantiable
+    }
+}

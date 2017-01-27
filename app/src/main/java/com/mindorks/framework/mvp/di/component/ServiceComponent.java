@@ -13,4 +13,21 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.di.component;
+
+import com.mindorks.framework.mvp.di.PerService;
+import com.mindorks.framework.mvp.di.module.ServiceModule;
+
+import dagger.Component;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+@PerService
+@Component(dependencies = ApplicationComponent.class, modules = ServiceModule.class)
+public interface ServiceComponent {
+
+//    void inject(GoogleLocationService googleLocationService);
+
+}

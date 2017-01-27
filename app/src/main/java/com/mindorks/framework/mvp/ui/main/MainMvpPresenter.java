@@ -13,4 +13,23 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.ui.main;
+
+
+import com.mindorks.framework.mvp.di.PerActivity;
+import com.mindorks.framework.mvp.ui.base.MvpPresenter;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+@PerActivity
+public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
+
+    void onDrawerOptionSettingsClick();
+
+    void onDrawerOptionLogoutClick();
+
+    String getUser();
+
+}

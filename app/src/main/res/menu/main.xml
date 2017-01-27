@@ -1,4 +1,4 @@
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
   ~ Licensed under the Apache License, Version 2.0 (the "License");
   ~ you may not use this file except in compliance with the License.
@@ -13,22 +13,18 @@
   ~ limitations under the License
   -->
 
-<resources>
-    <string name="app_name">MvpApp</string>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--Toolbar menus-->
-    <string name="refresh">Refresh</string>
+    <item
+        android:id="@+id/action_refresh"
+        android:icon="@android:drawable/ic_dialog_email"
+        android:title="@string/refresh"
+        app:showAsAction="always" />
 
-    <!--Drawer-->
-    <string name="open_drawer">Drawer Open</string>
-    <string name="close_drawer">Drawer Close</string>
+    <item
+        android:id="@+id/action_clear"
+        android:title="@string/refresh"
+        app:showAsAction="never" />
 
-    <!--Drawer Menus-->
-    <string name="settings">Settings</string>
-    <string name="logout">Logout</string>
-
-    <!--App Message-->
-    <string name="api_default_error">Something wrong happened!</string>
-    <string name="some_error">Some Error Occurred</string>
-
-</resources>
+</menu>

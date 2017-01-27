@@ -13,4 +13,17 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.ui.splash;
+
+
+import com.mindorks.framework.mvp.di.PerActivity;
+import com.mindorks.framework.mvp.ui.base.MvpPresenter;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+@PerActivity
+public interface SplashMvpPresenter<V extends SplashMvpView> extends MvpPresenter<V> {
+
+}

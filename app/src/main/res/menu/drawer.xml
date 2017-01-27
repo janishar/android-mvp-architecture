@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/nav_item_settings"
+            android:checked="true"
+            android:icon="@android:drawable/ic_partial_secure"
+            android:title="@string/settings" />
+        <item
+            android:id="@+id/nav_item_logout"
+            android:checked="true"
+            android:icon="@android:drawable/ic_dialog_alert"
+            android:title="@string/logout" />
+    </group>
+</menu>

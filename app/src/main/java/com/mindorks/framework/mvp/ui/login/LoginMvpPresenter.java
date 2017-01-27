@@ -13,16 +13,17 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp;
+package com.mindorks.framework.mvp.ui.login;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import com.mindorks.framework.mvp.di.PerActivity;
+import com.mindorks.framework.mvp.ui.base.MvpPresenter;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+@PerActivity
+public interface LoginMvpPresenter<V extends LoginMvpView> extends MvpPresenter<V> {
+
 }

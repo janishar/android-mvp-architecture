@@ -13,22 +13,14 @@
   ~ limitations under the License
   -->
 
-<resources>
-    <string name="app_name">MvpApp</string>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mindorks.framework.mvp.data">
 
-    <!--Toolbar menus-->
-    <string name="refresh">Refresh</string>
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:supportsRtl="true">
 
-    <!--Drawer-->
-    <string name="open_drawer">Drawer Open</string>
-    <string name="close_drawer">Drawer Close</string>
+    </application>
 
-    <!--Drawer Menus-->
-    <string name="settings">Settings</string>
-    <string name="logout">Logout</string>
-
-    <!--App Message-->
-    <string name="api_default_error">Something wrong happened!</string>
-    <string name="some_error">Some Error Occurred</string>
-
-</resources>
+</manifest>

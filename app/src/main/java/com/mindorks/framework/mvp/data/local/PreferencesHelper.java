@@ -13,4 +13,16 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.data.local;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public interface PreferencesHelper {
+
+    String getAccessToken();
+
+    void setAccessToken(String accessToken);
+
+}

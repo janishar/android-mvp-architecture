@@ -1,0 +1,104 @@
+/*
+ * Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.mindorks.com/license/apache-v2
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License
+ */
+
+package com.mindorks.framework.mvp.di.module;
+
+import android.app.Activity;
+import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
+import android.view.LayoutInflater;
+
+import com.mindorks.framework.mvp.data.DataManager;
+import com.mindorks.framework.mvp.di.ActivityContext;
+import com.mindorks.framework.mvp.di.PerActivity;
+import com.mindorks.framework.mvp.ui.login.LoginMvpPresenter;
+import com.mindorks.framework.mvp.ui.login.LoginMvpView;
+import com.mindorks.framework.mvp.ui.login.LoginPresenter;
+import com.mindorks.framework.mvp.ui.main.MainMvpPresenter;
+import com.mindorks.framework.mvp.ui.main.MainMvpView;
+import com.mindorks.framework.mvp.ui.main.MainPresenter;
+import com.mindorks.framework.mvp.ui.setting.SettingMvpPresenter;
+import com.mindorks.framework.mvp.ui.setting.SettingMvpView;
+import com.mindorks.framework.mvp.ui.setting.SettingPresenter;
+import com.mindorks.framework.mvp.ui.splash.SplashMvpPresenter;
+import com.mindorks.framework.mvp.ui.splash.SplashMvpView;
+import com.mindorks.framework.mvp.ui.splash.SplashPresenter;
+
+import dagger.Module;
+import dagger.Provides;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+@Module
+public class ActivityModule {
+
+    private Activity activity;
+
+    public ActivityModule(Activity activity) {
+        this.activity = activity;
+    }
+
+    @Provides
+    @ActivityContext
+    Context provideContext() {
+        return activity;
+    }
+
+    @Provides
+    Activity provideActivity() {
+        return activity;
+    }
+
+    @Provides
+    @PerActivity
+    LayoutInflater provideLayoutInflater() {
+        return LayoutInflater.from(activity);
+    }
+
+    @Provides
+    LinearLayoutManager provideLayoutManager() {
+        return new LinearLayoutManager(activity);
+    }
+
+    /**
+     * We are providing the SplashMvpPresenter by constructing it, because we want the Dependency
+     * graph to provide the interfaces for these classes for loose binding to its implementation.
+     */
+    @Provides
+    @PerActivity
+    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(DataManager dataManager) {
+        return new SplashPresenter<>(dataManager);
+    }
+
+    @Provides
+    @PerActivity
+    SettingMvpPresenter<SettingMvpView> provideSettingPresenter(DataManager dataManager) {
+        return new SettingPresenter<>(dataManager);
+    }
+
+    @Provides
+    @PerActivity
+    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(DataManager dataManager) {
+        return new LoginPresenter<>(dataManager);
+    }
+
+    @Provides
+    @PerActivity
+    MainMvpPresenter<MainMvpView> provideMainPresenter(DataManager dataManager) {
+        return new MainPresenter<>(dataManager);
+    }
+}

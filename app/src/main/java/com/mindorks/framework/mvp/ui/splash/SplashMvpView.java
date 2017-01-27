@@ -13,4 +13,18 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.ui.splash;
+
+import com.mindorks.framework.mvp.ui.base.MvpView;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public interface SplashMvpView extends MvpView {
+
+    void openLoginActivity();
+
+    void openMainActivity();
+
+}

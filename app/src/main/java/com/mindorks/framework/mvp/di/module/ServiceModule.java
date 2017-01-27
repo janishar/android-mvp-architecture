@@ -13,4 +13,23 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.di.module;
+
+import android.app.Service;
+
+import dagger.Module;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+@Module
+public class ServiceModule {
+
+    private final Service service;
+
+    public ServiceModule(Service service) {
+        this.service = service;
+    }
+
+}

@@ -13,4 +13,14 @@
  * limitations under the License
  */
 
-include ':app', ':data'
+package com.mindorks.framework.mvp.ui.setting;
+
+import com.mindorks.framework.mvp.ui.base.MvpView;
+
+/**
+ * Created by janisharali on 27/01/17.
+ */
+
+public interface SettingMvpView extends MvpView {
+
+}
