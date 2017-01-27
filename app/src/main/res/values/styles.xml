@@ -1,11 +1,122 @@
+<!--
+  ~ Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     https://www.mindorks.com/license/apache-v2
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowContentOverlay">@null</item>
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/black_effective</item>
+        <item name="android:textColor">@color/black_effective</item>
+        <item name="android:windowBackground">@color/bg_color</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:typeface">sans</item>
+        <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
+        <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
+    </style>
+
+    <style name="AppThemeFullScreen" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/white</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="MaterialDrawer.DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="spinBars">false</item>
+        <item name="color">@color/dark_gray</item>
+    </style>
+
+    <style name="TextAppearance.Text.Regular" parent="android:TextAppearance">
+        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Regular.ttf</item>
+    </style>
+
+    <style name="TextAppearance.Text.Bold" parent="android:TextAppearance">
+        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Bold.ttf</item>
+    </style>
+
+    <style name="TextAppearance.Text.Light" parent="android:TextAppearance">
+        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Light.ttf</item>
+    </style>
+
+    <style name="TextAppearance.Text.Italic" parent="android:TextAppearance">
+        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Italic.ttf</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:textColor">@color/black_effective</item>
+    </style>
+
+    <style name="TextStyle.Title" parent="TextStyle">
+        <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
+    </style>
+
+    <style name="TextStyle.Title.Sub" parent="TextStyle.Title">
+        <item name="android:textAppearance">@style/TextAppearance.Text.Light</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextStyle.Heading" parent="TextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Text.Bold</item>
+    </style>
+
+    <style name="TextStyle.Comment" parent="TextStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Text.Italic</item>
+    </style>
+
+    <style name="Toolbar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextStyle.Heading">
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="Button" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/black_effective</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@drawable/button_bg</item>
+        <item name="android:foreground">?selectableItemBackground</item>
+    </style>
+
+    <style name="Button.ImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:padding">5dp</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="Button.Primary" parent="Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@drawable/button_primary_bg</item>
     </style>
 
 </resources>
