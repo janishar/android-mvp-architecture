@@ -24,7 +24,6 @@ import com.mindorks.framework.mvp.data.AppDataManager;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.AppDbHelper;
 import com.mindorks.framework.mvp.data.db.DbHelper;
-import com.mindorks.framework.mvp.data.db.DbOpenHelper;
 import com.mindorks.framework.mvp.data.network.ApiCall;
 import com.mindorks.framework.mvp.data.network.ApiHeader;
 import com.mindorks.framework.mvp.data.network.ApiHelper;
@@ -86,40 +85,28 @@ public class ApplicationModule {
         return AppConstants.PREF_NAME;
     }
 
-    /**
-     * We are providing the AppDataManager by constructing it, because we want the Dependency
-     * graph to provide the interfaces for these classes for loose binding to its implementation.
-     */
     @Provides
     @Singleton
-    DataManager provideDataManager(DbHelper dbHelper, PreferencesHelper preferencesHelper, ApiHelper apiHelper) {
-        return new AppDataManager(dbHelper, preferencesHelper, apiHelper);
+    DataManager provideDataManager(AppDataManager appDataManager) {
+        return appDataManager;
     }
 
     @Provides
     @Singleton
-    DbHelper provideDbHelper(DbOpenHelper dbOpenHelper) {
-        return new AppDbHelper(dbOpenHelper);
+    DbHelper provideDbHelper(AppDbHelper appDbHelper) {
+        return appDbHelper;
     }
 
     @Provides
     @Singleton
-    DbOpenHelper provideDbOpenHelper(@ApplicationContext Context context, @DatabaseInfo String name) {
-        return new DbOpenHelper(context, name);
+    PreferencesHelper providePreferencesHelper(AppPreferencesHelper appPreferencesHelper) {
+        return appPreferencesHelper;
     }
 
     @Provides
     @Singleton
-    PreferencesHelper providePreferencesHelper(
-            @ApplicationContext Context context,
-            @PreferenceInfo String prefFileName) {
-        return new AppPreferencesHelper(context, prefFileName);
-    }
-
-    @Provides
-    @Singleton
-    ApiHelper provideApiHelper(ApiHeader apiHeader, ApiCall apiCall) {
-        return new AppApiHelper(apiHeader, apiCall);
+    ApiHelper provideApiHelper(AppApiHelper appApiHelper) {
+        return appApiHelper;
     }
 
     @Provides

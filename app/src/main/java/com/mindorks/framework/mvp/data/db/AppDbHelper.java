@@ -22,6 +22,9 @@ import com.mindorks.framework.mvp.data.db.model.User;
 import java.util.List;
 import java.util.concurrent.Callable;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import io.reactivex.Observable;
 
 
@@ -29,10 +32,12 @@ import io.reactivex.Observable;
  * Created by janisharali on 08/12/16.
  */
 
+@Singleton
 public class AppDbHelper implements DbHelper {
 
     private final DaoSession daoSession;
 
+    @Inject
     public AppDbHelper(DbOpenHelper dbOpenHelper) {
         daoSession = new DaoMaster(dbOpenHelper.getWritableDb()).newSession();
     }

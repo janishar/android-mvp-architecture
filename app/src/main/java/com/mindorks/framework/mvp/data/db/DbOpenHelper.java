@@ -19,16 +19,23 @@ import android.content.Context;
 import android.util.Log;
 
 import com.mindorks.framework.mvp.data.db.model.DaoMaster;
+import com.mindorks.framework.mvp.di.ApplicationContext;
+import com.mindorks.framework.mvp.di.DatabaseInfo;
 
 import org.greenrobot.greendao.database.Database;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * Created by janisharali on 08/12/16.
  */
 
+@Singleton
 public class DbOpenHelper extends DaoMaster.OpenHelper {
 
-    public DbOpenHelper(Context context, String name) {
+    @Inject
+    public DbOpenHelper(@ApplicationContext Context context, @DatabaseInfo String name) {
         super(context, name);
     }
 

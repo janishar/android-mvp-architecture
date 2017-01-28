@@ -19,7 +19,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.mindorks.framework.mvp.data.DataManager;
+import com.mindorks.framework.mvp.di.ApplicationContext;
+import com.mindorks.framework.mvp.di.PreferenceInfo;
 import com.mindorks.framework.mvp.utils.AppConstants;
+
+import javax.inject.Inject;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -34,10 +38,10 @@ public class AppPreferencesHelper implements PreferencesHelper {
     private static final String PREF_KEY_CURRENT_USER_PROFILE_PIC_URL = "PREF_KEY_CURRENT_USER_PROFILE_PIC_URL";
     private static final String PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN";
 
-
     private final SharedPreferences mPrefs;
 
-    public AppPreferencesHelper(Context context, String prefFileName) {
+    @Inject
+    public AppPreferencesHelper(@ApplicationContext Context context, @PreferenceInfo String prefFileName) {
         mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
     }
 

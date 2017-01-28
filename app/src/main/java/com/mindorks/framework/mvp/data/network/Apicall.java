@@ -43,31 +43,31 @@ public interface ApiCall {
 
     String HEADER_PARAM_SEPARATOR = ":";
 
-    @GET("/users/{username}/repos")
+    @GET("users/{username}/repos")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<GitRepoResponse> getAllGitRepositoriesForUser(@Path("username") String username);
 
-    @GET("/login/google")
+    @GET("login/google")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doGoogleLogin(@Body LoginRequest.GoogleLoginRequest request);
 
-    @GET("/login/facebook")
+    @GET("login/facebook")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doFacebookLogin(@Body LoginRequest.FacebookLoginRequest request);
 
-    @GET("/login/server")
+    @GET("login/server")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doServerLogin(@Body LoginRequest.ServerLoginRequest request);
 
-    @GET("/logout")
+    @GET("logout")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
     Observable<LogoutResponse> doLogout();
 
-    class ApiFactory {
+    class Factory {
 
         private static final int NETWORK_CALL_TIMEOUT = 60;
 
-        private static ApiCall create(ApiInterceptor apiInterceptor) {
+        public static ApiCall create(ApiInterceptor apiInterceptor) {
 
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
 

@@ -28,18 +28,23 @@ import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import io.reactivex.Observable;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
+@Singleton
 public class AppDataManager implements DataManager {
 
     private final DbHelper mDbHelper;
     private final PreferencesHelper mPreferencesHelper;
     private final ApiHelper mApiHelper;
 
+    @Inject
     public AppDataManager(DbHelper dbHelper, PreferencesHelper preferencesHelper, ApiHelper apiHelper) {
         mDbHelper = dbHelper;
         mPreferencesHelper = preferencesHelper;

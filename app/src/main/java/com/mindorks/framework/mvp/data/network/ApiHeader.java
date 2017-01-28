@@ -15,10 +15,13 @@
 
 package com.mindorks.framework.mvp.data.network;
 
+import javax.inject.Singleton;
+
 /**
  * Created by janisharali on 27/01/17.
  */
 
+@Singleton
 public class ApiHeader {
 
     public static final String API_AUTH_TYPE = "API_AUTH_TYPE";

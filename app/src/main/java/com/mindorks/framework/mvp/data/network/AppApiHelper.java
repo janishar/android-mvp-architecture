@@ -20,17 +20,22 @@ import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
 import io.reactivex.Observable;
 
 /**
  * Created by janisharali on 28/01/17.
  */
 
+@Singleton
 public class AppApiHelper implements ApiHelper {
 
     private ApiHeader mApiHeader;
     private ApiCall mApiCall;
 
+    @Inject
     public AppApiHelper(ApiHeader apiHeader, ApiCall apiCall) {
         mApiHeader = apiHeader;
         mApiCall = apiCall;
