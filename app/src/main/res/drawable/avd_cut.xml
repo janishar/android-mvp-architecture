@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:drawable="@drawable/ic_cut_white_24dp">
+
+    <target android:name="first_blade">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="150"
+                android:propertyName="rotation"
+                android:repeatCount="3"
+                android:repeatMode="reverse"
+                android:valueFrom="0"
+                android:valueTo="20" />
+        </aapt:attr>
+    </target>
+
+    <target android:name="second_blade">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="150"
+                android:propertyName="rotation"
+                android:repeatCount="3"
+                android:repeatMode="reverse"
+                android:valueFrom="0"
+                android:valueTo="-20" />
+        </aapt:attr>
+    </target>
+
+</animated-vector>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="24"
+    android:viewportWidth="24">
+
+    <group
+        android:name="cap"
+        android:pivotX="12"
+        android:pivotY="4.5"
+        android:rotation="0">
+        <path
+            android:fillColor="#ffffff"
+            android:pathData="M19 4l-3.5 0 -1 -1 -5 0 -1 1L5 4 5 6 19 6Z" />
+    </group>
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M6 19c0 1.1 0.9 2 2 2l8 0c1.1 0 2 -0.9 2 -2l0 -11.9999995 -12 0z" />
+
+</vector>

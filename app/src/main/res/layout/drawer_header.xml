@@ -15,8 +15,8 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/black_effective"
+    android:layout_height="200dp"
+    android:background="@drawable/bg_design"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -30,12 +30,8 @@
             android:id="@+id/iv_profile_pic"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@android:drawable/ic_menu_manage" />
+            android:src="@color/white" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@android:drawable/ic_dialog_email" />
     </FrameLayout>
 
     <TextView
@@ -44,15 +40,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Name"
-        android:textColor="@color/white" />
+        android:text="Name" />
 
     <TextView
         android:id="@+id/tv_email"
         style="@style/TextStyle.Title.Sub"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Email"
-        android:textColor="@color/white" />
+        android:text="Email" />
 
 </LinearLayout>

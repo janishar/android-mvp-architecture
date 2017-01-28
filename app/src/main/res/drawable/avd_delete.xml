@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:drawable="@drawable/ic_delete_white_24dp">
+
+    <target android:name="cap">
+        <aapt:attr name="android:animation">
+            <set xmlns:android="http://schemas.android.com/apk/res/android"
+                android:ordering="sequentially">
+                <objectAnimator
+                    android:duration="100"
+                    android:propertyName="translateY"
+                    android:valueFrom="0"
+                    android:valueTo="-1.5"
+                    android:valueType="floatType" />
+                <objectAnimator
+                    android:duration="10"
+                    android:propertyName="rotation"
+                    android:valueFrom="0"
+                    android:valueTo="15" />
+                <objectAnimator
+                    android:duration="100"
+                    android:propertyName="rotation"
+                    android:repeatCount="3"
+                    android:repeatMode="reverse"
+                    android:valueFrom="15"
+                    android:valueTo="-15" />
+                <objectAnimator
+                    android:duration="10"
+                    android:propertyName="rotation"
+                    android:valueFrom="15"
+                    android:valueTo="0" />
+                <objectAnimator
+                    android:duration="100"
+                    android:propertyName="translateY"
+                    android:valueFrom="-1.5"
+                    android:valueTo="0"
+                    android:valueType="floatType" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

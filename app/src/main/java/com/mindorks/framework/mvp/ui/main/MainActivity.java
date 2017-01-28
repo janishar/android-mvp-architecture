@@ -17,6 +17,8 @@ package com.mindorks.framework.mvp.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Animatable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -139,10 +141,18 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Drawable drawable = item.getIcon();
+        if (drawable instanceof Animatable) {
+            ((Animatable) drawable).start();
+        }
         switch (item.getItemId()) {
-            case R.id.action_refresh:
+            case R.id.action_cut:
                 return true;
-            case R.id.action_clear:
+            case R.id.action_copy:
+                return true;
+            case R.id.action_share:
+                return true;
+            case R.id.action_delete:
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

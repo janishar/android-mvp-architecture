@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportHeight="24"
+    android:viewportWidth="24">
+
+    <path
+        android:fillColor="#ffffff"
+        android:pathData="M16 1L4 1C2.9 1 2 1.9 2 3L2 17 4 17 4 3 16 3Z" />
+    <group android:name="sheet">
+        <path
+            android:fillColor="#ffffff"
+            android:pathData="M19 5L8 5C6.9 5 6 5.9000001 6 7.0000001L6 21c0 1.1 0.9 2 2 2l11 0c1.1 0 2 -0.9 2 -2L21 7.0000001C21 5.9000001 20.1 5 19 5Zm0 16l-11 0 0 -13.9999999 11 0z" />
+    </group>
+
+</vector>

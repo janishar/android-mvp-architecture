@@ -17,14 +17,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_refresh"
-        android:icon="@android:drawable/ic_dialog_email"
-        android:title="@string/refresh"
+        android:id="@+id/action_cut"
+        android:icon="@drawable/avd_cut"
+        android:title="@string/cut"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_clear"
-        android:title="@string/refresh"
-        app:showAsAction="never" />
+        android:id="@+id/action_copy"
+        android:icon="@drawable/avd_copy"
+        android:title="@string/copy"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/avd_delete"
+        android:title="@string/delete"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/avd_share"
+        android:title="@string/share"
+        app:showAsAction="always" />
 
 </menu>

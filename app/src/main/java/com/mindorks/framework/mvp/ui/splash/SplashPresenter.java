@@ -34,11 +34,14 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V> i
     @Override
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
-        if (getDataManager().getCurrentUserLoggedInMode()
-                == DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.getType()) {
-            getMvpView().openLoginActivity();
-        } else {
-            getMvpView().openMainActivity();
-        }
+
+        getMvpView().openMainActivity();
+
+//        if (getDataManager().getCurrentUserLoggedInMode()
+//                == DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.getType()) {
+//            getMvpView().openLoginActivity();
+//        } else {
+//            getMvpView().openMainActivity();
+//        }
     }
 }

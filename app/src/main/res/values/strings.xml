@@ -17,7 +17,12 @@
     <string name="app_name">MvpApp</string>
 
     <!--Toolbar menus-->
-    <string name="refresh">Refresh</string>
+    <string name="clear">Clear</string>
+    <string name="cut">Cut</string>
+    <string name="copy">Copy</string>
+    <string name="paste">Paste</string>
+    <string name="delete">Delete</string>
+    <string name="share">Share</string>
 
     <!--Drawer-->
     <string name="open_drawer">Drawer Open</string>

@@ -35,14 +35,15 @@
             <android.support.design.widget.AppBarLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:elevation="0dp">
+                app:elevation="5dp">
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     style="@style/Toolbar"
-                    app:subtitleTextColor="@color/dark_gray"
+                    app:subtitleTextColor="@color/white"
                     app:title="@string/app_name"
-                    app:titleTextAppearance="@style/Toolbar.TitleText" />
+                    app:titleTextAppearance="@style/Toolbar.TitleText"
+                    app:titleTextColor="@color/white" />
 
                 <View
                     android:layout_width="match_parent"
@@ -63,7 +64,7 @@
         android:background="@color/white"
         app:headerLayout="@layout/drawer_header"
         app:itemBackground="@color/white"
-        app:itemIconTint="@color/dark_gray"
+        app:itemIconTint="@color/black_effective"
         app:itemTextColor="@color/black_effective"
         app:menu="@menu/drawer">
 
