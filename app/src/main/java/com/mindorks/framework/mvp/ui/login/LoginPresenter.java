@@ -15,10 +15,22 @@
 
 package com.mindorks.framework.mvp.ui.login;
 
+import android.text.TextUtils;
+
+import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
+import com.mindorks.framework.mvp.data.network.model.LoginRequest;
+import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
+import com.mindorks.framework.mvp.utils.CommonUtils;
+
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
+
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -32,8 +44,48 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
     }
 
     @Override
-    public void onAttach(V mvpView) {
-        super.onAttach(mvpView);
+    public void onServerLoginClick(String email, String password) {
+        //validate email and password
+        if (TextUtils.isEmpty(email)) {
+            getMvpView().onError(R.string.empty_email);
+            return;
+        }
+        if (!CommonUtils.isEmailValid(email)) {
+            getMvpView().onError(R.string.invalid_email);
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            getMvpView().onError(R.string.empty_password);
+            return;
+        }
+        getMvpView().showLoading();
+
+        getDataManager().doServerLoginApiCall(new LoginRequest.ServerLoginRequest(email, password))
+                .delay(5, TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<LoginResponse>() {
+                    @Override
+                    public void accept(LoginResponse loginResponse) throws Exception {
+                        getMvpView().hideLoading();
+                        getMvpView().openMainActivity();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        getMvpView().hideLoading();
+                        // handle the login error here
+                    }
+                });
     }
 
+    @Override
+    public void onGoogleLoginClick() {
+        // instruct LoginActivity to initiate google login
+    }
+
+    @Override
+    public void onFacebookLoginClick() {
+        // instruct LoginActivity to initiate facebook login
+    }
 }

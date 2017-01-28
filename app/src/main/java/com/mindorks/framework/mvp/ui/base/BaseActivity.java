@@ -23,10 +23,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.mindorks.framework.mvp.MvpApp;
 import com.mindorks.framework.mvp.R;
@@ -100,10 +102,18 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
     @Override
     public void onError(String message) {
         if (message != null) {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            showSnackBar(message);
         } else {
-            Toast.makeText(this, getString(R.string.some_error), Toast.LENGTH_SHORT).show();
+            showSnackBar(getString(R.string.some_error));
         }
+    }
+
+    private void showSnackBar(String message) {
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT);
+        View sbView = snackbar.getView();
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        textView.setTextColor(ContextCompat.getColor(this, R.color.white));
+        snackbar.show();
     }
 
     @Override

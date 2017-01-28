@@ -24,6 +24,9 @@ import android.provider.Settings;
 
 import com.mindorks.framework.mvp.R;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by janisharali on 27/01/17.
  */
@@ -50,5 +53,16 @@ public final class CommonUtils {
     @SuppressLint("all")
     public static String getDeviceId(Context context) {
         return Settings.Secure.getString(context.getContentResolver(), Settings.Secure.ANDROID_ID);
+    }
+
+    public static boolean isEmailValid(String email) {
+        Pattern pattern;
+        Matcher matcher;
+        String EMAIL_PATTERN =
+                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        pattern = Pattern.compile(EMAIL_PATTERN);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
     }
 }

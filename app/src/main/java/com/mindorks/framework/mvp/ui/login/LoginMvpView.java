@@ -23,8 +23,5 @@ import com.mindorks.framework.mvp.ui.base.MvpView;
 
 public interface LoginMvpView extends MvpView {
 
-    void openLoginActivity();
-
     void openMainActivity();
-
 }

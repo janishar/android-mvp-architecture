@@ -32,6 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 
 
@@ -47,19 +48,19 @@ public interface ApiCall {
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<GitRepoResponse> getAllGitRepositoriesForUser(@Path("username") String username);
 
-    @GET("login/google")
+    @POST("login/google")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doGoogleLogin(@Body LoginRequest.GoogleLoginRequest request);
 
-    @GET("login/facebook")
+    @POST("login/facebook")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doFacebookLogin(@Body LoginRequest.FacebookLoginRequest request);
 
-    @GET("login/server")
+    @POST("login/server")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doServerLogin(@Body LoginRequest.ServerLoginRequest request);
 
-    @GET("logout")
+    @POST("logout")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
     Observable<LogoutResponse> doLogout();
 
