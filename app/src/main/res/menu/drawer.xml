@@ -4,12 +4,12 @@
         <item
             android:id="@+id/nav_item_settings"
             android:checked="true"
-            android:icon="@android:drawable/ic_partial_secure"
+            android:icon="@drawable/ic_settings_24px"
             android:title="@string/settings" />
         <item
             android:id="@+id/nav_item_logout"
             android:checked="true"
-            android:icon="@android:drawable/ic_dialog_alert"
+            android:icon="@drawable/ic_power_settings_new_24px"
             android:title="@string/logout" />
     </group>
 </menu>

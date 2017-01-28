@@ -193,6 +193,18 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         String version = "version " + BuildConfig.VERSION_NAME;
         mAppVersionTextView.setText(version);
 
+
+        String name = mPresenter.getUserName();
+        if (name != null) {
+            mNameTextView.setText(name);
+        }
+
+        String email = mPresenter.getUserEmail();
+        if (email != null) {
+            mEmailTextView.setText(email);
+        }
+
+
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

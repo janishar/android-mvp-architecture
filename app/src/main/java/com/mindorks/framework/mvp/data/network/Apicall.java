@@ -44,23 +44,28 @@ public interface ApiCall {
 
     String HEADER_PARAM_SEPARATOR = ":";
 
+    String ENDPOINT_GOOGLE_LOGIN = "588d14f4100000a9072d2943";
+    String ENDPOINT_FACEBOOK_LOGIN = "588d15d3100000ae072d2944";
+    String ENDPOINT_SERVER_LOGIN = "588d15f5100000a8072d2945";
+    String ENDPOINT_LOGOUT = "588d161c100000a9072d2946";
+
     @GET("users/{username}/repos")
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<GitRepoResponse> getAllGitRepositoriesForUser(@Path("username") String username);
 
-    @POST("login/google")
+    @POST(ENDPOINT_GOOGLE_LOGIN)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doGoogleLogin(@Body LoginRequest.GoogleLoginRequest request);
 
-    @POST("login/facebook")
+    @POST(ENDPOINT_FACEBOOK_LOGIN)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doFacebookLogin(@Body LoginRequest.FacebookLoginRequest request);
 
-    @POST("login/server")
+    @POST(ENDPOINT_SERVER_LOGIN)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
     Observable<LoginResponse> doServerLogin(@Body LoginRequest.ServerLoginRequest request);
 
-    @POST("logout")
+    @POST(ENDPOINT_LOGOUT)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PROTECTED_API)
     Observable<LogoutResponse> doLogout();
 

@@ -69,6 +69,16 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
         mPresenter.onServerLoginClick(mEmailEditText.getText().toString(), mPasswordEditText.getText().toString());
     }
 
+    @OnClick(R.id.ib_google_login)
+    void onGoogleLoginClick(View v) {
+        mPresenter.onGoogleLoginClick();
+    }
+
+    @OnClick(R.id.ib_fb_login)
+    void onFbLoginClick(View v) {
+        mPresenter.onFacebookLoginClick();
+    }
+
     @Override
     public void openMainActivity() {
         Intent intent = MainActivity.getStartIntent(LoginActivity.this);

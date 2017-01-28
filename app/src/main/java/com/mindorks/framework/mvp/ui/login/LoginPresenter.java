@@ -24,8 +24,6 @@ import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
 import com.mindorks.framework.mvp.utils.CommonUtils;
 
-import java.util.concurrent.TimeUnit;
-
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -61,12 +59,19 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
         getMvpView().showLoading();
 
         getDataManager().doServerLoginApiCall(new LoginRequest.ServerLoginRequest(email, password))
-                .delay(5, TimeUnit.SECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<LoginResponse>() {
                     @Override
-                    public void accept(LoginResponse loginResponse) throws Exception {
+                    public void accept(LoginResponse response) throws Exception {
+                        getDataManager().updateUserInfo(
+                                response.getAccessToken(),
+                                response.getUserId(),
+                                DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
+                                response.getUserName(),
+                                response.getUserEmail(),
+                                response.getGoogleProfilePicUrl());
+
                         getMvpView().hideLoading();
                         getMvpView().openMainActivity();
                     }
@@ -82,10 +87,62 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
     @Override
     public void onGoogleLoginClick() {
         // instruct LoginActivity to initiate google login
+        getMvpView().showLoading();
+
+        getDataManager().doGoogleLoginApiCall(new LoginRequest.GoogleLoginRequest("test1", "test1"))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<LoginResponse>() {
+                    @Override
+                    public void accept(LoginResponse response) throws Exception {
+                        getDataManager().updateUserInfo(
+                                response.getAccessToken(),
+                                response.getUserId(),
+                                DataManager.LoggedInMode.LOGGED_IN_MODE_GOOGLE,
+                                response.getUserName(),
+                                response.getUserEmail(),
+                                response.getGoogleProfilePicUrl());
+
+                        getMvpView().hideLoading();
+                        getMvpView().openMainActivity();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        getMvpView().hideLoading();
+                        // handle the login error here
+                    }
+                });
     }
 
     @Override
     public void onFacebookLoginClick() {
         // instruct LoginActivity to initiate facebook login
+        getMvpView().showLoading();
+
+        getDataManager().doFacebookLoginApiCall(new LoginRequest.FacebookLoginRequest("test3", "test4"))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<LoginResponse>() {
+                    @Override
+                    public void accept(LoginResponse response) throws Exception {
+                        getDataManager().updateUserInfo(
+                                response.getAccessToken(),
+                                response.getUserId(),
+                                DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
+                                response.getUserName(),
+                                response.getUserEmail(),
+                                response.getGoogleProfilePicUrl());
+
+                        getMvpView().hideLoading();
+                        getMvpView().openMainActivity();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        getMvpView().hideLoading();
+                        // handle the login error here
+                    }
+                });
     }
 }

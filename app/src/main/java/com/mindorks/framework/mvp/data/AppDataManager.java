@@ -156,4 +156,40 @@ public class AppDataManager implements DataManager {
     public void setCurrentUserProfilePicUrl(String profilePicUrl) {
         mPreferencesHelper.setCurrentUserProfilePicUrl(profilePicUrl);
     }
+
+    @Override
+    public void updateApiHeader(Long userId, String accessToken) {
+        mApiHelper.getApiHeader().setUserId(userId);
+        mApiHelper.getApiHeader().setAccessToken(accessToken);
+    }
+
+    @Override
+    public void updateUserInfo(
+            String accessToken,
+            Long userId,
+            LoggedInMode loggedInMode,
+            String userName,
+            String email,
+            String profilePicPath) {
+
+        setAccessToken(accessToken);
+        setCurrentUserId(userId);
+        setCurrentUserLoggedInMode(loggedInMode);
+        setCurrentUserName(userName);
+        setCurrentUserEmail(email);
+        setCurrentUserProfilePicUrl(profilePicPath);
+
+        updateApiHeader(userId, accessToken);
+    }
+
+    @Override
+    public void setUserAsLoggedOut() {
+        updateUserInfo(
+                null,
+                null,
+                DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
+                null,
+                null,
+                null);
+    }
 }
