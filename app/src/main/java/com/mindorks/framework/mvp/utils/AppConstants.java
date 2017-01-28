@@ -33,6 +33,8 @@ public final class AppConstants {
     public static final String DB_NAME = "mindorks_mvp.db";
     public static final String PREF_NAME = "mindorks_pref";
 
+    public static final long NULL_INDEX = -1L;
+
     private AppConstants() {
         // This utility class is not publicly instantiable
     }

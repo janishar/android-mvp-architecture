@@ -25,8 +25,10 @@ import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.AppDbHelper;
 import com.mindorks.framework.mvp.data.db.DbHelper;
 import com.mindorks.framework.mvp.data.db.DbOpenHelper;
+import com.mindorks.framework.mvp.data.network.ApiCall;
 import com.mindorks.framework.mvp.data.network.ApiHeader;
 import com.mindorks.framework.mvp.data.network.ApiHelper;
+import com.mindorks.framework.mvp.data.network.ApiInterceptor;
 import com.mindorks.framework.mvp.data.network.AppApiHelper;
 import com.mindorks.framework.mvp.data.prefs.AppPreferencesHelper;
 import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
@@ -116,14 +118,20 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    ApiHelper provideApiHelper(ApiHeader apiHeader) {
-        return new AppApiHelper(apiHeader);
+    ApiHelper provideApiHelper(ApiHeader apiHeader, ApiCall apiCall) {
+        return new AppApiHelper(apiHeader, apiCall);
     }
 
     @Provides
     @Singleton
-    ApiHeader provideApiHeader(@ApiInfo String apiKey, DbHelper dbHelper, PreferencesHelper preferencesHelper) {
-        return new ApiHeader(apiKey, dbHelper, preferencesHelper);
+    ApiCall provideApiCall(ApiInterceptor apiInterceptor) {
+        return ApiCall.Factory.create(apiInterceptor);
+    }
+
+    @Provides
+    @Singleton
+    ApiHeader provideApiHeader(@ApiInfo String apiKey, PreferencesHelper preferencesHelper) {
+        return new ApiHeader(apiKey, preferencesHelper.getCurrentUserId(), preferencesHelper.getAccessToken());
     }
 
     @Provides

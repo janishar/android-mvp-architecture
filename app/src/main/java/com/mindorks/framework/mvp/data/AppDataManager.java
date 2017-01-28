@@ -101,4 +101,54 @@ public class AppDataManager implements DataManager {
     public Observable<LogoutResponse> doLogoutApiCall() {
         return mApiHelper.doLogoutApiCall();
     }
+
+    @Override
+    public int getCurrentUserLoggedInMode() {
+        return mPreferencesHelper.getCurrentUserLoggedInMode();
+    }
+
+    @Override
+    public void setCurrentUserLoggedInMode(LoggedInMode mode) {
+        mPreferencesHelper.setCurrentUserLoggedInMode(mode);
+    }
+
+    @Override
+    public Long getCurrentUserId() {
+        return mPreferencesHelper.getCurrentUserId();
+    }
+
+    @Override
+    public void setCurrentUserId(Long userId) {
+        mPreferencesHelper.setCurrentUserId(userId);
+    }
+
+    @Override
+    public String getCurrentUserName() {
+        return mPreferencesHelper.getCurrentUserName();
+    }
+
+    @Override
+    public void setCurrentUserName(String userName) {
+        mPreferencesHelper.setCurrentUserName(userName);
+    }
+
+    @Override
+    public String getCurrentUserEmail() {
+        return mPreferencesHelper.getCurrentUserEmail();
+    }
+
+    @Override
+    public void setCurrentUserEmail(String email) {
+        mPreferencesHelper.setCurrentUserEmail(email);
+    }
+
+    @Override
+    public String getCurrentUserProfilePicUrl() {
+        return mPreferencesHelper.getCurrentUserProfilePicUrl();
+    }
+
+    @Override
+    public void setCurrentUserProfilePicUrl(String profilePicUrl) {
+        mPreferencesHelper.setCurrentUserProfilePicUrl(profilePicUrl);
+    }
 }
