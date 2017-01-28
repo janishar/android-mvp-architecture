@@ -24,6 +24,7 @@ public final class AppConstants {
     public static final String STATUS_CODE_SUCCESS = "success";
     public static final String STATUS_CODE_FAILED = "failed";
 
+    public static final int API_STATUS_CODE_LOCAL_ERROR = 0;
     public static final int API_STATUS_CODE_OK = 200;
     public static final int API_STATUS_CODE_BAD_REQUEST = 403;
     public static final int API_STATUS_CODE_NOT_FOUND = 404;

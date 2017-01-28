@@ -13,7 +13,14 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.api;
+package com.mindorks.framework.mvp.data.network;
+
+import com.mindorks.framework.mvp.data.network.model.GitRepoResponse;
+import com.mindorks.framework.mvp.data.network.model.LoginRequest;
+import com.mindorks.framework.mvp.data.network.model.LoginResponse;
+import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
+
+import io.reactivex.Observable;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -25,4 +32,13 @@ public interface ApiHelper {
 
     void setApiHeader(ApiHeader apiHeader);
 
+    Observable<GitRepoResponse> doGitRepoApiCall(String gitUsername);
+
+    Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest request);
+
+    Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest request);
+
+    Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request);
+
+    Observable<LogoutResponse> doLogoutApiCall();
 }

@@ -13,39 +13,31 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.api;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-import com.mindorks.framework.mvp.data.db.DbHelper;
-import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
-
-import javax.inject.Inject;
+package com.mindorks.framework.mvp.data.network;
 
 /**
- * Created by janisharali on 07/01/17.
+ * Created by janisharali on 27/01/17.
  */
 
 public class ApiHeader {
 
-    @Expose
-    @SerializedName("api_key")
+    public static final String API_AUTH_TYPE = "API_AUTH_TYPE";
+    public static final String PUBLIC_API = "PUBLIC_API";
+    public static final String PROTECTED_API = "PROTECTED_API";
+
+    public static final String HEADER_PARAM_API_KEY = "api_key";
+    public static final String HEADER_PARAM_ACCESS_TOKEN = "access_token";
+    public static final String HEADER_PARAM_USER_ID = "user_id";
+
     private String mApiKey;
-
-    @Expose
-    @SerializedName("user_id")
     private Long mUserId;
-
-    @Expose
-    @SerializedName("access_token")
     private String mAccessToken;
 
-    @Inject
-    public ApiHeader(String apiKey, DbHelper dbHelper, PreferencesHelper preferencesHelper) {
-        mApiKey = apiKey;
-        mAccessToken = preferencesHelper.getAccessToken();
+    public ApiHeader(String mApiKey, Long mUserId, String mAccessToken) {
+        this.mApiKey = mApiKey;
+        this.mUserId = mUserId;
+        this.mAccessToken = mAccessToken;
     }
-
 
     public String getApiKey() {
         return mApiKey;

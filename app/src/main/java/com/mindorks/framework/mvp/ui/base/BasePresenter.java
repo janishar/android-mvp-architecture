@@ -24,7 +24,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
-import com.mindorks.framework.mvp.data.api.model.ApiError;
+import com.mindorks.framework.mvp.data.network.model.ApiError;
 import com.mindorks.framework.mvp.utils.AppConstants;
 
 import javax.inject.Inject;

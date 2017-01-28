@@ -13,18 +13,16 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.api.model;
+package com.mindorks.framework.mvp.data.network.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by janisharali on 28/01/17.
+ * Created by janisharali on 08/01/17.
  */
 
-public class ApiError {
-
-    private int errorCode;
+public class LogoutResponse {
 
     @Expose
     @SerializedName("status_code")
@@ -33,14 +31,6 @@ public class ApiError {
     @Expose
     @SerializedName("message")
     private String message;
-
-    public int getErrorCode() {
-        return errorCode;
-    }
-
-    public void setErrorCode(int errorCode) {
-        this.errorCode = errorCode;
-    }
 
     public String getStatusCode() {
         return statusCode;

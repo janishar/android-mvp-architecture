@@ -16,10 +16,14 @@
 package com.mindorks.framework.mvp.data;
 
 
-import com.mindorks.framework.mvp.data.api.ApiHeader;
-import com.mindorks.framework.mvp.data.api.ApiHelper;
 import com.mindorks.framework.mvp.data.db.DbHelper;
 import com.mindorks.framework.mvp.data.db.model.User;
+import com.mindorks.framework.mvp.data.network.ApiHeader;
+import com.mindorks.framework.mvp.data.network.ApiHelper;
+import com.mindorks.framework.mvp.data.network.model.GitRepoResponse;
+import com.mindorks.framework.mvp.data.network.model.LoginRequest;
+import com.mindorks.framework.mvp.data.network.model.LoginResponse;
+import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
 
 import java.util.List;
@@ -71,5 +75,30 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<List<User>> getAllUsers() {
         return mDbHelper.getAllUsers();
+    }
+
+    @Override
+    public Observable<GitRepoResponse> doGitRepoApiCall(String gitUsername) {
+        return mApiHelper.doGitRepoApiCall(gitUsername);
+    }
+
+    @Override
+    public Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest request) {
+        return mApiHelper.doGoogleLoginApiCall(request);
+    }
+
+    @Override
+    public Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest request) {
+        return mApiHelper.doFacebookLoginApiCall(request);
+    }
+
+    @Override
+    public Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request) {
+        return mApiHelper.doServerLoginApiCall(request);
+    }
+
+    @Override
+    public Observable<LogoutResponse> doLogoutApiCall() {
+        return mApiHelper.doLogoutApiCall();
     }
 }
