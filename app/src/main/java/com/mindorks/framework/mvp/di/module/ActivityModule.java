@@ -18,7 +18,6 @@ package com.mindorks.framework.mvp.di.module;
 import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
-import android.view.LayoutInflater;
 
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.ActivityContext;
@@ -61,12 +60,6 @@ public class ActivityModule {
     @Provides
     Activity provideActivity() {
         return activity;
-    }
-
-    @Provides
-    @PerActivity
-    LayoutInflater provideLayoutInflater() {
-        return LayoutInflater.from(activity);
     }
 
     @Provides

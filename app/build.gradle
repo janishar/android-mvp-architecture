@@ -82,6 +82,9 @@ dependencies {
     compile "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
 
+    //swipe view
+    compile "com.mindorks:placeholderview:$rootProject.placeholderviewVersion"
+
     // dependencies for local unit tests
     testCompile "junit:junit:$rootProject.ext.junitVersion"
 

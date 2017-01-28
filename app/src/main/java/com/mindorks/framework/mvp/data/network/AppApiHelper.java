@@ -15,7 +15,6 @@
 
 package com.mindorks.framework.mvp.data.network;
 
-import com.mindorks.framework.mvp.data.network.model.GitRepoResponse;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
@@ -53,11 +52,6 @@ public class AppApiHelper implements ApiHelper {
             mApiHeader.setUserId(apiHeader.getUserId());
             mApiHeader.setAccessToken(apiHeader.getAccessToken());
         }
-    }
-
-    @Override
-    public Observable<GitRepoResponse> doGitRepoApiCall(String gitUsername) {
-        return mApiCall.getAllGitRepositoriesForUser(gitUsername);
     }
 
     @Override

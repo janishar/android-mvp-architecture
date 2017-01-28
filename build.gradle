@@ -42,7 +42,7 @@ task clean(type: Delete) {
 // Define versions in a single place
 ext {
     // Sdk and tools
-    minSdkVersion = 15
+    minSdkVersion = 16
     targetSdkVersion = 25
     compileSdkVersion = 25
     buildToolsVersion = '25.0.2'
@@ -61,6 +61,7 @@ ext {
     rxandroidVersion = '2.0.1'
     butterKnifeVersion = '8.5.1'
     greenDaoVersion = '3.2.0'
+    placeholderviewVersion = '0.6.1'
 
     //Test dependencies
     junitVersion = '4.12'

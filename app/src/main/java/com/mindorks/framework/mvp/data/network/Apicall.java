@@ -17,7 +17,6 @@ package com.mindorks.framework.mvp.data.network;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.mindorks.framework.mvp.BuildConfig;
-import com.mindorks.framework.mvp.data.network.model.GitRepoResponse;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
@@ -30,10 +29,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
-import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Path;
 
 
 /**
@@ -48,10 +45,6 @@ public interface ApiCall {
     String ENDPOINT_FACEBOOK_LOGIN = "588d15d3100000ae072d2944";
     String ENDPOINT_SERVER_LOGIN = "588d15f5100000a8072d2945";
     String ENDPOINT_LOGOUT = "588d161c100000a9072d2946";
-
-    @GET("users/{username}/repos")
-    @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)
-    Observable<GitRepoResponse> getAllGitRepositoriesForUser(@Path("username") String username);
 
     @POST(ENDPOINT_GOOGLE_LOGIN)
     @Headers(ApiHeader.API_AUTH_TYPE + HEADER_PARAM_SEPARATOR + ApiHeader.PUBLIC_API)

@@ -40,6 +40,8 @@ import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
 import com.mindorks.framework.mvp.ui.setting.SettingFragment;
+import com.mindorks.placeholderview.SwipeDecor;
+import com.mindorks.placeholderview.SwipePlaceHolderView;
 
 import javax.inject.Inject;
 
@@ -66,6 +68,9 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @BindView(R2.id.tv_app_version)
     TextView mAppVersionTextView;
+
+    @BindView(R2.id.cards_container)
+    SwipePlaceHolderView mCardsContainerView;
 
     private TextView mNameTextView;
 
@@ -182,6 +187,21 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mDrawer.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
         setupNavMenu();
+        setupCardContainerView();
+    }
+
+    private void setupCardContainerView() {
+        mCardsContainerView.getBuilder()
+                .setDisplayViewCount(3)
+                .setHeightSwipeDistFactor(10)
+                .setWidthSwipeDistFactor(5)
+                .setSwipeDecor(new SwipeDecor()
+                        .setPaddingTop(20)
+                        .setRelativeScale(0.01f));
+
+        mCardsContainerView.addView(new QuestionCard("QUESTION 1"));
+        mCardsContainerView.addView(new QuestionCard("QUESTION 2"));
+        mCardsContainerView.addView(new QuestionCard("QUESTION 3"));
     }
 
     void setupNavMenu() {

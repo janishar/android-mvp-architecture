@@ -15,7 +15,6 @@
 
 package com.mindorks.framework.mvp.data.network;
 
-import com.mindorks.framework.mvp.data.network.model.GitRepoResponse;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
@@ -31,8 +30,6 @@ public interface ApiHelper {
     ApiHeader getApiHeader();
 
     void setApiHeader(ApiHeader apiHeader);
-
-    Observable<GitRepoResponse> doGitRepoApiCall(String gitUsername);
 
     Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest request);
 

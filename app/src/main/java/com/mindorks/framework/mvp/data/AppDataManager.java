@@ -20,7 +20,6 @@ import com.mindorks.framework.mvp.data.db.DbHelper;
 import com.mindorks.framework.mvp.data.db.model.User;
 import com.mindorks.framework.mvp.data.network.ApiHeader;
 import com.mindorks.framework.mvp.data.network.ApiHelper;
-import com.mindorks.framework.mvp.data.network.model.GitRepoResponse;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
@@ -80,11 +79,6 @@ public class AppDataManager implements DataManager {
     @Override
     public Observable<List<User>> getAllUsers() {
         return mDbHelper.getAllUsers();
-    }
-
-    @Override
-    public Observable<GitRepoResponse> doGitRepoApiCall(String gitUsername) {
-        return mApiHelper.doGitRepoApiCall(gitUsername);
     }
 
     @Override
