@@ -16,11 +16,11 @@
 package com.mindorks.framework.mvp.data;
 
 
-import com.mindorks.framework.mvp.data.local.PreferencesHelper;
-import com.mindorks.framework.mvp.data.local.db.DbHelper;
-import com.mindorks.framework.mvp.data.local.db.model.User;
-import com.mindorks.framework.mvp.data.remote.ApiHeader;
-import com.mindorks.framework.mvp.data.remote.ApiHelper;
+import com.mindorks.framework.mvp.data.api.ApiHeader;
+import com.mindorks.framework.mvp.data.api.ApiHelper;
+import com.mindorks.framework.mvp.data.db.DbHelper;
+import com.mindorks.framework.mvp.data.db.model.User;
+import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
 
 import java.util.List;
 

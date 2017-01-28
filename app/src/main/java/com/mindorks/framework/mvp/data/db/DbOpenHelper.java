@@ -13,12 +13,12 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.local.db;
+package com.mindorks.framework.mvp.data.db;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.mindorks.framework.mvp.data.local.db.model.DaoMaster;
+import com.mindorks.framework.mvp.data.db.model.DaoMaster;
 
 import org.greenrobot.greendao.database.Database;
 

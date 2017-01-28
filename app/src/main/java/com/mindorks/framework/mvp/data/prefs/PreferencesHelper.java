@@ -13,16 +13,16 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.remote;
+package com.mindorks.framework.mvp.data.prefs;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
-public interface ApiHelper {
+public interface PreferencesHelper {
 
-    ApiHeader getApiHeader();
+    String getAccessToken();
 
-    void setApiHeader(ApiHeader apiHeader);
+    void setAccessToken(String accessToken);
 
 }

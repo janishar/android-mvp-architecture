@@ -19,7 +19,7 @@ package com.mindorks.framework.mvp.ui.base;
  * Created by janisharali on 27/01/17.
  */
 
-import com.mindorks.framework.mvp.data.remote.model.ApiError;
+import com.mindorks.framework.mvp.data.api.model.ApiError;
 
 /**
  * Every presenter in the app must either implement this interface or extend BasePresenter

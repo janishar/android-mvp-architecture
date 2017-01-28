@@ -13,15 +13,22 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.remote;
+package com.mindorks.framework.mvp.data.db;
+
+import com.mindorks.framework.mvp.data.db.model.User;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by janisharali on 08/12/16.
  */
 
-public final class ApiEndPoint {
+public interface DbHelper {
 
-    private ApiEndPoint() {
-        // This class is not publicly instantiable
-    }
+    Observable<Long> insertUser(final User user);
+
+    Observable<List<User>> getAllUsers();
 }

@@ -13,27 +13,32 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.remote;
+package com.mindorks.framework.mvp.data.prefs;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
-public final class AppApiHelper implements ApiHelper {
+public class AppPreferencesHelper implements PreferencesHelper {
 
-    private ApiHeader mApiHeader;
+    private static final String PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN";
 
-    public AppApiHelper(ApiHeader apiHeader) {
-        mApiHeader = apiHeader;
+    private final SharedPreferences mPrefs;
+
+    public AppPreferencesHelper(Context context, String prefFileName) {
+        mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
     }
 
     @Override
-    public ApiHeader getApiHeader() {
-        return mApiHeader;
+    public String getAccessToken() {
+        return mPrefs.getString(PREF_KEY_ACCESS_TOKEN, null);
     }
 
     @Override
-    public void setApiHeader(ApiHeader apiHeader) {
-//        mApiHeader.copy(apiHeader);
+    public void setAccessToken(String accessToken) {
+        mPrefs.edit().putString(PREF_KEY_ACCESS_TOKEN, accessToken).apply();
     }
 }

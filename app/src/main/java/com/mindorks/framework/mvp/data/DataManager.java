@@ -16,9 +16,9 @@
 package com.mindorks.framework.mvp.data;
 
 
-import com.mindorks.framework.mvp.data.local.PreferencesHelper;
-import com.mindorks.framework.mvp.data.local.db.DbHelper;
-import com.mindorks.framework.mvp.data.remote.ApiHelper;
+import com.mindorks.framework.mvp.data.api.ApiHelper;
+import com.mindorks.framework.mvp.data.db.DbHelper;
+import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
 
 /**
  * Created by janisharali on 27/01/17.

@@ -13,12 +13,12 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.remote;
+package com.mindorks.framework.mvp.data.api;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mindorks.framework.mvp.data.local.PreferencesHelper;
-import com.mindorks.framework.mvp.data.local.db.DbHelper;
+import com.mindorks.framework.mvp.data.db.DbHelper;
+import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
 
 import javax.inject.Inject;
 

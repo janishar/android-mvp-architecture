@@ -13,7 +13,7 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.remote.model;
+package com.mindorks.framework.mvp.data.api.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

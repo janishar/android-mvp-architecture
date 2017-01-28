@@ -13,11 +13,11 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.local.db;
+package com.mindorks.framework.mvp.data.db;
 
-import com.mindorks.framework.mvp.data.local.db.model.DaoMaster;
-import com.mindorks.framework.mvp.data.local.db.model.DaoSession;
-import com.mindorks.framework.mvp.data.local.db.model.User;
+import com.mindorks.framework.mvp.data.db.model.DaoMaster;
+import com.mindorks.framework.mvp.data.db.model.DaoSession;
+import com.mindorks.framework.mvp.data.db.model.User;
 
 import java.util.List;
 import java.util.concurrent.Callable;

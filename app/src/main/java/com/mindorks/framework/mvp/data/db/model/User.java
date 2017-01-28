@@ -13,7 +13,7 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.data.local.db.model;
+package com.mindorks.framework.mvp.data.db.model;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
