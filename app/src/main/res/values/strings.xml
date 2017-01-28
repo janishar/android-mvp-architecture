@@ -31,4 +31,10 @@
     <string name="api_default_error">Something wrong happened!</string>
     <string name="some_error">Some Error Occurred</string>
 
+    <!--Login-->
+    <string name="login_dummy">Login Dummy</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+
 </resources>

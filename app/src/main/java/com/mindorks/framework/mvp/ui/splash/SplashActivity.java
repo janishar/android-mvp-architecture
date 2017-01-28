@@ -56,6 +56,9 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
         mPresenter.onAttach(SplashActivity.this);
     }
 
+    /**
+     * Making the screen wait so that the  branding can be shown
+     */
     @Override
     public void openLoginActivity() {
         new Handler(getMainLooper()).postDelayed(new Runnable() {
@@ -65,7 +68,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
                 startActivity(intent);
                 finish();
             }
-        }, 800);
+        }, 1000);
     }
 
     @Override
@@ -77,7 +80,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
                 startActivity(intent);
                 finish();
             }
-        }, 800);
+        }, 1000);
     }
 
     @Override

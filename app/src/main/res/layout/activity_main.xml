@@ -51,10 +51,6 @@
 
             </android.support.design.widget.AppBarLayout>
 
-            <com.mindorks.correctify.ui.correction.CorrectionView
-                android:id="@+id/correctionView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
         </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>
 

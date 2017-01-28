@@ -62,17 +62,14 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @BindView(R2.id.navigation_view)
     NavigationView mNavigationView;
 
-    @BindView(R2.id.tv_name)
-    TextView mNameTextView;
-
-    @BindView(R2.id.tv_email)
-    TextView mEmailTextView;
-
-    @BindView(R2.id.iv_profile_pic)
-    ImageView mProfileImageView;
-
     @BindView(R2.id.tv_app_version)
     TextView mAppVersionTextView;
+
+    private TextView mNameTextView;
+
+    private TextView mEmailTextView;
+
+    private ImageView mProfileImageView;
 
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -178,6 +175,10 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     void setupNavMenu() {
+        View headerLayout = mNavigationView.getHeaderView(0);
+        mProfileImageView = (ImageView) headerLayout.findViewById(R.id.iv_profile_pic);
+        mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
+        mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
 
         String version = "version " + BuildConfig.VERSION_NAME;
         mAppVersionTextView.setText(version);
