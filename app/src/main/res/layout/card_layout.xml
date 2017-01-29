@@ -98,22 +98,25 @@
             android:id="@+id/btn_option_1"
             style="@style/Button.Secondary"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_margin="5dp" />
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:minHeight="44dp" />
 
         <Button
             android:id="@+id/btn_option_2"
             style="@style/Button.Secondary"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_margin="5dp" />
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:minHeight="44dp" />
 
         <Button
             android:id="@+id/btn_option_3"
             style="@style/Button.Secondary"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_margin="5dp" />
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:minHeight="44dp" />
     </LinearLayout>
 </android.support.v7.widget.CardView>
 

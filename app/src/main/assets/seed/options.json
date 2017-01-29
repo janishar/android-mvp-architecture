@@ -2,7 +2,7 @@
   {
     "option_text": "MMVM",
     "question_id": 1,
-    "is_correct": true
+    "is_correct": false
   },
   {
     "option_text": "MVP",
@@ -15,33 +15,93 @@
     "is_correct": false
   },
   {
-    "option_text": "Linus Torvalds",
+    "option_text": "Data Manager",
     "question_id": 2,
+    "is_correct": true
+  },
+  {
+    "option_text": "View",
+    "question_id": 2,
+    "is_correct": false
+  },
+  {
+    "option_text": "Presenter",
+    "question_id": 2,
+    "is_correct": false
+  },
+  {
+    "option_text": "Yes",
+    "question_id": 3,
+    "is_correct": false
+  },
+  {
+    "option_text": "Never",
+    "question_id": 3,
+    "is_correct": true
+  },
+  {
+    "option_text": "Sometimes",
+    "question_id": 3,
+    "is_correct": false
+  },
+  {
+    "option_text": "It fetches the data from the database",
+    "question_id": 4,
+    "is_correct": false
+  },
+  {
+    "option_text": "It delegated View's requirements to Data Manager",
+    "question_id": 4,
+    "is_correct": true
+  },
+  {
+    "option_text": "It instructs the View to perform actions",
+    "question_id": 4,
+    "is_correct": true
+  },
+  {
+    "option_text": "It created a readable code.",
+    "question_id": 5,
+    "is_correct": true
+  },
+  {
+    "option_text": "It is highly testable.",
+    "question_id": 5,
+    "is_correct": true
+  },
+  {
+    "option_text": "It provides reusable code.",
+    "question_id": 5,
+    "is_correct": true
+  },
+  {
+    "option_text": "Linus Torvalds",
+    "question_id": 6,
     "is_correct": true
   },
   {
     "option_text": "Janishar Ali",
-    "question_id": 2,
+    "question_id": 6,
     "is_correct": false
   },
   {
     "option_text": "Amit Shekhar",
-    "question_id": 2,
+    "question_id": 6,
     "is_correct": false
   },
   {
     "option_text": "None",
-    "question_id": 3,
+    "question_id": 7,
     "is_correct": false
   },
   {
-    "option_text": "blog.mindorks.com",
-    "question_id": 3,
+    "option_text": "Mindorks",
+    "question_id": 7,
     "is_correct": true
   },
   {
-    "option_text": "Rest",
-    "question_id": 3,
+    "option_text": "Google",
+    "question_id": 7,
     "is_correct": false
   }
 ]

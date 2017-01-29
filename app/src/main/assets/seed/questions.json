@@ -6,12 +6,32 @@
   },
   {
     "id": 2,
-    "question_text": "How is this person",
-    "question_img_url": "https://avatars3.githubusercontent.com/u/1024025"
+    "question_text": "Which component of the MVP controls the data flow?",
+    "question_img_url": null
   },
   {
     "id": 3,
-    "question_text": "Which is the best Android blogging platform?",
+    "question_text": "Can a View ask for data from a Data Manager?",
+    "question_img_url": null
+  },
+  {
+    "id": 4,
+    "question_text": "What is the role of a Presenter?",
+    "question_img_url": null
+  },
+  {
+    "id": 5,
+    "question_text": "Why should we follow MVP?",
+    "question_img_url": null
+  },
+  {
+    "id": 6,
+    "question_text": "How is this person?",
+    "question_img_url": "https://avatars3.githubusercontent.com/u/1024025"
+  },
+  {
+    "id": 7,
+    "question_text": "Which company's logo is this?",
     "question_img_url": "https://janishar.github.io/images/mindorks_logo.png"
   }
 ]
