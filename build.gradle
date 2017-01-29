@@ -51,6 +51,7 @@ ext {
     supportLibraryVersion = '25.1.0'
     gsonVersion = '2.8.0'
     calligraphyVersion = '2.2.0'
+    glideVersion = '3.7.0'
 
     retrofitVersion = '2.1.0'
     retrofit2Rxjava2AdapterVersion = '1.0.0'

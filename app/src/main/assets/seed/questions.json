@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "question_text": "What is the architecture of this app?",
+    "question_img_url": null
+  },
+  {
+    "id": 2,
+    "question_text": "How is this person",
+    "question_img_url": "https://avatars3.githubusercontent.com/u/1024025"
+  },
+  {
+    "id": 3,
+    "question_text": "Which is the best Android blogging platform?",
+    "question_img_url": null
+  }
+]

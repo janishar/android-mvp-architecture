@@ -16,8 +16,11 @@
 package com.mindorks.framework.mvp.ui.main;
 
 import com.mindorks.framework.mvp.data.DataManager;
+import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -63,6 +66,22 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                     public void accept(Throwable throwable) throws Exception {
                         getMvpView().hideLoading();
                         // handle the login error here
+                    }
+                });
+    }
+
+    @Override
+    public void onViewInitialized() {
+        getDataManager()
+                .getAllQuestions()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Question>>() {
+                    @Override
+                    public void accept(List<Question> questionList) throws Exception {
+                        if (questionList != null) {
+                            getMvpView().refreshQuestionnaire(questionList);
+                        }
                     }
                 });
     }

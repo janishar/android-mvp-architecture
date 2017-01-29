@@ -15,7 +15,10 @@
 
 package com.mindorks.framework.mvp.ui.main;
 
+import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.ui.base.MvpView;
+
+import java.util.List;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -26,4 +29,6 @@ public interface MainMvpView extends MvpView {
     void openLoginActivity();
 
     void showSettingFragment();
+
+    void refreshQuestionnaire(List<Question> questionList);
 }

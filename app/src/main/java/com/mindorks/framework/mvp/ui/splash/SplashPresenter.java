@@ -15,10 +15,17 @@
 
 package com.mindorks.framework.mvp.ui.splash;
 
+import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
 
 import javax.inject.Inject;
+
+import io.reactivex.ObservableSource;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -35,6 +42,33 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V> i
     public void onAttach(V mvpView) {
         super.onAttach(mvpView);
 
+        getDataManager()
+                .seedDatabaseQuestions()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .concatMap(new Function<Boolean, ObservableSource<Boolean>>() {
+                    @Override
+                    public ObservableSource<Boolean> apply(Boolean aBoolean) throws Exception {
+                        return getDataManager().seedDatabaseOptions();
+                    }
+                })
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        decideNextActivity();
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        getMvpView().onError(R.string.some_error);
+                        decideNextActivity();
+                    }
+                });
+
+
+    }
+
+    private void decideNextActivity() {
         if (getDataManager().getCurrentUserLoggedInMode()
                 == DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.getType()) {
             getMvpView().openLoginActivity();

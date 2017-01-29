@@ -19,7 +19,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 
-import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.ActivityContext;
 import com.mindorks.framework.mvp.di.PerActivity;
 import com.mindorks.framework.mvp.ui.login.LoginMvpPresenter;
@@ -67,31 +66,27 @@ public class ActivityModule {
         return new LinearLayoutManager(activity);
     }
 
-    /**
-     * We are providing the SplashMvpPresenter by constructing it, because we want the Dependency
-     * graph to provide the interfaces for these classes for loose binding to its implementation.
-     */
     @Provides
     @PerActivity
-    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(DataManager dataManager) {
-        return new SplashPresenter<>(dataManager);
+    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(SplashPresenter<SplashMvpView> presenter) {
+        return presenter;
     }
 
     @Provides
     @PerActivity
-    SettingMvpPresenter<SettingMvpView> provideSettingPresenter(DataManager dataManager) {
-        return new SettingPresenter<>(dataManager);
+    SettingMvpPresenter<SettingMvpView> provideSettingPresenter(SettingPresenter<SettingMvpView> presenter) {
+        return presenter;
     }
 
     @Provides
     @PerActivity
-    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(DataManager dataManager) {
-        return new LoginPresenter<>(dataManager);
+    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(LoginPresenter<LoginMvpView> presenter) {
+        return presenter;
     }
 
     @Provides
     @PerActivity
-    MainMvpPresenter<MainMvpView> provideMainPresenter(DataManager dataManager) {
-        return new MainPresenter<>(dataManager);
+    MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView> presenter) {
+        return presenter;
     }
 }

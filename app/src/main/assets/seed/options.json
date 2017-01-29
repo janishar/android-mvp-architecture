@@ -1,0 +1,47 @@
+[
+  {
+    "option_text": "MMVM",
+    "question_id": 1,
+    "is_correct": true
+  },
+  {
+    "option_text": "MVP",
+    "question_id": 1,
+    "is_correct": true
+  },
+  {
+    "option_text": "MVC",
+    "question_id": 1,
+    "is_correct": false
+  },
+  {
+    "option_text": "Linus Torvalds",
+    "question_id": 2,
+    "is_correct": true
+  },
+  {
+    "option_text": "Janishar Ali",
+    "question_id": 2,
+    "is_correct": false
+  },
+  {
+    "option_text": "Amit Shekhar",
+    "question_id": 2,
+    "is_correct": false
+  },
+  {
+    "option_text": "None",
+    "question_id": 3,
+    "is_correct": false
+  },
+  {
+    "option_text": "blog.mindorks.com",
+    "question_id": 3,
+    "is_correct": true
+  },
+  {
+    "option_text": "Rest",
+    "question_id": 3,
+    "is_correct": false
+  }
+]

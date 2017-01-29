@@ -15,10 +15,16 @@
 
 package com.mindorks.framework.mvp.ui.main;
 
-import android.util.Log;
+import android.graphics.Color;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.RequestManager;
 import com.mindorks.framework.mvp.R;
+import com.mindorks.framework.mvp.R2;
+import com.mindorks.framework.mvp.data.db.model.Option;
+import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
@@ -33,44 +39,97 @@ import com.mindorks.placeholderview.annotations.View;
 @Layout(R.layout.card_layout)
 public class QuestionCard {
 
-    @View(R.id.question_caption)
-    TextView mTextView;
+    private static final String TAG = "QuestionCard";
 
-    String question;
+    @View(R2.id.tv_question_txt)
+    private TextView mQuestionTextView;
 
-    public QuestionCard(String question) {
-        this.question = question;
-    }
+    @View(R2.id.btn_option_1)
+    private Button mOption1Button;
 
-    @Click(R.id.btn_answer1)
-    public void onClickQ1() {
-        String message = String.format(
-                "The question is: %s. The answer is: %s.",
-                mTextView.getText().toString(),
-                "ANSWER1");
-        Log.i("PlaceholderView", message);
-    }
+    @View(R2.id.btn_option_2)
+    private Button mOption2Button;
 
-    @Click(R.id.btn_answer2)
-    public void onClickQ2() {
-        String message = String.format(
-                "The question is: %s. The answer is: %s.",
-                mTextView.getText().toString(),
-                "ANSWER2");
-        Log.i("PlaceholderView", message);
-    }
+    @View(R2.id.btn_option_3)
+    private Button mOption3Button;
 
-    @Click(R.id.btn_answer3)
-    public void onClickQ3() {
-        String message = String.format(
-                "The question is: %s. The answer is: %s.",
-                mTextView.getText().toString(),
-                "ANSWER3");
-        Log.i("PlaceholderView", message);
+    @View(R2.id.iv_pic)
+    private ImageView mPicImageView;
+
+    private Question mQuestion;
+
+    private RequestManager mRequestManager;
+
+    public QuestionCard(Question question, RequestManager requestManager) {
+        mQuestion = question;
+        mRequestManager = requestManager;
     }
 
     @Resolve
     private void onResolved() {
-        mTextView.setText(this.question);
+
+        mQuestionTextView.setText(mQuestion.getQuestionText());
+
+        for (int i = 0; i < 3; i++) {
+            Button button = null;
+            switch (i) {
+                case 0:
+                    button = mOption1Button;
+                    break;
+                case 1:
+                    button = mOption2Button;
+                    break;
+                case 2:
+                    button = mOption3Button;
+                    break;
+            }
+
+            if (button != null)
+                button.setText(mQuestion.getOptionList().get(i).getOptionText());
+
+            if (mQuestion.getImgUrl() != null) {
+                mRequestManager.load(mQuestion.getImgUrl()).into(mPicImageView);
+            }
+        }
+    }
+
+    private void showCorrectOptions() {
+        for (int i = 0; i < 3; i++) {
+            Option option = mQuestion.getOptionList().get(i);
+            Button button = null;
+            switch (i) {
+                case 0:
+                    button = mOption1Button;
+                    break;
+                case 1:
+                    button = mOption2Button;
+                    break;
+                case 2:
+                    button = mOption3Button;
+                    break;
+            }
+            if (button != null) {
+                if (option.isCorrect()) {
+                    button.setBackgroundColor(Color.GREEN);
+                } else {
+                    button.setBackgroundColor(Color.RED);
+                }
+            }
+        }
+    }
+
+    @Click(R.id.btn_option_1)
+    public void onOption1Click() {
+        showCorrectOptions();
+    }
+
+    @Click(R.id.btn_option_2)
+    public void onOption2Click() {
+        showCorrectOptions();
+    }
+
+    @Click(R.id.btn_option_3)
+    public void onOption3Click() {
+        showCorrectOptions();
     }
 }

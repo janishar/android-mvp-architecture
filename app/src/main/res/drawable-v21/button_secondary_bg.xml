@@ -13,22 +13,7 @@
   ~ limitations under the License
   -->
 
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape android:shape="rectangle">
-            <solid android:color="@color/light_gray" />
-            <corners android:radius="1dp" />
-        </shape>
-    </item>
-
-    <item
-        android:bottom="1dp"
-        android:left="-2dp"
-        android:right="-2dp"
-        android:top="-2dp">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/white" />
-            <corners android:radius="2dp" />
-        </shape>
-    </item>
-</layer-list>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/shadow">
+    <item android:drawable="@color/semi_gray" />
+</ripple>

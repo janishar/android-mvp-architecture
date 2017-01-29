@@ -34,14 +34,20 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mindorks.framework.mvp.BuildConfig;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.R2;
+import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
 import com.mindorks.framework.mvp.ui.setting.SettingFragment;
+import com.mindorks.framework.mvp.utils.ScreenUtils;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
+import com.mindorks.placeholderview.listeners.ItemRemovedListener;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -97,6 +103,17 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mPresenter.onAttach(this);
 
         setUp();
+    }
+
+    @Override
+    public void refreshQuestionnaire(List<Question> questionList) {
+        for (Question question : questionList) {
+            if (question != null
+                    && question.getOptionList() != null
+                    && question.getOptionList().size() == 3) {
+                mCardsContainerView.addView(new QuestionCard(question, Glide.with(this)));
+            }
+        }
     }
 
     @Override
@@ -188,20 +205,32 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mDrawerToggle.syncState();
         setupNavMenu();
         setupCardContainerView();
+        mPresenter.onViewInitialized();
     }
 
     private void setupCardContainerView() {
+
+        int screenWidth = ScreenUtils.getScreenWidth(this);
+        int screenHeight = ScreenUtils.getScreenHeight(this);
+
         mCardsContainerView.getBuilder()
                 .setDisplayViewCount(3)
                 .setHeightSwipeDistFactor(10)
                 .setWidthSwipeDistFactor(5)
                 .setSwipeDecor(new SwipeDecor()
+                        .setViewWidth((int) (0.85 * screenWidth))
+                        .setViewHeight((int) (0.75 * screenHeight))
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f));
 
-        mCardsContainerView.addView(new QuestionCard("QUESTION 1"));
-        mCardsContainerView.addView(new QuestionCard("QUESTION 2"));
-        mCardsContainerView.addView(new QuestionCard("QUESTION 3"));
+        mCardsContainerView.addItemRemoveListener(new ItemRemovedListener() {
+            @Override
+            public void onItemRemoved(int count) {
+                if (count == 0) {
+                    onError("No more questions");
+                }
+            }
+        });
     }
 
     void setupNavMenu() {

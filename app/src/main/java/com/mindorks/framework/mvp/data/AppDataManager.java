@@ -16,7 +16,13 @@
 package com.mindorks.framework.mvp.data;
 
 
+import android.content.Context;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.mindorks.framework.mvp.data.db.DbHelper;
+import com.mindorks.framework.mvp.data.db.model.Option;
+import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.db.model.User;
 import com.mindorks.framework.mvp.data.network.ApiHeader;
 import com.mindorks.framework.mvp.data.network.ApiHelper;
@@ -24,13 +30,21 @@ import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
+import com.mindorks.framework.mvp.di.ApplicationContext;
+import com.mindorks.framework.mvp.utils.AppConstants;
+import com.mindorks.framework.mvp.utils.CommonUtils;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
+import io.reactivex.functions.Function;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -39,12 +53,17 @@ import io.reactivex.Observable;
 @Singleton
 public class AppDataManager implements DataManager {
 
+    private final Context mContext;
     private final DbHelper mDbHelper;
     private final PreferencesHelper mPreferencesHelper;
     private final ApiHelper mApiHelper;
 
     @Inject
-    public AppDataManager(DbHelper dbHelper, PreferencesHelper preferencesHelper, ApiHelper apiHelper) {
+    public AppDataManager(@ApplicationContext Context context,
+                          DbHelper dbHelper,
+                          PreferencesHelper preferencesHelper,
+                          ApiHelper apiHelper) {
+        mContext = context;
         mDbHelper = dbHelper;
         mPreferencesHelper = preferencesHelper;
         mApiHelper = apiHelper;
@@ -185,5 +204,102 @@ public class AppDataManager implements DataManager {
                 null,
                 null,
                 null);
+    }
+
+    @Override
+    public Observable<Boolean> isQuestionEmpty() {
+        return mDbHelper.isQuestionEmpty();
+    }
+
+    @Override
+    public Observable<Boolean> isOptionEmpty() {
+        return mDbHelper.isOptionEmpty();
+    }
+
+    @Override
+    public Observable<Boolean> saveQuestion(Question question) {
+        return mDbHelper.saveQuestion(question);
+    }
+
+    @Override
+    public Observable<Boolean> saveOption(Option option) {
+        return mDbHelper.saveOption(option);
+    }
+
+    @Override
+    public Observable<Boolean> saveQuestionList(List<Question> questionList) {
+        return mDbHelper.saveQuestionList(questionList);
+    }
+
+    @Override
+    public Observable<Boolean> saveOptionList(List<Option> optionList) {
+        return mDbHelper.saveOptionList(optionList);
+    }
+
+    @Override
+    public Observable<List<Question>> getAllQuestions() {
+        return mDbHelper.getAllQuestions();
+    }
+
+    @Override
+    public Observable<Boolean> seedDatabaseQuestions() {
+
+        GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+        final Gson gson = builder.create();
+
+        return mDbHelper.isQuestionEmpty()
+                .concatMap(new Function<Boolean, ObservableSource<? extends Boolean>>() {
+                    @Override
+                    public ObservableSource<? extends Boolean> apply(Boolean isEmpty) throws Exception {
+                        if (isEmpty) {
+                            JSONArray array = new JSONArray(
+                                    CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_QUESTIONS));
+
+                            ArrayList<Question> questionList = new ArrayList<>();
+
+                            for (int i = 0; i < array.length(); i++) {
+                                Question question = gson.fromJson(array.getString(i), Question.class);
+                                String timestamp = CommonUtils.getTimeStamp();
+                                question.setCreatedAt(timestamp);
+                                question.setUpdatedAt(timestamp);
+                                questionList.add(question);
+                            }
+
+                            return saveQuestionList(questionList);
+                        }
+                        return Observable.just(false);
+                    }
+                });
+    }
+
+    @Override
+    public Observable<Boolean> seedDatabaseOptions() {
+
+        GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+        final Gson gson = builder.create();
+
+        return mDbHelper.isOptionEmpty()
+                .concatMap(new Function<Boolean, ObservableSource<? extends Boolean>>() {
+                    @Override
+                    public ObservableSource<? extends Boolean> apply(Boolean isEmpty) throws Exception {
+                        if (isEmpty) {
+                            JSONArray array = new JSONArray(
+                                    CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_OPTIONS));
+
+                            ArrayList<Option> optionList = new ArrayList<>();
+
+                            for (int i = 0; i < array.length(); i++) {
+                                Option option = gson.fromJson(array.getString(i), Option.class);
+                                String timestamp = CommonUtils.getTimeStamp();
+                                option.setCreatedAt(timestamp);
+                                option.setUpdatedAt(timestamp);
+                                optionList.add(option);
+                            }
+
+                            return saveOptionList(optionList);
+                        }
+                        return Observable.just(false);
+                    }
+                });
     }
 }

@@ -47,4 +47,5 @@
     <string name="invalid_email">Please provide a valid email.</string>
     <string name="empty_password">Please provide a non empty password.</string>
 
+
 </resources>
