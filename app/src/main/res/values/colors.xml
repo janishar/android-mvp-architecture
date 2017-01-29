@@ -27,6 +27,7 @@
     <color name="black_effective">#2a2a2a</color>
     <color name="shadow">#d0d8dc</color>
     <color name="transparent">#00000000</color>
+    <color name="translucent_white">#88ffffff</color>
     <color name="fb">#3b5998</color>
     <color name="google">#d34836</color>
 

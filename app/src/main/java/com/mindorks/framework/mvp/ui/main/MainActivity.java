@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -227,7 +230,23 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             @Override
             public void onItemRemoved(int count) {
                 if (count == 0) {
-                    onError("No more questions");
+                    // reload the contents again after 1 sec delaly
+                    new Handler(getMainLooper()).postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mPresenter.onViewInitialized();
+
+                            ScaleAnimation animation =
+                                    new ScaleAnimation(
+                                            1.15f, 1, 1.15f, 1,
+                                            Animation.RELATIVE_TO_SELF, 0.5f,
+                                            Animation.RELATIVE_TO_SELF, 0.5f);
+
+                            mCardsContainerView.setAnimation(animation);
+                            animation.setDuration(100);
+                            animation.start();
+                        }
+                    }, 800);
                 }
             }
         });
