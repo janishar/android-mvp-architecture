@@ -45,17 +45,17 @@
     "is_correct": false
   },
   {
-    "option_text": "It fetches the data from the database",
+    "option_text": "It fetches the data from the database.",
     "question_id": 4,
     "is_correct": false
   },
   {
-    "option_text": "It delegated View's requirements to Data Manager",
+    "option_text": "It delegates View's requirements to Data Manager.",
     "question_id": 4,
     "is_correct": true
   },
   {
-    "option_text": "It instructs the View to perform actions",
+    "option_text": "It instructs the View to perform actions.",
     "question_id": 4,
     "is_correct": true
   },
