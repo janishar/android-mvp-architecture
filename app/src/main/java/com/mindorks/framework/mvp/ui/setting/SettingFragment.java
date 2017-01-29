@@ -22,11 +22,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mindorks.framework.mvp.R;
+import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.ui.base.BaseFragment;
 
 import javax.inject.Inject;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -62,6 +64,11 @@ public class SettingFragment extends BaseFragment implements SettingMvpView {
     @Override
     protected void setUp(View view) {
 
+    }
+
+    @OnClick(R2.id.nav_back_btn)
+    void onNavBackClick() {
+        getBaseActivity().onFragmentDetached(SettingFragment.class.getSimpleName());
     }
 
     @Override

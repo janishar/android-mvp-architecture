@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_marginTop="@dimen/app_bar_height"
-        android:gravity="center|end"
+        android:gravity="center|start"
         android:orientation="horizontal">
 
         <ImageButton
@@ -36,7 +36,7 @@
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:background="@color/transparent"
             android:tint="@color/white"
-            app:srcCompat="@android:drawable/ic_menu_manage" />
+            app:srcCompat="@drawable/ic_keyboard_backspace_24px" />
 
         <TextView
             style="@style/TextStyle.Heading"

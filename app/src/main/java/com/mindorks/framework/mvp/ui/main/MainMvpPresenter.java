@@ -38,4 +38,6 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void onViewInitialized();
 
+    void onCardExhausted();
+
 }

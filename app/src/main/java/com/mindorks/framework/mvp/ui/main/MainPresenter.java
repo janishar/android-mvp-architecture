@@ -91,6 +91,22 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     }
 
     @Override
+    public void onCardExhausted() {
+        getDataManager()
+                .getAllQuestions()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<List<Question>>() {
+                    @Override
+                    public void accept(List<Question> questionList) throws Exception {
+                        if (questionList != null) {
+                            getMvpView().reloadQuestionnaire(questionList);
+                        }
+                    }
+                });
+    }
+
+    @Override
     public String getUserName() {
         return getDataManager().getCurrentUserName();
     }

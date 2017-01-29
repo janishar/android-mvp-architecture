@@ -120,6 +120,20 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
+    public void reloadQuestionnaire(List<Question> questionList) {
+        refreshQuestionnaire(questionList);
+        ScaleAnimation animation =
+                new ScaleAnimation(
+                        1.15f, 1, 1.15f, 1,
+                        Animation.RELATIVE_TO_SELF, 0.5f,
+                        Animation.RELATIVE_TO_SELF, 0.5f);
+
+        mCardsContainerView.setAnimation(animation);
+        animation.setDuration(100);
+        animation.start();
+    }
+
+    @Override
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();
@@ -221,7 +235,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .setHeightSwipeDistFactor(10)
                 .setWidthSwipeDistFactor(5)
                 .setSwipeDecor(new SwipeDecor()
-                        .setViewWidth((int) (0.85 * screenWidth))
+                        .setViewWidth((int) (0.90 * screenWidth))
                         .setViewHeight((int) (0.75 * screenHeight))
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f));
@@ -234,17 +248,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                     new Handler(getMainLooper()).postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            mPresenter.onViewInitialized();
-
-                            ScaleAnimation animation =
-                                    new ScaleAnimation(
-                                            1.15f, 1, 1.15f, 1,
-                                            Animation.RELATIVE_TO_SELF, 0.5f,
-                                            Animation.RELATIVE_TO_SELF, 0.5f);
-
-                            mCardsContainerView.setAnimation(animation);
-                            animation.setDuration(100);
-                            animation.start();
+                            mPresenter.onCardExhausted();
                         }
                     }, 800);
                 }

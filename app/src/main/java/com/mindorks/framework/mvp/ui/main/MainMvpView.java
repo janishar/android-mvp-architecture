@@ -31,4 +31,6 @@ public interface MainMvpView extends MvpView {
     void showSettingFragment();
 
     void refreshQuestionnaire(List<Question> questionList);
+
+    void reloadQuestionnaire(List<Question> questionList);
 }
