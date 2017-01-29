@@ -71,7 +71,6 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                                 response.getUserName(),
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
-
                         getMvpView().hideLoading();
                         getMvpView().openMainActivity();
                     }
@@ -80,6 +79,9 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                     public void accept(Throwable throwable) throws Exception {
                         getMvpView().hideLoading();
                         // handle the login error here
+
+                        //for demo the next screen in made to open even in failure
+                        getMvpView().openMainActivity();
                     }
                 });
     }
@@ -111,6 +113,9 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                     public void accept(Throwable throwable) throws Exception {
                         getMvpView().hideLoading();
                         // handle the login error here
+
+                        //for demo the next screen in made to open even in failure
+                        getMvpView().openMainActivity();
                     }
                 });
     }
@@ -142,6 +147,9 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                     public void accept(Throwable throwable) throws Exception {
                         getMvpView().hideLoading();
                         // handle the login error here
+
+                        //for demo the next screen in made to open even in failure
+                        getMvpView().openMainActivity();
                     }
                 });
     }

@@ -66,8 +66,12 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                     public void accept(Throwable throwable) throws Exception {
                         getMvpView().hideLoading();
                         // handle the login error here
+
+                        //for demo the next screen in made to open even in failure
+                        getMvpView().openLoginActivity();
                     }
                 });
+
     }
 
     @Override
