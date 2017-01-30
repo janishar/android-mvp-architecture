@@ -101,8 +101,8 @@ public class AppDbHelper implements DbHelper {
         return Observable.fromCallable(new Callable<Boolean>() {
             @Override
             public Boolean call() throws Exception {
-                mDaoSession.getQuestionDao().insertInTx(question);
-                return null;
+                mDaoSession.getQuestionDao().insert(question);
+                return true;
             }
         });
     }
