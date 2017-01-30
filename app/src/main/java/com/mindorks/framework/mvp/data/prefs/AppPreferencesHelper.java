@@ -24,11 +24,13 @@ import com.mindorks.framework.mvp.di.PreferenceInfo;
 import com.mindorks.framework.mvp.utils.AppConstants;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
+@Singleton
 public class AppPreferencesHelper implements PreferencesHelper {
 
     private static final String PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE";
