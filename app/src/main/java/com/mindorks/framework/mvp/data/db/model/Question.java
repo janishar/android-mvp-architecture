@@ -193,9 +193,7 @@ public class Question {
         this.imgUrl = imgUrl;
     }
 
-    /**
-     * called by internal mechanisms, do not call yourself.
-     */
+    /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 754833738)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;

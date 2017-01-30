@@ -82,10 +82,10 @@ dependencies {
     compile "com.jakewharton:butterknife:$rootProject.butterKnifeVersion"
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
 
-    //swipe view
+    // swipe view
     compile "com.mindorks:placeholderview:$rootProject.placeholderviewVersion"
 
-    //Bitmap and loading images
+    // Bitmap and loading images
     compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
 
     // dependencies for local unit tests
