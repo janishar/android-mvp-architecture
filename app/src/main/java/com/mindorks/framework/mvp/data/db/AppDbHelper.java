@@ -69,8 +69,6 @@ public class AppDbHelper implements DbHelper {
         return Observable.fromCallable(new Callable<List<Question>>() {
             @Override
             public List<Question> call() throws Exception {
-                List<Option> options = mDaoSession.getOptionDao().loadAll();
-                List<Question> questions = mDaoSession.getQuestionDao().loadAll();
                 return mDaoSession.getQuestionDao().loadAll();
             }
         });

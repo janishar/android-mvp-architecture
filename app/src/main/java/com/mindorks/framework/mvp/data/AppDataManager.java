@@ -20,6 +20,8 @@ import android.content.Context;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.internal.$Gson$Types;
+import com.google.gson.reflect.TypeToken;
 import com.mindorks.framework.mvp.data.db.DbHelper;
 import com.mindorks.framework.mvp.data.db.model.Option;
 import com.mindorks.framework.mvp.data.db.model.Question;
@@ -34,9 +36,7 @@ import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.utils.AppConstants;
 import com.mindorks.framework.mvp.utils.CommonUtils;
 
-import org.json.JSONArray;
-
-import java.util.ArrayList;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -52,6 +52,8 @@ import io.reactivex.functions.Function;
 
 @Singleton
 public class AppDataManager implements DataManager {
+
+    private static final String TAG = "AppDataManager";
 
     private final Context mContext;
     private final DbHelper mDbHelper;
@@ -252,18 +254,10 @@ public class AppDataManager implements DataManager {
                     @Override
                     public ObservableSource<? extends Boolean> apply(Boolean isEmpty) throws Exception {
                         if (isEmpty) {
-                            JSONArray array = new JSONArray(
-                                    CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_QUESTIONS));
-
-                            ArrayList<Question> questionList = new ArrayList<>();
-
-                            for (int i = 0; i < array.length(); i++) {
-                                Question question = gson.fromJson(array.getString(i), Question.class);
-                                String timestamp = CommonUtils.getTimeStamp();
-                                question.setCreatedAt(timestamp);
-                                question.setUpdatedAt(timestamp);
-                                questionList.add(question);
-                            }
+                            Type type = $Gson$Types.newParameterizedTypeWithOwner(null, List.class, Question.class);
+                            List<Question> questionList = gson.fromJson(
+                                    CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_QUESTIONS),
+                                    type);
 
                             return saveQuestionList(questionList);
                         }
@@ -283,18 +277,11 @@ public class AppDataManager implements DataManager {
                     @Override
                     public ObservableSource<? extends Boolean> apply(Boolean isEmpty) throws Exception {
                         if (isEmpty) {
-                            JSONArray array = new JSONArray(
-                                    CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_OPTIONS));
-
-                            ArrayList<Option> optionList = new ArrayList<>();
-
-                            for (int i = 0; i < array.length(); i++) {
-                                Option option = gson.fromJson(array.getString(i), Option.class);
-                                String timestamp = CommonUtils.getTimeStamp();
-                                option.setCreatedAt(timestamp);
-                                option.setUpdatedAt(timestamp);
-                                optionList.add(option);
-                            }
+                            Type type = new TypeToken<List<Option>>() {
+                            }.getType();
+                            List<Option> optionList = gson.fromJson(
+                                    CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_OPTIONS),
+                                    type);
 
                             return saveOptionList(optionList);
                         }
