@@ -40,6 +40,7 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
@@ -110,12 +111,6 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    ApiInterceptor provideApiInterceptor(ApiInterceptor apiInterceptor) {
-        return apiInterceptor;
-    }
-
-    @Provides
-    @Singleton
     ApiHeader provideApiHeader(@ApiInfo String apiKey, PreferencesHelper preferencesHelper) {
         return new ApiHeader(apiKey, preferencesHelper.getCurrentUserId(), preferencesHelper.getAccessToken());
     }
@@ -127,5 +122,13 @@ public class ApplicationModule {
                 .setDefaultFontPath("fonts/source-sans-pro/SourceSansPro-Regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build();
+    }
+
+    @Provides
+    @Singleton
+    OkHttpClient provideOkHttpClient(ApiInterceptor apiInterceptor) {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        builder.addInterceptor(apiInterceptor);
+        return builder.build();
     }
 }

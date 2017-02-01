@@ -21,7 +21,6 @@ import android.content.Context;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor.Level;
 import com.mindorks.framework.mvp.data.DataManager;
-import com.mindorks.framework.mvp.data.network.ApiInterceptor;
 import com.mindorks.framework.mvp.di.component.ApplicationComponent;
 import com.mindorks.framework.mvp.di.component.DaggerApplicationComponent;
 import com.mindorks.framework.mvp.di.module.ApplicationModule;
@@ -42,10 +41,10 @@ public class MvpApp extends Application {
     DataManager mDataManager;
 
     @Inject
-    CalligraphyConfig calligraphyConfig;
+    CalligraphyConfig mCalligraphyConfig;
 
     @Inject
-    ApiInterceptor apiInterceptor;
+    OkHttpClient mOkHttpClient;
 
     private ApplicationComponent mApplicationComponent;
 
@@ -62,19 +61,12 @@ public class MvpApp extends Application {
 
         mApplicationComponent.inject(this);
 
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-
-        builder.addInterceptor(apiInterceptor);
-
-        OkHttpClient okHttpClient = builder.build();
-
-        AndroidNetworking.initialize(getApplicationContext(), okHttpClient);
-
+        AndroidNetworking.initialize(getApplicationContext(), mOkHttpClient);
         if (BuildConfig.DEBUG) {
             AndroidNetworking.enableLogging(Level.BODY);
         }
 
-        CalligraphyConfig.initDefault(calligraphyConfig);
+        CalligraphyConfig.initDefault(mCalligraphyConfig);
     }
 
     public ApplicationComponent getComponent() {
