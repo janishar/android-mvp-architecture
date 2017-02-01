@@ -53,7 +53,7 @@ ext {
     calligraphyVersion = '2.2.0'
     glideVersion = '3.7.0'
 
-    rx2AndroidNetworking = '0.0.1-RC1'
+    rx2AndroidNetworking = '0.0.1'
 
     dagger2Version = '2.8'
     rxjava2Version = '2.0.5'
