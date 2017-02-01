@@ -18,13 +18,17 @@ package com.mindorks.framework.mvp;
 import android.app.Application;
 import android.content.Context;
 
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.interceptors.HttpLoggingInterceptor.Level;
 import com.mindorks.framework.mvp.data.DataManager;
+import com.mindorks.framework.mvp.data.network.ApiInterceptor;
 import com.mindorks.framework.mvp.di.component.ApplicationComponent;
 import com.mindorks.framework.mvp.di.component.DaggerApplicationComponent;
 import com.mindorks.framework.mvp.di.module.ApplicationModule;
 
 import javax.inject.Inject;
 
+import okhttp3.OkHttpClient;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 
@@ -40,6 +44,9 @@ public class MvpApp extends Application {
     @Inject
     CalligraphyConfig calligraphyConfig;
 
+    @Inject
+    ApiInterceptor apiInterceptor;
+
     private ApplicationComponent mApplicationComponent;
 
     public static MvpApp get(Context context) {
@@ -54,6 +61,18 @@ public class MvpApp extends Application {
                 .applicationModule(new ApplicationModule(this)).build();
 
         mApplicationComponent.inject(this);
+
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        builder.addInterceptor(apiInterceptor);
+
+        OkHttpClient okHttpClient = builder.build();
+
+        AndroidNetworking.initialize(getApplicationContext(), okHttpClient);
+
+        if (BuildConfig.DEBUG) {
+            AndroidNetworking.enableLogging(Level.BODY);
+        }
 
         CalligraphyConfig.initDefault(calligraphyConfig);
     }

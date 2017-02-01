@@ -24,7 +24,6 @@ import com.mindorks.framework.mvp.data.AppDataManager;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.AppDbHelper;
 import com.mindorks.framework.mvp.data.db.DbHelper;
-import com.mindorks.framework.mvp.data.network.ApiCall;
 import com.mindorks.framework.mvp.data.network.ApiHeader;
 import com.mindorks.framework.mvp.data.network.ApiHelper;
 import com.mindorks.framework.mvp.data.network.ApiInterceptor;
@@ -111,8 +110,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    ApiCall provideApiCall(ApiInterceptor apiInterceptor) {
-        return ApiCall.Factory.create(apiInterceptor);
+    ApiInterceptor provideApiInterceptor(ApiInterceptor apiInterceptor) {
+        return apiInterceptor;
     }
 
     @Provides

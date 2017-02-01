@@ -18,6 +18,7 @@ package com.mindorks.framework.mvp.data.network;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
+import com.rx2androidnetworking.Rx2AndroidNetworking;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -32,12 +33,10 @@ import io.reactivex.Observable;
 public class AppApiHelper implements ApiHelper {
 
     private ApiHeader mApiHeader;
-    private ApiCall mApiCall;
 
     @Inject
-    public AppApiHelper(ApiHeader apiHeader, ApiCall apiCall) {
+    public AppApiHelper(ApiHeader apiHeader) {
         mApiHeader = apiHeader;
-        mApiCall = apiCall;
     }
 
     @Override
@@ -56,22 +55,37 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest request) {
-        return mApiCall.doGoogleLogin(request);
+        return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_GOOGLE_LOGIN)
+                .addHeaders(ApiHeader.API_AUTH_TYPE, ApiHeader.PUBLIC_API)
+                .addBodyParameter(request)
+                .build()
+                .getObjectObservable(LoginResponse.class);
     }
 
     @Override
     public Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest request) {
-        return mApiCall.doFacebookLogin(request);
+        return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_FACEBOOK_LOGIN)
+                .addHeaders(ApiHeader.API_AUTH_TYPE, ApiHeader.PUBLIC_API)
+                .addBodyParameter(request)
+                .build()
+                .getObjectObservable(LoginResponse.class);
     }
 
     @Override
     public Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request) {
-        return mApiCall.doServerLogin(request);
+        return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_SERVER_LOGIN)
+                .addHeaders(ApiHeader.API_AUTH_TYPE, ApiHeader.PUBLIC_API)
+                .addBodyParameter(request)
+                .build()
+                .getObjectObservable(LoginResponse.class);
     }
 
     @Override
     public Observable<LogoutResponse> doLogoutApiCall() {
-        return mApiCall.doLogout();
+        return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_LOGOUT)
+                .addHeaders(ApiHeader.API_AUTH_TYPE, ApiHeader.PROTECTED_API)
+                .build()
+                .getObjectObservable(LogoutResponse.class);
     }
 }
 
