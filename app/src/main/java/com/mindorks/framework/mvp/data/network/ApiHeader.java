@@ -15,6 +15,13 @@
 
 package com.mindorks.framework.mvp.data.network;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+import com.mindorks.framework.mvp.di.AcessTokenInfo;
+import com.mindorks.framework.mvp.di.ApiKeyInfo;
+import com.mindorks.framework.mvp.di.UserInfo;
+
+import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
@@ -24,45 +31,89 @@ import javax.inject.Singleton;
 @Singleton
 public class ApiHeader {
 
-    public static final String API_AUTH_TYPE = "API_AUTH_TYPE";
-    public static final String PUBLIC_API = "PUBLIC_API";
-    public static final String PROTECTED_API = "PROTECTED_API";
+    private ProtectedApiHeader mProtectedApiHeader;
+    private PublicApiHeader mPublicApiHeader;
 
-    public static final String HEADER_PARAM_API_KEY = "api_key";
-    public static final String HEADER_PARAM_ACCESS_TOKEN = "access_token";
-    public static final String HEADER_PARAM_USER_ID = "user_id";
-
-    private String mApiKey;
-    private Long mUserId;
-    private String mAccessToken;
-
-    public ApiHeader(String mApiKey, Long mUserId, String mAccessToken) {
-        this.mApiKey = mApiKey;
-        this.mUserId = mUserId;
-        this.mAccessToken = mAccessToken;
+    @Inject
+    public ApiHeader(PublicApiHeader publicApiHeader, ProtectedApiHeader protectedApiHeader) {
+        mPublicApiHeader = publicApiHeader;
+        mProtectedApiHeader = protectedApiHeader;
     }
 
-    public String getApiKey() {
-        return mApiKey;
+    public ProtectedApiHeader getProtectedApiHeader() {
+        return mProtectedApiHeader;
     }
 
-    public void setApiKey(String apiKey) {
-        mApiKey = apiKey;
+    public PublicApiHeader getPublicApiHeader() {
+        return mPublicApiHeader;
     }
 
-    public Long getUserId() {
-        return mUserId;
+    public static final class PublicApiHeader {
+
+        @Expose
+        @SerializedName("api_key")
+        private String mApiKey;
+
+        @Inject
+        public PublicApiHeader(@ApiKeyInfo String apiKey) {
+            mApiKey = apiKey;
+        }
+
+        public String getApiKey() {
+            return mApiKey;
+        }
+
+        public void setApiKey(String apiKey) {
+            mApiKey = apiKey;
+        }
     }
 
-    public void setUserId(Long userId) {
-        mUserId = userId;
-    }
+    public static final class ProtectedApiHeader {
 
-    public String getAccessToken() {
-        return mAccessToken;
-    }
+        @Expose
+        @SerializedName("api_key")
+        private String mApiKey;
 
-    public void setAccessToken(String accessToken) {
-        mAccessToken = accessToken;
+        @Expose
+        @SerializedName("user_id")
+        private Long mUserId;
+
+        @Expose
+        @SerializedName("access_token")
+        private String mAccessToken;
+
+        @Inject
+        public ProtectedApiHeader(
+                @ApiKeyInfo String mApiKey,
+                @UserInfo Long mUserId,
+                @AcessTokenInfo String mAccessToken) {
+            this.mApiKey = mApiKey;
+            this.mUserId = mUserId;
+            this.mAccessToken = mAccessToken;
+        }
+
+        public String getApiKey() {
+            return mApiKey;
+        }
+
+        public void setApiKey(String apiKey) {
+            mApiKey = apiKey;
+        }
+
+        public Long getUserId() {
+            return mUserId;
+        }
+
+        public void setUserId(Long mUserId) {
+            this.mUserId = mUserId;
+        }
+
+        public String getAccessToken() {
+            return mAccessToken;
+        }
+
+        public void setAccessToken(String accessToken) {
+            mAccessToken = accessToken;
+        }
     }
 }

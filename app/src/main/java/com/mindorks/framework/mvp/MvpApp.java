@@ -27,7 +27,6 @@ import com.mindorks.framework.mvp.di.module.ApplicationModule;
 
 import javax.inject.Inject;
 
-import okhttp3.OkHttpClient;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 
@@ -42,9 +41,6 @@ public class MvpApp extends Application {
 
     @Inject
     CalligraphyConfig mCalligraphyConfig;
-
-    @Inject
-    OkHttpClient mOkHttpClient;
 
     private ApplicationComponent mApplicationComponent;
 
@@ -61,7 +57,7 @@ public class MvpApp extends Application {
 
         mApplicationComponent.inject(this);
 
-        AndroidNetworking.initialize(getApplicationContext(), mOkHttpClient);
+        AndroidNetworking.initialize(getApplicationContext());
         if (BuildConfig.DEBUG) {
             AndroidNetworking.enableLogging(Level.BODY);
         }

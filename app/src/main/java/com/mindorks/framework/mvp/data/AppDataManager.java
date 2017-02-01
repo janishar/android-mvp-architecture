@@ -77,11 +77,6 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public void setApiHeader(ApiHeader apiHeader) {
-        mApiHelper.setApiHeader(apiHeader);
-    }
-
-    @Override
     public String getAccessToken() {
         return mPreferencesHelper.getAccessToken();
     }
@@ -89,7 +84,7 @@ public class AppDataManager implements DataManager {
     @Override
     public void setAccessToken(String accessToken) {
         mPreferencesHelper.setAccessToken(accessToken);
-        mApiHelper.getApiHeader().setAccessToken(accessToken);
+        mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
     }
 
     @Override
@@ -174,8 +169,8 @@ public class AppDataManager implements DataManager {
 
     @Override
     public void updateApiHeader(Long userId, String accessToken) {
-        mApiHelper.getApiHeader().setUserId(userId);
-        mApiHelper.getApiHeader().setAccessToken(accessToken);
+        mApiHelper.getApiHeader().getProtectedApiHeader().setUserId(userId);
+        mApiHelper.getApiHeader().getProtectedApiHeader().setAccessToken(accessToken);
     }
 
     @Override
