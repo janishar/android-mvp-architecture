@@ -20,16 +20,15 @@ import android.app.Service;
 import dagger.Module;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by janisharali on 01/02/17.
  */
 
 @Module
 public class ServiceModule {
 
-    private final Service service;
+    private final Service mService;
 
     public ServiceModule(Service service) {
-        this.service = service;
+        mService = service;
     }
-
 }

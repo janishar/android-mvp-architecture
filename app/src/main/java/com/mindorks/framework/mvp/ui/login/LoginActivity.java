@@ -22,6 +22,7 @@ import android.view.View;
 import android.widget.EditText;
 
 import com.mindorks.framework.mvp.R;
+import com.mindorks.framework.mvp.service.SyncService;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.main.MainActivity;
 
@@ -90,6 +91,9 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();
+
+        // stopping service because it is for demo purpose
+        SyncService.stop(this);
     }
 
     @Override

@@ -20,19 +20,13 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <FrameLayout
+    <com.mindorks.framework.mvp.ui.custom.RoundedImageView
+        android:id="@+id/iv_profile_pic"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="40dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/iv_profile_pic"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@color/white" />
-
-    </FrameLayout>
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_mindorks_logo" />
 
     <TextView
         android:id="@+id/tv_name"

@@ -18,9 +18,9 @@ package com.mindorks.framework.mvp.ui.splash;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 
 import com.mindorks.framework.mvp.R;
+import com.mindorks.framework.mvp.service.SyncService;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
 import com.mindorks.framework.mvp.ui.main.MainActivity;
@@ -61,26 +61,21 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
      */
     @Override
     public void openLoginActivity() {
-        new Handler(getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = LoginActivity.getStartIntent(SplashActivity.this);
-                startActivity(intent);
-                finish();
-            }
-        }, 1000);
+        Intent intent = LoginActivity.getStartIntent(SplashActivity.this);
+        startActivity(intent);
+        finish();
     }
 
     @Override
     public void openMainActivity() {
-        new Handler(getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = MainActivity.getStartIntent(SplashActivity.this);
-                startActivity(intent);
-                finish();
-            }
-        }, 1000);
+        Intent intent = MainActivity.getStartIntent(SplashActivity.this);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void startSyncService() {
+        SyncService.start(this);
     }
 
     @Override
