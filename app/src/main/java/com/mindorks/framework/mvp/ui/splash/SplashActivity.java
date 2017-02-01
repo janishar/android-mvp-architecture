@@ -20,7 +20,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.mindorks.framework.mvp.R;
-import com.mindorks.framework.mvp.service.SyncService;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
 import com.mindorks.framework.mvp.ui.main.MainActivity;
@@ -75,7 +74,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
     @Override
     public void startSyncService() {
-        SyncService.start(this);
+//        SyncService.start(this);
     }
 
     @Override
