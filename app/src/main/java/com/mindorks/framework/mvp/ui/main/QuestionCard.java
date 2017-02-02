@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import com.androidnetworking.widget.ANImageView;
 import com.mindorks.framework.mvp.R;
-import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.data.db.model.Option;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.placeholderview.annotations.Click;
@@ -40,19 +39,19 @@ public class QuestionCard {
 
     private static final String TAG = "QuestionCard";
 
-    @View(R2.id.tv_question_txt)
+    @View(R.id.tv_question_txt)
     private TextView mQuestionTextView;
 
-    @View(R2.id.btn_option_1)
+    @View(R.id.btn_option_1)
     private Button mOption1Button;
 
-    @View(R2.id.btn_option_2)
+    @View(R.id.btn_option_2)
     private Button mOption2Button;
 
-    @View(R2.id.btn_option_3)
+    @View(R.id.btn_option_3)
     private Button mOption3Button;
 
-    @View(R2.id.iv_pic)
+    @View(R.id.iv_pic)
     private ANImageView mPicImageView;
 
     private Question mQuestion;
