@@ -20,6 +20,8 @@ import com.mindorks.framework.mvp.ui.base.BasePresenter;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 /**
  * Created by janisharali on 27/01/17.
  */
@@ -28,7 +30,7 @@ public class SettingPresenter<V extends SettingMvpView> extends BasePresenter<V>
         implements SettingMvpPresenter<V> {
 
     @Inject
-    public SettingPresenter(DataManager dataManager) {
-        super(dataManager);
+    public SettingPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
+        super(dataManager, compositeDisposable);
     }
 }

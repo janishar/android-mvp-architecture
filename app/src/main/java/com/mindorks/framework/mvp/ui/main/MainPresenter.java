@@ -28,6 +28,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -41,8 +42,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     private static final String TAG = MainPresenter.class.getSimpleName();
 
     @Inject
-    public MainPresenter(DataManager dataManager) {
-        super(dataManager);
+    public MainPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
+        super(dataManager, compositeDisposable);
     }
 
     @Override

@@ -29,6 +29,8 @@ import com.mindorks.framework.mvp.utils.AppConstants;
 
 import javax.inject.Inject;
 
+import io.reactivex.disposables.CompositeDisposable;
+
 /**
  * Base class that implements the Presenter interface and provides a base implementation for
  * onAttach() and onDetach(). It also handles keeping a reference to the mvpView that
@@ -38,11 +40,14 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     private final DataManager dataManager;
 
+    private final CompositeDisposable compositeDisposable;
+
     private V mMvpView;
 
     @Inject
-    public BasePresenter(DataManager dataManager) {
+    public BasePresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
         this.dataManager = dataManager;
+        this.compositeDisposable = compositeDisposable;
     }
 
     @Override
@@ -52,6 +57,7 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     @Override
     public void onDetach() {
+        compositeDisposable.dispose();
         mMvpView = null;
     }
 
@@ -69,6 +75,10 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     public DataManager getDataManager() {
         return dataManager;
+    }
+
+    public CompositeDisposable getCompositeDisposable() {
+        return compositeDisposable;
     }
 
     @Override

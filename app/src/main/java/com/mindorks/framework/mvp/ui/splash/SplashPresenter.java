@@ -23,6 +23,7 @@ import javax.inject.Inject;
 
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
@@ -34,8 +35,8 @@ import io.reactivex.schedulers.Schedulers;
 public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V> implements SplashMvpPresenter<V> {
 
     @Inject
-    public SplashPresenter(DataManager dataManager) {
-        super(dataManager);
+    public SplashPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
+        super(dataManager, compositeDisposable);
     }
 
     @Override

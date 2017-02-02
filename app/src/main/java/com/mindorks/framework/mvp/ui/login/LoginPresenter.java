@@ -29,6 +29,7 @@ import com.mindorks.framework.mvp.utils.CommonUtils;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
@@ -41,8 +42,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
     private static final String TAG = "LoginPresenter";
 
     @Inject
-    public LoginPresenter(DataManager dataManager) {
-        super(dataManager);
+    public LoginPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
+        super(dataManager, compositeDisposable);
     }
 
     @Override
@@ -62,7 +63,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
         }
         getMvpView().showLoading();
 
-        getDataManager().doServerLoginApiCall(new LoginRequest.ServerLoginRequest(email, password))
+        getCompositeDisposable().add(getDataManager().doServerLoginApiCall(new LoginRequest.ServerLoginRequest(email, password))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<LoginResponse>() {
@@ -93,7 +94,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
                     }
-                });
+                }));
     }
 
     @Override
