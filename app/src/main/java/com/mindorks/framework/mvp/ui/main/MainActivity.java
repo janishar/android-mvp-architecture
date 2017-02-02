@@ -36,7 +36,6 @@ import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.mindorks.framework.mvp.BuildConfig;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.R2;
@@ -114,7 +113,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             if (question != null
                     && question.getOptionList() != null
                     && question.getOptionList().size() == 3) {
-                mCardsContainerView.addView(new QuestionCard(question, Glide.with(this)));
+                mCardsContainerView.addView(new QuestionCard(question));
             }
         }
     }
@@ -238,13 +237,14 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                         .setViewWidth((int) (0.90 * screenWidth))
                         .setViewHeight((int) (0.75 * screenHeight))
                         .setPaddingTop(20)
+                        .setSwipeRotationAngle(10)
                         .setRelativeScale(0.01f));
 
         mCardsContainerView.addItemRemoveListener(new ItemRemovedListener() {
             @Override
             public void onItemRemoved(int count) {
                 if (count == 0) {
-                    // reload the contents again after 1 sec delaly
+                    // reload the contents again after 1 sec delay
                     new Handler(getMainLooper()).postDelayed(new Runnable() {
                         @Override
                         public void run() {

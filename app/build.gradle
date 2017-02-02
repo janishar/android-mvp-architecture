@@ -81,9 +81,6 @@ dependencies {
     // swipe view
     compile "com.mindorks:placeholderview:$rootProject.placeholderviewVersion"
 
-    // Bitmap and loading images
-    compile "com.github.bumptech.glide:glide:$rootProject.glideVersion"
-
     // dependencies for local unit tests
     testCompile "junit:junit:$rootProject.ext.junitVersion"
     testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
