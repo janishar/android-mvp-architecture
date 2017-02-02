@@ -86,6 +86,8 @@ dependencies {
 
     // dependencies for local unit tests
     testCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    testCompile "org.robolectric:robolectric:$rootProject.robolectricVersion"
 
     // Espresso UI Testing
     androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
