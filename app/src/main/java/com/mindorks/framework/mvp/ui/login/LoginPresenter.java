@@ -16,7 +16,9 @@
 package com.mindorks.framework.mvp.ui.login;
 
 import android.text.TextUtils;
+import android.util.Log;
 
+import com.androidnetworking.error.ANError;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
@@ -35,6 +37,8 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> implements LoginMvpPresenter<V> {
+
+    private static final String TAG = "LoginPresenter";
 
     @Inject
     public LoginPresenter(DataManager dataManager) {
@@ -77,8 +81,14 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+
                         getMvpView().hideLoading();
+
                         // handle the login error here
+                        if (throwable instanceof ANError) {
+                            ANError anError = (ANError) throwable;
+                            Log.d(TAG, "doServerLoginApiCall error: " + anError.getErrorBody());
+                        }
 
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
@@ -111,8 +121,14 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+
                         getMvpView().hideLoading();
+
                         // handle the login error here
+                        if (throwable instanceof ANError) {
+                            ANError anError = (ANError) throwable;
+                            Log.d(TAG, "doGoogleLoginApiCall error: " + anError.getErrorBody());
+                        }
 
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
@@ -145,8 +161,14 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+
                         getMvpView().hideLoading();
+
                         // handle the login error here
+                        if (throwable instanceof ANError) {
+                            ANError anError = (ANError) throwable;
+                            Log.d(TAG, "onFacebookLoginClick error: " + anError.getErrorBody());
+                        }
 
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
