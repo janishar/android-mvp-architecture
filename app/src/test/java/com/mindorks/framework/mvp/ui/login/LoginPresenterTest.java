@@ -30,11 +30,9 @@ import static org.mockito.Mockito.verify;
  * Created by amitshekhar on 02/02/17.
  */
 @RunWith(MockitoJUnitRunner.class)
-@Config(manifest=Config.NONE)
+@Config(manifest = Config.NONE)
 public class LoginPresenterTest {
 
-    @Mock
-    CompositeDisposable mCompositeDisposable;
     @Mock
     LoginMvpView mMockLoginMvpView;
     @Mock
@@ -56,8 +54,8 @@ public class LoginPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mCompositeDisposable = new CompositeDisposable();
-        mLoginPresenter = new LoginPresenter<>(mMockDataManager, mCompositeDisposable);
+        CompositeDisposable compositeDisposable = new CompositeDisposable();
+        mLoginPresenter = new LoginPresenter<>(mMockDataManager, compositeDisposable);
         mLoginPresenter.onAttach(mMockLoginMvpView);
     }
 
