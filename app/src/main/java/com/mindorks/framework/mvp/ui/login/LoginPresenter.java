@@ -101,7 +101,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
         // instruct LoginActivity to initiate google login
         getMvpView().showLoading();
 
-        getDataManager().doGoogleLoginApiCall(new LoginRequest.GoogleLoginRequest("test1", "test1"))
+        getCompositeDisposable().add(getDataManager().doGoogleLoginApiCall(new LoginRequest.GoogleLoginRequest("test1", "test1"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<LoginResponse>() {
@@ -133,7 +133,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
                     }
-                });
+                }));
     }
 
     @Override
@@ -141,7 +141,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
         // instruct LoginActivity to initiate facebook login
         getMvpView().showLoading();
 
-        getDataManager().doFacebookLoginApiCall(new LoginRequest.FacebookLoginRequest("test3", "test4"))
+        getCompositeDisposable().add(getDataManager().doFacebookLoginApiCall(new LoginRequest.FacebookLoginRequest("test3", "test4"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<LoginResponse>() {
@@ -173,6 +173,6 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
                     }
-                });
+                }));
     }
 }

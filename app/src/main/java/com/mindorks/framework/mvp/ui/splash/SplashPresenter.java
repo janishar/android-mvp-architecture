@@ -45,7 +45,7 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V> i
 
         getMvpView().startSyncService();
 
-        getDataManager()
+        getCompositeDisposable().add(getDataManager()
                 .seedDatabaseQuestions()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -66,7 +66,7 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V> i
                         getMvpView().onError(R.string.some_error);
                         decideNextActivity();
                     }
-                });
+                }));
 
 
     }

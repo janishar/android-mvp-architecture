@@ -55,7 +55,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     public void onDrawerOptionLogoutClick() {
         getMvpView().showLoading();
 
-        getDataManager().doLogoutApiCall()
+        getCompositeDisposable().add(getDataManager().doLogoutApiCall()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<LogoutResponse>() {
@@ -81,13 +81,13 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                         //for demo the next screen in made to open even in failure
                         getMvpView().openLoginActivity();
                     }
-                });
+                }));
 
     }
 
     @Override
     public void onViewInitialized() {
-        getDataManager()
+        getCompositeDisposable().add(getDataManager()
                 .getAllQuestions()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -98,12 +98,12 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                             getMvpView().refreshQuestionnaire(questionList);
                         }
                     }
-                });
+                }));
     }
 
     @Override
     public void onCardExhausted() {
-        getDataManager()
+        getCompositeDisposable().add(getDataManager()
                 .getAllQuestions()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -114,7 +114,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                             getMvpView().reloadQuestionnaire(questionList);
                         }
                     }
-                });
+                }));
     }
 
     @Override
