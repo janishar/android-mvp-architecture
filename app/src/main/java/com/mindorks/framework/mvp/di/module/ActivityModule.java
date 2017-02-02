@@ -17,7 +17,6 @@ package com.mindorks.framework.mvp.di.module;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.widget.LinearLayoutManager;
 
 import com.mindorks.framework.mvp.di.ActivityContext;
 import com.mindorks.framework.mvp.di.PerActivity;
@@ -36,6 +35,7 @@ import com.mindorks.framework.mvp.ui.splash.SplashPresenter;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -62,8 +62,9 @@ public class ActivityModule {
     }
 
     @Provides
-    LinearLayoutManager provideLayoutManager() {
-        return new LinearLayoutManager(activity);
+    @PerActivity
+    CompositeDisposable provideCompositeDisposable() {
+        return new CompositeDisposable();
     }
 
     @Provides
