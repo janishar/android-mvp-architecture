@@ -11,7 +11,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.RobolectricTestRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.robolectric.annotation.Config;
 
 import java.util.concurrent.Callable;
@@ -19,6 +19,7 @@ import java.util.concurrent.Callable;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import io.reactivex.android.plugins.RxAndroidPlugins;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -28,10 +29,12 @@ import static org.mockito.Mockito.verify;
 /**
  * Created by amitshekhar on 02/02/17.
  */
-@RunWith(RobolectricTestRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 @Config(manifest=Config.NONE)
 public class LoginPresenterTest {
 
+    @Mock
+    CompositeDisposable mCompositeDisposable;
     @Mock
     LoginMvpView mMockLoginMvpView;
     @Mock
@@ -53,7 +56,7 @@ public class LoginPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mLoginPresenter = new LoginPresenter<>(mMockDataManager);
+        mLoginPresenter = new LoginPresenter<>(mMockDataManager, mCompositeDisposable);
         mLoginPresenter.onAttach(mMockLoginMvpView);
     }
 
