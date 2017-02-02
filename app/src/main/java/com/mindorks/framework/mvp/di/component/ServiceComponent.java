@@ -17,17 +17,18 @@ package com.mindorks.framework.mvp.di.component;
 
 import com.mindorks.framework.mvp.di.PerService;
 import com.mindorks.framework.mvp.di.module.ServiceModule;
+import com.mindorks.framework.mvp.service.SyncService;
 
 import dagger.Component;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by janisharali on 01/02/17.
  */
 
 @PerService
 @Component(dependencies = ApplicationComponent.class, modules = ServiceModule.class)
 public interface ServiceComponent {
 
-//    void inject(GoogleLocationService googleLocationService);
+    void inject(SyncService service);
 
 }

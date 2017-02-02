@@ -22,6 +22,7 @@ import com.mindorks.framework.mvp.MvpApp;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.di.module.ApplicationModule;
+import com.mindorks.framework.mvp.service.SyncService;
 
 import javax.inject.Singleton;
 
@@ -36,6 +37,8 @@ import dagger.Component;
 public interface ApplicationComponent {
 
     void inject(MvpApp app);
+
+    void inject(SyncService service);
 
     @ApplicationContext
     Context context();

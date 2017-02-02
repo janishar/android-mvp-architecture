@@ -24,16 +24,15 @@ import com.mindorks.framework.mvp.data.AppDataManager;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.AppDbHelper;
 import com.mindorks.framework.mvp.data.db.DbHelper;
+import com.mindorks.framework.mvp.data.network.ApiHeader;
 import com.mindorks.framework.mvp.data.network.ApiHelper;
 import com.mindorks.framework.mvp.data.network.AppApiHelper;
 import com.mindorks.framework.mvp.data.prefs.AppPreferencesHelper;
 import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
-import com.mindorks.framework.mvp.di.AcessTokenInfo;
-import com.mindorks.framework.mvp.di.ApiKeyInfo;
+import com.mindorks.framework.mvp.di.ApiInfo;
 import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.di.DatabaseInfo;
 import com.mindorks.framework.mvp.di.PreferenceInfo;
-import com.mindorks.framework.mvp.di.UserInfo;
 import com.mindorks.framework.mvp.utils.AppConstants;
 
 import javax.inject.Singleton;
@@ -73,7 +72,7 @@ public class ApplicationModule {
     }
 
     @Provides
-    @ApiKeyInfo
+    @ApiInfo
     String provideApiKey() {
         return BuildConfig.API_KEY;
     }
@@ -109,15 +108,12 @@ public class ApplicationModule {
     }
 
     @Provides
-    @UserInfo
-    Long provideCurrentUserId(PreferencesHelper preferencesHelper) {
-        return preferencesHelper.getCurrentUserId();
-    }
-
-    @Provides
-    @AcessTokenInfo
-    String provideCurrentAccessToken(PreferencesHelper preferencesHelper) {
-        return preferencesHelper.getAccessToken();
+    @Singleton
+    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey, PreferencesHelper preferencesHelper) {
+        return new ApiHeader.ProtectedApiHeader(
+                apiKey,
+                preferencesHelper.getCurrentUserId(),
+                preferencesHelper.getAccessToken());
     }
 
     @Provides

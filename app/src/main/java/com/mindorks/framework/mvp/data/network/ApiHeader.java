@@ -17,9 +17,7 @@ package com.mindorks.framework.mvp.data.network;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mindorks.framework.mvp.di.AcessTokenInfo;
-import com.mindorks.framework.mvp.di.ApiKeyInfo;
-import com.mindorks.framework.mvp.di.UserInfo;
+import com.mindorks.framework.mvp.di.ApiInfo;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -55,7 +53,7 @@ public class ApiHeader {
         private String mApiKey;
 
         @Inject
-        public PublicApiHeader(@ApiKeyInfo String apiKey) {
+        public PublicApiHeader(@ApiInfo String apiKey) {
             mApiKey = apiKey;
         }
 
@@ -82,11 +80,7 @@ public class ApiHeader {
         @SerializedName("access_token")
         private String mAccessToken;
 
-        @Inject
-        public ProtectedApiHeader(
-                @ApiKeyInfo String mApiKey,
-                @UserInfo Long mUserId,
-                @AcessTokenInfo String mAccessToken) {
+        public ProtectedApiHeader(String mApiKey, Long mUserId, String mAccessToken) {
             this.mApiKey = mApiKey;
             this.mUserId = mUserId;
             this.mAccessToken = mAccessToken;

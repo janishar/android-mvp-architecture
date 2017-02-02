@@ -26,6 +26,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <service android:name=".service.SyncService" />
+
         <activity
             android:name="com.mindorks.framework.mvp.ui.splash.SplashActivity"
             android:launchMode="singleTop"

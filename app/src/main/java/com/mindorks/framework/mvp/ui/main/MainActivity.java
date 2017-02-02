@@ -34,7 +34,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -43,6 +42,7 @@ import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
+import com.mindorks.framework.mvp.ui.custom.RoundedImageView;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
 import com.mindorks.framework.mvp.ui.setting.SettingFragment;
 import com.mindorks.framework.mvp.utils.ScreenUtils;
@@ -85,7 +85,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     private TextView mEmailTextView;
 
-    private ImageView mProfileImageView;
+    private RoundedImageView mProfileImageView;
 
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -258,7 +258,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     void setupNavMenu() {
         View headerLayout = mNavigationView.getHeaderView(0);
-        mProfileImageView = (ImageView) headerLayout.findViewById(R.id.iv_profile_pic);
+        mProfileImageView = (RoundedImageView) headerLayout.findViewById(R.id.iv_profile_pic);
         mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
         mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
 

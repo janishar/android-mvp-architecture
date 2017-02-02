@@ -26,5 +26,5 @@ import javax.inject.Qualifier;
 
 @Qualifier
 @Retention(RetentionPolicy.RUNTIME)
-public @interface UserInfo {
+public @interface ApiInfo {
 }
