@@ -19,6 +19,7 @@ import java.util.concurrent.Callable;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
 import io.reactivex.android.plugins.RxAndroidPlugins;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -29,13 +30,15 @@ import static org.mockito.Mockito.verify;
  * Created by amitshekhar on 02/02/17.
  */
 @RunWith(RobolectricTestRunner.class)
-@Config(manifest=Config.NONE)
+@Config(manifest = Config.NONE)
 public class LoginPresenterTest {
 
     @Mock
     LoginMvpView mMockLoginMvpView;
     @Mock
     DataManager mMockDataManager;
+    @Mock
+    CompositeDisposable mCompositeDisposable;
     private LoginPresenter<LoginMvpView> mLoginPresenter;
 
     @BeforeClass
@@ -53,7 +56,7 @@ public class LoginPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
-        mLoginPresenter = new LoginPresenter<>(mMockDataManager);
+        mLoginPresenter = new LoginPresenter<>(mMockDataManager, mCompositeDisposable);
         mLoginPresenter.onAttach(mMockLoginMvpView);
     }
 
