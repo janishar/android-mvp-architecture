@@ -15,7 +15,6 @@
 
 package com.mindorks.framework.mvp.ui.login;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.androidnetworking.error.ANError;
@@ -49,7 +48,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
     @Override
     public void onServerLoginClick(String email, String password) {
         //validate email and password
-        if (TextUtils.isEmpty(email)) {
+        if (email == null || email.isEmpty()) {
             getMvpView().onError(R.string.empty_email);
             return;
         }
@@ -57,7 +56,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
             getMvpView().onError(R.string.invalid_email);
             return;
         }
-        if (TextUtils.isEmpty(password)) {
+        if (password == null || password.isEmpty()) {
             getMvpView().onError(R.string.empty_password);
             return;
         }
