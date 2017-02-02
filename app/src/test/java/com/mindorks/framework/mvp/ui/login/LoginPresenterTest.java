@@ -33,7 +33,6 @@ import static org.mockito.Mockito.verify;
 @Config(manifest=Config.NONE)
 public class LoginPresenterTest {
 
-    @Mock
     CompositeDisposable mCompositeDisposable;
     @Mock
     LoginMvpView mMockLoginMvpView;
@@ -56,6 +55,7 @@ public class LoginPresenterTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+        mCompositeDisposable = new CompositeDisposable();
         mLoginPresenter = new LoginPresenter<>(mMockDataManager, mCompositeDisposable);
         mLoginPresenter.onAttach(mMockLoginMvpView);
     }
