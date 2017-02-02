@@ -33,6 +33,7 @@ import static org.mockito.Mockito.verify;
 @Config(manifest=Config.NONE)
 public class LoginPresenterTest {
 
+    @Mock
     CompositeDisposable mCompositeDisposable;
     @Mock
     LoginMvpView mMockLoginMvpView;
