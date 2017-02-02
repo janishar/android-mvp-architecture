@@ -40,10 +40,10 @@ import com.mindorks.framework.mvp.BuildConfig;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.data.db.model.Question;
+import com.mindorks.framework.mvp.ui.about.AboutFragment;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.custom.RoundedImageView;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
-import com.mindorks.framework.mvp.ui.setting.SettingFragment;
 import com.mindorks.framework.mvp.utils.ScreenUtils;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -161,12 +161,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void showSettingFragment() {
+    public void showAboutFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .disallowAddToBackStack()
                 .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-                .add(R.id.cl_root_view, SettingFragment.newInstance(), SettingFragment.class.getSimpleName())
+                .add(R.id.cl_root_view, AboutFragment.newInstance(), AboutFragment.TAG)
                 .commit();
     }
 
@@ -276,14 +276,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             mEmailTextView.setText(email);
         }
 
-
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mDrawer.closeDrawer(GravityCompat.START);
                 switch (item.getItemId()) {
-                    case R.id.nav_item_settings:
-                        mPresenter.onDrawerOptionSettingsClick();
+                    case R.id.nav_item_about:
+                        mPresenter.onDrawerOptionAboutClick();
                         return true;
                     case R.id.nav_item_logout:
                         mPresenter.onDrawerOptionLogoutClick();

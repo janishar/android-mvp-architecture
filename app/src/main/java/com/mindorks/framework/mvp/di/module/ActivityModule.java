@@ -20,15 +20,15 @@ import android.content.Context;
 
 import com.mindorks.framework.mvp.di.ActivityContext;
 import com.mindorks.framework.mvp.di.PerActivity;
+import com.mindorks.framework.mvp.ui.about.AboutMvpPresenter;
+import com.mindorks.framework.mvp.ui.about.AboutMvpView;
+import com.mindorks.framework.mvp.ui.about.AboutPresenter;
 import com.mindorks.framework.mvp.ui.login.LoginMvpPresenter;
 import com.mindorks.framework.mvp.ui.login.LoginMvpView;
 import com.mindorks.framework.mvp.ui.login.LoginPresenter;
 import com.mindorks.framework.mvp.ui.main.MainMvpPresenter;
 import com.mindorks.framework.mvp.ui.main.MainMvpView;
 import com.mindorks.framework.mvp.ui.main.MainPresenter;
-import com.mindorks.framework.mvp.ui.setting.SettingMvpPresenter;
-import com.mindorks.framework.mvp.ui.setting.SettingMvpView;
-import com.mindorks.framework.mvp.ui.setting.SettingPresenter;
 import com.mindorks.framework.mvp.ui.splash.SplashMvpPresenter;
 import com.mindorks.framework.mvp.ui.splash.SplashMvpView;
 import com.mindorks.framework.mvp.ui.splash.SplashPresenter;
@@ -75,7 +75,7 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
-    SettingMvpPresenter<SettingMvpView> provideSettingPresenter(SettingPresenter<SettingMvpView> presenter) {
+    AboutMvpPresenter<AboutMvpView> provideAboutPresenter(AboutPresenter<AboutMvpView> presenter) {
         return presenter;
     }
 

@@ -47,8 +47,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
     }
 
     @Override
-    public void onDrawerOptionSettingsClick() {
-        getMvpView().showSettingFragment();
+    public void onDrawerOptionAboutClick() {
+        getMvpView().showAboutFragment();
     }
 
     @Override
