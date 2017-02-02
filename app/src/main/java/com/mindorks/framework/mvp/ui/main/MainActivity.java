@@ -244,7 +244,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             @Override
             public void onItemRemoved(int count) {
                 if (count == 0) {
-                    // reload the contents again after 1 sec delaly
+                    // reload the contents again after 1 sec delay
                     new Handler(getMainLooper()).postDelayed(new Runnable() {
                         @Override
                         public void run() {
