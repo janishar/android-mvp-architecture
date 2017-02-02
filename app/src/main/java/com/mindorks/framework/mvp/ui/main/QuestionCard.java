@@ -17,10 +17,9 @@ package com.mindorks.framework.mvp.ui.main;
 
 import android.graphics.Color;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.RequestManager;
+import com.androidnetworking.widget.ANImageView;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.data.db.model.Option;
@@ -54,15 +53,12 @@ public class QuestionCard {
     private Button mOption3Button;
 
     @View(R2.id.iv_pic)
-    private ImageView mPicImageView;
+    private ANImageView mPicImageView;
 
     private Question mQuestion;
 
-    private RequestManager mRequestManager;
-
-    public QuestionCard(Question question, RequestManager requestManager) {
+    public QuestionCard(Question question) {
         mQuestion = question;
-        mRequestManager = requestManager;
     }
 
     @Resolve
@@ -88,7 +84,7 @@ public class QuestionCard {
                 button.setText(mQuestion.getOptionList().get(i).getOptionText());
 
             if (mQuestion.getImgUrl() != null) {
-                mRequestManager.load(mQuestion.getImgUrl()).into(mPicImageView);
+                mPicImageView.setImageUrl(mQuestion.getImgUrl());
             }
         }
     }
