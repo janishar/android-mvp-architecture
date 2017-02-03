@@ -20,7 +20,7 @@ This repository contains a detailed sample app that implements MVP architecture 
 4. **service**: Services for the application.
 5. **utils**: Utility classes.
 
-#### Classes have been designed in such a way that it could be inherited and could maximize the code reuse.
+#### Classes have been designed in such a way that it could be inherited and maximize the code reuse.
 
 ### Library reference resources:
 1. RxJava2: https://github.com/amitshekhariitbhu/RxJava2-Android-Samples
