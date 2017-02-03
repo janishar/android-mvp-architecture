@@ -107,6 +107,26 @@ public class LoginRequest {
         public void setIdToken(String idToken) {
             this.idToken = idToken;
         }
+
+        @Override
+        public boolean equals(Object object) {
+            if (this == object) return true;
+            if (object == null || getClass() != object.getClass()) return false;
+
+            GoogleLoginRequest that = (GoogleLoginRequest) object;
+
+            if (googleUserId != null ? !googleUserId.equals(that.googleUserId) : that.googleUserId != null)
+                return false;
+            return idToken != null ? idToken.equals(that.idToken) : that.idToken == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = googleUserId != null ? googleUserId.hashCode() : 0;
+            result = 31 * result + (idToken != null ? idToken.hashCode() : 0);
+            return result;
+        }
     }
 
     public static class FacebookLoginRequest {
@@ -137,6 +157,26 @@ public class LoginRequest {
 
         public void setFbAccessToken(String fbAccessToken) {
             this.fbAccessToken = fbAccessToken;
+        }
+
+        @Override
+        public boolean equals(Object object) {
+            if (this == object) return true;
+            if (object == null || getClass() != object.getClass()) return false;
+
+            FacebookLoginRequest that = (FacebookLoginRequest) object;
+
+            if (fbUserId != null ? !fbUserId.equals(that.fbUserId) : that.fbUserId != null)
+                return false;
+            return fbAccessToken != null ? fbAccessToken.equals(that.fbAccessToken) : that.fbAccessToken == null;
+
+        }
+
+        @Override
+        public int hashCode() {
+            int result = fbUserId != null ? fbUserId.hashCode() : 0;
+            result = 31 * result + (fbAccessToken != null ? fbAccessToken.hashCode() : 0);
+            return result;
         }
     }
 }
