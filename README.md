@@ -27,9 +27,10 @@ This repository contains a detailed sample app that implements MVP architecture 
 2. Dagger2: https://github.com/MindorksOpenSource/android-dagger2-example
 3. FastAndroidNetworking: https://github.com/amitshekhariitbhu/Fast-Android-Networking
 4. PlaceHolderView: https://github.com/janishar/PlaceHolderView
-5. Calligraphy: https://github.com/chrisjenx/Calligraphy
-6. GreenDao: http://greenrobot.org/greendao/
-7. ButterKnife: http://jakewharton.github.io/butterknife/
+5. AndroidDebugDatabase: https://github.com/amitshekhariitbhu/Android-Debug-Database
+6. Calligraphy: https://github.com/chrisjenx/Calligraphy
+7. GreenDao: http://greenrobot.org/greendao/
+8. ButterKnife: http://jakewharton.github.io/butterknife/
 
 ### Concept reference resources:
 1. [Introduction to Dagger 2: Part 1](https://blog.mindorks.com/introduction-to-dagger-2-using-dependency-injection-in-android-part-1-223289c2a01b#.ki6nt86l6)
