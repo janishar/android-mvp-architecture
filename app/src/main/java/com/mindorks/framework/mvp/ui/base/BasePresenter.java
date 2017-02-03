@@ -19,8 +19,6 @@ package com.mindorks.framework.mvp.ui.base;
  * Created by janisharali on 27/01/17.
  */
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
@@ -83,11 +81,6 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     @Override
     public void handleApiError(ApiError error) {
-
-        final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
-        final Gson gson = builder.create();
-
-        ApiError apiError;
         try {
             if (error == null || error.getMessage() == null) {
                 getMvpView().onError(R.string.api_default_error);

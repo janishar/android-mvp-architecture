@@ -32,8 +32,6 @@ import io.reactivex.Observable;
 @Singleton
 public class AppApiHelper implements ApiHelper {
 
-    private static final String HEADER_KEY_API_KEY = "api_key";
-
     private ApiHeader mApiHeader;
 
     @Inject
