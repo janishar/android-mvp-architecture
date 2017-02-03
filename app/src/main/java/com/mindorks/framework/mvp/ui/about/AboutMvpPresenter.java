@@ -13,14 +13,17 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.ui.setting;
+package com.mindorks.framework.mvp.ui.about;
 
-import com.mindorks.framework.mvp.ui.base.MvpView;
+
+import com.mindorks.framework.mvp.di.PerActivity;
+import com.mindorks.framework.mvp.ui.base.MvpPresenter;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by janisharali on 28/01/17.
  */
 
-public interface SettingMvpView extends MvpView {
+@PerActivity
+public interface AboutMvpPresenter<V extends AboutMvpView> extends MvpPresenter<V> {
 
 }

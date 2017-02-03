@@ -29,7 +29,7 @@
     <string name="close_drawer">Drawer Close</string>
 
     <!--Drawer Menus-->
-    <string name="settings">Settings</string>
+    <string name="about">About</string>
     <string name="logout">Logout</string>
 
     <!--App Message-->
@@ -47,5 +47,10 @@
     <string name="invalid_email">Please provide a valid email.</string>
     <string name="empty_password">Please provide a non empty password.</string>
 
-
+    <!--about fragment-->
+    <string name="project_info">This sample app implements MVP architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking and PlaceholderView</string>
+    <string name="link_mvp_blog">1. https://blog.mindorks.com</string>
+    <string name="link_mvp_repo">2. https://github.com/MindorksOpenSource/android-mvp-architecture</string>
+    <string name="link_mindorks_blog">3. https://blog.mindorks.com</string>
+    <string name="link_mindorks_repo">4. https://github.com/MindorksOpenSource</string>
 </resources>

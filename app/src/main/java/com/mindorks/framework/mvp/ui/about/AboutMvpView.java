@@ -13,24 +13,14 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.ui.setting;
+package com.mindorks.framework.mvp.ui.about;
 
-import com.mindorks.framework.mvp.data.DataManager;
-import com.mindorks.framework.mvp.ui.base.BasePresenter;
-
-import javax.inject.Inject;
-
-import io.reactivex.disposables.CompositeDisposable;
+import com.mindorks.framework.mvp.ui.base.MvpView;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
-public class SettingPresenter<V extends SettingMvpView> extends BasePresenter<V>
-        implements SettingMvpPresenter<V> {
+public interface AboutMvpView extends MvpView {
 
-    @Inject
-    public SettingPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
-        super(dataManager, compositeDisposable);
-    }
 }
