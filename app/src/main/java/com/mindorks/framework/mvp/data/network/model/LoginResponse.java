@@ -131,4 +131,44 @@ public class LoginResponse {
     public void setServerProfilePicUrl(String serverProfilePicUrl) {
         this.serverProfilePicUrl = serverProfilePicUrl;
     }
+
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+
+        LoginResponse that = (LoginResponse) object;
+
+        if (statusCode != null ? !statusCode.equals(that.statusCode) : that.statusCode != null)
+            return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        if (accessToken != null ? !accessToken.equals(that.accessToken) : that.accessToken != null)
+            return false;
+        if (userName != null ? !userName.equals(that.userName) : that.userName != null)
+            return false;
+        if (userEmail != null ? !userEmail.equals(that.userEmail) : that.userEmail != null)
+            return false;
+        if (serverProfilePicUrl != null ? !serverProfilePicUrl.equals(that.serverProfilePicUrl) : that.serverProfilePicUrl != null)
+            return false;
+        if (fbProfilePicUrl != null ? !fbProfilePicUrl.equals(that.fbProfilePicUrl) : that.fbProfilePicUrl != null)
+            return false;
+        if (googleProfilePicUrl != null ? !googleProfilePicUrl.equals(that.googleProfilePicUrl) : that.googleProfilePicUrl != null)
+            return false;
+        return message != null ? message.equals(that.message) : that.message == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = statusCode != null ? statusCode.hashCode() : 0;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (accessToken != null ? accessToken.hashCode() : 0);
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
+        result = 31 * result + (userEmail != null ? userEmail.hashCode() : 0);
+        result = 31 * result + (serverProfilePicUrl != null ? serverProfilePicUrl.hashCode() : 0);
+        result = 31 * result + (fbProfilePicUrl != null ? fbProfilePicUrl.hashCode() : 0);
+        result = 31 * result + (googleProfilePicUrl != null ? googleProfilePicUrl.hashCode() : 0);
+        result = 31 * result + (message != null ? message.hashCode() : 0);
+        return result;
+    }
 }
