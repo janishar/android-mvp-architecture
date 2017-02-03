@@ -63,6 +63,7 @@ dependencies {
 
     // database
     compile "org.greenrobot:greendao:$rootProject.greenDaoVersion"
+    debugCompile "com.amitshekhar.android:debug-db:$rootProject.debugDBVersion"
 
     // dependency injection
     compile "com.google.dagger:dagger:$rootProject.dagger2Version"
@@ -84,7 +85,6 @@ dependencies {
     // dependencies for local unit tests
     testCompile "junit:junit:$rootProject.ext.junitVersion"
     testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
-    testCompile "org.robolectric:robolectric:$rootProject.robolectricVersion"
 
     // Espresso UI Testing
     androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
