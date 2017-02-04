@@ -35,16 +35,16 @@ import butterknife.OnClick;
  * Created by janisharali on 27/01/17.
  */
 
-public class AboutFragment extends BaseFragment implements AboutMvpView {
+public class AboutMindorksFragment extends BaseFragment implements AboutMvpView {
 
-    public static final String TAG = "AboutFragment";
+    public static final String TAG = "AboutMindorksFragment";
 
     @Inject
     AboutMvpPresenter<AboutMvpView> mPresenter;
 
-    public static AboutFragment newInstance() {
+    public static AboutMindorksFragment newInstance() {
         Bundle args = new Bundle();
-        AboutFragment fragment = new AboutFragment();
+        AboutMindorksFragment fragment = new AboutMindorksFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -75,7 +75,7 @@ public class AboutFragment extends BaseFragment implements AboutMvpView {
 
     @OnClick(R2.id.nav_back_btn)
     void onNavBackClick() {
-        getBaseActivity().onFragmentDetached(AboutFragment.class.getSimpleName());
+        getBaseActivity().onFragmentDetached(AboutMindorksFragment.class.getSimpleName());
     }
 
     @Override

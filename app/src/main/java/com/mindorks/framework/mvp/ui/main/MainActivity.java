@@ -40,7 +40,7 @@ import com.mindorks.framework.mvp.BuildConfig;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.data.db.model.Question;
-import com.mindorks.framework.mvp.ui.about.AboutFragment;
+import com.mindorks.framework.mvp.ui.about.AboutMindorksFragment;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.custom.RoundedImageView;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
@@ -166,7 +166,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                 .beginTransaction()
                 .disallowAddToBackStack()
                 .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-                .add(R.id.cl_root_view, AboutFragment.newInstance(), AboutFragment.TAG)
+                .add(R.id.cl_root_view, AboutMindorksFragment.newInstance(), AboutMindorksFragment.TAG)
                 .commit();
     }
 
