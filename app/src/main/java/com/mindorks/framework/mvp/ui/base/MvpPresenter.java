@@ -19,8 +19,6 @@ package com.mindorks.framework.mvp.ui.base;
  * Created by janisharali on 27/01/17.
  */
 
-import com.mindorks.framework.mvp.data.network.model.ApiError;
-
 /**
  * Every presenter in the app must either implement this interface or extend BasePresenter
  * indicating the MvpView type that wants to be attached with.
@@ -31,7 +29,7 @@ public interface MvpPresenter<V extends MvpView> {
 
     void onDetach();
 
-    void handleApiError(ApiError error);
+    void handleApiError(Throwable throwable);
 
     void setUserAsLoggedOut();
 }

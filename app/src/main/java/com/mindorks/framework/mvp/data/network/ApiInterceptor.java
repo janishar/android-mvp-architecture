@@ -16,14 +16,10 @@
 package com.mindorks.framework.mvp.data.network;
 
 import java.io.IOException;
-import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.functions.Consumer;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -37,44 +33,30 @@ public class ApiInterceptor implements Interceptor {
 
     private static final String TAG = "ApiInterceptor";
 
-    private Observable<ApiHeader> mApiHeaderObservable;
+    private ApiHeader mApiHeader;
 
     @Inject
     public ApiInterceptor(final ApiHeader header) {
-        mApiHeaderObservable =
-                Observable.defer(new Callable<ObservableSource<? extends ApiHeader>>() {
-                    @Override
-                    public ObservableSource<? extends ApiHeader> call() throws Exception {
-                        return Observable.just(header);
-                    }
-                });
+        mApiHeader = header;
     }
 
     @Override
     public Response intercept(Chain chain) throws IOException {
         final Request request = chain.request();
         final Request.Builder builder = request.newBuilder();
-        mApiHeaderObservable.subscribe(new Consumer<ApiHeader>() {
-            @Override
-            public void accept(ApiHeader header) throws Exception {
+        String apiAuthType = request.header(ApiHeader.API_AUTH_TYPE);
+        if (apiAuthType == null) {
+            apiAuthType = ApiHeader.PROTECTED_API;
+        }
 
-                String apiAuthType = request.header(ApiHeader.API_AUTH_TYPE);
-                if (apiAuthType == null) {
-                    apiAuthType = ApiHeader.PROTECTED_API;
-                }
-
-                switch (apiAuthType) {
-                    case ApiHeader.PROTECTED_API:
-                        builder.addHeader(ApiHeader.HEADER_PARAM_API_KEY, header.getApiKey());
-                        builder.addHeader(ApiHeader.HEADER_PARAM_ACCESS_TOKEN, header.getAccessToken());
-                        builder.addHeader(ApiHeader.HEADER_PARAM_USER_ID, String.valueOf(header.getUserId()));
-                        break;
-                    case ApiHeader.PUBLIC_API:
-                    default:
-                        builder.addHeader(ApiHeader.HEADER_PARAM_API_KEY, header.getApiKey());
-                }
-            }
-        });
+        switch (apiAuthType) {
+            case ApiHeader.PROTECTED_API:
+                builder.addHeader(ApiHeader.HEADER_PARAM_ACCESS_TOKEN, mApiHeader.getAccessToken());
+                builder.addHeader(ApiHeader.HEADER_PARAM_USER_ID, String.valueOf(mApiHeader.getUserId()));
+            case ApiHeader.PUBLIC_API:
+            default:
+                builder.addHeader(ApiHeader.HEADER_PARAM_API_KEY, mApiHeader.getApiKey());
+        }
 
         return chain.proceed(builder.build());
     }

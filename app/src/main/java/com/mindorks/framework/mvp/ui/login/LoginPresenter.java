@@ -79,7 +79,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                     public void accept(Throwable throwable) throws Exception {
                         getMvpView().hideLoading();
                         // handle the login error here
-
+                        // handleApiError(throwable);
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
                     }
@@ -113,7 +113,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                     public void accept(Throwable throwable) throws Exception {
                         getMvpView().hideLoading();
                         // handle the login error here
-
+                        // handleApiError(throwable);
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
                     }
@@ -147,7 +147,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                     public void accept(Throwable throwable) throws Exception {
                         getMvpView().hideLoading();
                         // handle the login error here
-
+                        // handleApiError(throwable);
                         //for demo the next screen in made to open even in failure
                         getMvpView().openMainActivity();
                     }

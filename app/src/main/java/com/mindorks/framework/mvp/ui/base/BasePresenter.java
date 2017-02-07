@@ -22,12 +22,16 @@ package com.mindorks.framework.mvp.ui.base;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
+import com.jakewharton.retrofit2.adapter.rxjava2.HttpException;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.network.model.ApiError;
-import com.mindorks.framework.mvp.utils.AppConstants;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
 
 import javax.inject.Inject;
+import javax.net.ssl.HttpsURLConnection;
 
 /**
  * Base class that implements the Presenter interface and provides a base implementation for
@@ -72,27 +76,36 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     }
 
     @Override
-    public void handleApiError(ApiError error) {
+    public void handleApiError(Throwable throwable) {
 
-        final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
-        final Gson gson = builder.create();
-
-        ApiError apiError;
         try {
-            if (error == null || error.getMessage() == null) {
+
+            if (!(throwable instanceof HttpException)) {
                 getMvpView().onError(R.string.api_default_error);
                 return;
             }
-            switch (error.getErrorCode()) {
-                case AppConstants.API_STATUS_CODE_BAD_REQUEST:
-                    setUserAsLoggedOut();
-                    getMvpView().openActivityOnTokenExpire();
-                case AppConstants.API_STATUS_CODE_INTERNAL_SERVER_ERROR:
-                case AppConstants.API_STATUS_CODE_NOT_FOUND:
-                default:
-                    getMvpView().onError(error.getMessage());
+
+            HttpException httpException = (HttpException) throwable;
+
+            final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+            final Gson gson = builder.create();
+
+            ApiError apiError = gson.fromJson(httpException.response().errorBody().string(), ApiError.class);
+
+            if (apiError == null || apiError.getMessage() == null) {
+                getMvpView().onError(R.string.api_default_error);
+                return;
             }
-        } catch (JsonSyntaxException | NullPointerException e) {
+            switch (httpException.code()) {
+                case HttpsURLConnection.HTTP_UNAUTHORIZED:
+                    getDataManager().setUserAsLoggedOut();
+                    getMvpView().openActivityOnTokenExpire();
+                case HttpURLConnection.HTTP_INTERNAL_ERROR:
+                case HttpURLConnection.HTTP_NOT_FOUND:
+                default:
+                    getMvpView().onError(apiError.getMessage());
+            }
+        } catch (IOException | JsonSyntaxException | NullPointerException e) {
             e.printStackTrace();
             getMvpView().onError(R.string.api_default_error);
         }
