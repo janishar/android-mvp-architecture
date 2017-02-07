@@ -15,8 +15,6 @@
 
 package com.mindorks.framework.mvp.ui.login;
 
-import android.util.Log;
-
 import com.androidnetworking.error.ANError;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
@@ -87,11 +85,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                         // handle the login error here
                         if (throwable instanceof ANError) {
                             ANError anError = (ANError) throwable;
-                            Log.d(TAG, "doServerLoginApiCall error: " + anError.getErrorBody());
+                            handleApiError(anError);
                         }
-
-                        //for demo the next screen in made to open even in failure
-                        getMvpView().openMainActivity();
                     }
                 }));
     }
@@ -127,11 +122,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                         // handle the login error here
                         if (throwable instanceof ANError) {
                             ANError anError = (ANError) throwable;
-                            Log.d(TAG, "doGoogleLoginApiCall error: " + anError.getErrorBody());
+                            handleApiError(anError);
                         }
-
-                        //for demo the next screen in made to open even in failure
-                        getMvpView().openMainActivity();
                     }
                 }));
     }
@@ -167,11 +159,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
                         // handle the login error here
                         if (throwable instanceof ANError) {
                             ANError anError = (ANError) throwable;
-                            Log.d(TAG, "onFacebookLoginClick error: " + anError.getErrorBody());
+                            handleApiError(anError);
                         }
-
-                        //for demo the next screen in made to open even in failure
-                        getMvpView().openMainActivity();
                     }
                 }));
     }

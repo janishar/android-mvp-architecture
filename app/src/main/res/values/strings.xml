@@ -33,8 +33,10 @@
     <string name="logout">Logout</string>
 
     <!--App Message-->
+    <string name="api_retry_error">Please retry!</string>
     <string name="api_default_error">Something wrong happened!</string>
-    <string name="some_error">Some Error Occurred</string>
+    <string name="some_error">Some Error Occurred!</string>
+    <string name="connection_error">Internet connection lost!</string>
 
     <!--Login-->
     <string name="login_dummy">Login Dummy</string>

@@ -19,6 +19,10 @@ package com.mindorks.framework.mvp.ui.base;
  * Created by janisharali on 27/01/17.
  */
 
+import com.androidnetworking.common.ANConstants;
+import com.androidnetworking.error.ANError;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
@@ -26,6 +30,7 @@ import com.mindorks.framework.mvp.data.network.model.ApiError;
 import com.mindorks.framework.mvp.utils.AppConstants;
 
 import javax.inject.Inject;
+import javax.net.ssl.HttpsURLConnection;
 
 import io.reactivex.disposables.CompositeDisposable;
 
@@ -80,20 +85,45 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     }
 
     @Override
-    public void handleApiError(ApiError error) {
+    public void handleApiError(ANError error) {
+
+        if (error == null || error.getErrorBody() == null) {
+            getMvpView().onError(R.string.api_default_error);
+            return;
+        }
+
+        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
+                && error.getErrorDetail().equals(ANConstants.CONNECTION_ERROR)) {
+            getMvpView().onError(R.string.connection_error);
+            return;
+        }
+
+        if (error.getErrorCode() == AppConstants.API_STATUS_CODE_LOCAL_ERROR
+                && error.getErrorDetail().equals(ANConstants.REQUEST_CANCELLED_ERROR)) {
+            getMvpView().onError(R.string.api_retry_error);
+            return;
+        }
+
+        final GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
+        final Gson gson = builder.create();
+
         try {
-            if (error == null || error.getMessage() == null) {
+            ApiError apiError = gson.fromJson(error.getErrorBody(), ApiError.class);
+
+            if (apiError == null || apiError.getMessage() == null) {
                 getMvpView().onError(R.string.api_default_error);
                 return;
             }
+
             switch (error.getErrorCode()) {
-                case AppConstants.API_STATUS_CODE_BAD_REQUEST:
+                case HttpsURLConnection.HTTP_UNAUTHORIZED:
+                case HttpsURLConnection.HTTP_FORBIDDEN:
                     setUserAsLoggedOut();
                     getMvpView().openActivityOnTokenExpire();
-                case AppConstants.API_STATUS_CODE_INTERNAL_SERVER_ERROR:
-                case AppConstants.API_STATUS_CODE_NOT_FOUND:
+                case HttpsURLConnection.HTTP_INTERNAL_ERROR:
+                case HttpsURLConnection.HTTP_NOT_FOUND:
                 default:
-                    getMvpView().onError(error.getMessage());
+                    getMvpView().onError(apiError.getMessage());
             }
         } catch (JsonSyntaxException | NullPointerException e) {
             e.printStackTrace();

@@ -15,8 +15,6 @@
 
 package com.mindorks.framework.mvp.ui.main;
 
-import android.util.Log;
-
 import com.androidnetworking.error.ANError;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.model.Question;
@@ -72,14 +70,10 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> imple
                         getMvpView().hideLoading();
 
                         // handle the login error here
-                        // handle the login error here
                         if (throwable instanceof ANError) {
                             ANError anError = (ANError) throwable;
-                            Log.d(TAG, "doLogoutApiCall error: " + anError.getErrorBody());
+                            handleApiError(anError);
                         }
-
-                        //for demo the next screen in made to open even in failure
-                        getMvpView().openLoginActivity();
                     }
                 }));
 
