@@ -16,7 +16,6 @@
 package com.mindorks.framework.mvp;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.interceptors.HttpLoggingInterceptor.Level;
@@ -43,10 +42,6 @@ public class MvpApp extends Application {
     CalligraphyConfig mCalligraphyConfig;
 
     private ApplicationComponent mApplicationComponent;
-
-    public static MvpApp get(Context context) {
-        return (MvpApp) context.getApplicationContext();
-    }
 
     @Override
     public void onCreate() {

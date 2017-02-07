@@ -48,7 +48,7 @@ public class TestComponentRule implements TestRule {
     }
 
     private void setupDaggerTestComponentInApplication() {
-        MvpApp application = MvpApp.get(mContext);
+        MvpApp application = ((MvpApp) mContext.getApplicationContext());
         mTestComponent = DaggerTestComponent.builder()
                 .applicationTestModule(new ApplicationTestModule(application))
                 .build();

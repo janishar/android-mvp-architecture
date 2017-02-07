@@ -59,7 +59,7 @@ public class SyncService extends Service {
         super.onCreate();
         ServiceComponent component = DaggerServiceComponent.builder()
                 .serviceModule(new ServiceModule(this))
-                .applicationComponent(MvpApp.get(this).getComponent())
+                .applicationComponent(((MvpApp) getApplication()).getComponent())
                 .build();
         component.inject(this);
     }
