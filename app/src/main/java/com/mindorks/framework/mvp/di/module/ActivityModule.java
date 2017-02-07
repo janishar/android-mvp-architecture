@@ -62,7 +62,6 @@ public class ActivityModule {
     }
 
     @Provides
-    @PerActivity
     CompositeDisposable provideCompositeDisposable() {
         return new CompositeDisposable();
     }
