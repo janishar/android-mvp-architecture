@@ -60,7 +60,7 @@ ext {
     butterKnifeVersion = '8.5.1'
     greenDaoVersion = '3.2.0'
     placeholderviewVersion = '0.6.1'
-    debugDBVersion = '0.5.0'
+    debugDBVersion = '1.0.0'
 
     //Test dependencies
     junitVersion = '4.12'
