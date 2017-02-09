@@ -47,6 +47,8 @@ This repository contains a detailed sample app that implements MVP architecture 
 7. [Android Tinder Swipe View Example](https://blog.mindorks.com/android-tinder-swipe-view-example-3eca9b0d4794#.u7i7jbbvy)
 8. [Debugging Android Databases And Shared Preferences In The Easiest Way](https://blog.mindorks.com/debugging-android-databases-and-shared-preferences-in-the-easiest-way-e5f705dfc06b#.pxw0hvnws)
 
+###[Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
+
 ### License
 ```
    Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
