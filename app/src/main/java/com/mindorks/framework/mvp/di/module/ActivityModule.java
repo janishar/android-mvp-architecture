@@ -44,21 +44,21 @@ import io.reactivex.disposables.CompositeDisposable;
 @Module
 public class ActivityModule {
 
-    private Activity activity;
+    private Activity mActivity;
 
     public ActivityModule(Activity activity) {
-        this.activity = activity;
+        this.mActivity = activity;
     }
 
     @Provides
     @ActivityContext
     Context provideContext() {
-        return activity;
+        return mActivity;
     }
 
     @Provides
     Activity provideActivity() {
-        return activity;
+        return mActivity;
     }
 
     @Provides
@@ -68,25 +68,29 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
-    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(SplashPresenter<SplashMvpView> presenter) {
+    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(SplashPresenter<SplashMvpView>
+                                                                     presenter) {
         return presenter;
     }
 
     @Provides
     @PerActivity
-    AboutMvpPresenter<AboutMvpView> provideAboutPresenter(AboutPresenter<AboutMvpView> presenter) {
+    AboutMvpPresenter<AboutMvpView> provideAboutPresenter(AboutPresenter<AboutMvpView>
+                                                                  presenter) {
         return presenter;
     }
 
     @Provides
     @PerActivity
-    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(LoginPresenter<LoginMvpView> presenter) {
+    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(LoginPresenter<LoginMvpView>
+                                                                  presenter) {
         return presenter;
     }
 
     @Provides
     @PerActivity
-    MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView> presenter) {
+    MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView>
+                                                               presenter) {
         return presenter;
     }
 }

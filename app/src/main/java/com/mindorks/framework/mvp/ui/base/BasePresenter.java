@@ -41,16 +41,16 @@ import io.reactivex.disposables.CompositeDisposable;
  */
 public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
-    private final DataManager dataManager;
+    private final DataManager mDataManager;
 
-    private final CompositeDisposable compositeDisposable;
+    private final CompositeDisposable mCompositeDisposable;
 
     private V mMvpView;
 
     @Inject
     public BasePresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
-        this.dataManager = dataManager;
-        this.compositeDisposable = compositeDisposable;
+        this.mDataManager = dataManager;
+        this.mCompositeDisposable = compositeDisposable;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     @Override
     public void onDetach() {
-        compositeDisposable.dispose();
+        mCompositeDisposable.dispose();
         mMvpView = null;
     }
 
@@ -77,11 +77,11 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     }
 
     public DataManager getDataManager() {
-        return dataManager;
+        return mDataManager;
     }
 
     public CompositeDisposable getCompositeDisposable() {
-        return compositeDisposable;
+        return mCompositeDisposable;
     }
 
     @Override

@@ -115,7 +115,8 @@ public class LoginRequest {
 
             GoogleLoginRequest that = (GoogleLoginRequest) object;
 
-            if (googleUserId != null ? !googleUserId.equals(that.googleUserId) : that.googleUserId != null)
+            if (googleUserId != null ? !googleUserId.equals(that.googleUserId)
+                    : that.googleUserId != null)
                 return false;
             return idToken != null ? idToken.equals(that.idToken) : that.idToken == null;
 
@@ -168,7 +169,8 @@ public class LoginRequest {
 
             if (fbUserId != null ? !fbUserId.equals(that.fbUserId) : that.fbUserId != null)
                 return false;
-            return fbAccessToken != null ? fbAccessToken.equals(that.fbAccessToken) : that.fbAccessToken == null;
+            return fbAccessToken != null ? fbAccessToken.equals(that.fbAccessToken)
+                    : that.fbAccessToken == null;
 
         }
 

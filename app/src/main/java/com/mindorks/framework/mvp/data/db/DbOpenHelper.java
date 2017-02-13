@@ -46,7 +46,8 @@ public class DbOpenHelper extends DaoMaster.OpenHelper {
         switch (oldVersion) {
             case 1:
             case 2:
-                //db.execSQL("ALTER TABLE " + UserDao.TABLENAME + " ADD COLUMN " + UserDao.Properties.Name.columnName + " TEXT DEFAULT 'DEFAULT_VAL'");
+                //db.execSQL("ALTER TABLE " + UserDao.TABLENAME + " ADD COLUMN "
+                // + UserDao.Properties.Name.columnName + " TEXT DEFAULT 'DEFAULT_VAL'");
         }
     }
 }

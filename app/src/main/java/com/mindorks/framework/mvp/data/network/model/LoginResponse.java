@@ -148,11 +148,14 @@ public class LoginResponse {
             return false;
         if (userEmail != null ? !userEmail.equals(that.userEmail) : that.userEmail != null)
             return false;
-        if (serverProfilePicUrl != null ? !serverProfilePicUrl.equals(that.serverProfilePicUrl) : that.serverProfilePicUrl != null)
+        if (serverProfilePicUrl != null ? !serverProfilePicUrl.equals(that.serverProfilePicUrl)
+                : that.serverProfilePicUrl != null)
             return false;
-        if (fbProfilePicUrl != null ? !fbProfilePicUrl.equals(that.fbProfilePicUrl) : that.fbProfilePicUrl != null)
+        if (fbProfilePicUrl != null ? !fbProfilePicUrl.equals(that.fbProfilePicUrl)
+                : that.fbProfilePicUrl != null)
             return false;
-        if (googleProfilePicUrl != null ? !googleProfilePicUrl.equals(that.googleProfilePicUrl) : that.googleProfilePicUrl != null)
+        if (googleProfilePicUrl != null ? !googleProfilePicUrl.equals(that.googleProfilePicUrl)
+                : that.googleProfilePicUrl != null)
             return false;
         return message != null ? message.equals(that.message) : that.message == null;
 

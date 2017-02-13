@@ -276,7 +276,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
             mEmailTextView.setText(email);
         }
 
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView
+                .OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mDrawer.closeDrawer(GravityCompat.START);

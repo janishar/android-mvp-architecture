@@ -46,7 +46,8 @@ public final class ViewUtils {
     public static void changeIconDrawableToGray(Context context, Drawable drawable) {
         if (drawable != null) {
             drawable.mutate();
-            drawable.setColorFilter(ContextCompat.getColor(context, R.color.dark_gray), PorterDuff.Mode.SRC_ATOP);
+            drawable.setColorFilter(ContextCompat
+                    .getColor(context, R.color.dark_gray), PorterDuff.Mode.SRC_ATOP);
         }
     }
 }

@@ -34,7 +34,8 @@ import io.reactivex.schedulers.Schedulers;
  * Created by janisharali on 27/01/17.
  */
 
-public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> implements LoginMvpPresenter<V> {
+public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
+        implements LoginMvpPresenter<V> {
 
     private static final String TAG = "LoginPresenter";
 
@@ -60,7 +61,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
         }
         getMvpView().showLoading();
 
-        getCompositeDisposable().add(getDataManager().doServerLoginApiCall(new LoginRequest.ServerLoginRequest(email, password))
+        getCompositeDisposable().add(getDataManager()
+                .doServerLoginApiCall(new LoginRequest.ServerLoginRequest(email, password))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<LoginResponse>() {
@@ -96,7 +98,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
         // instruct LoginActivity to initiate google login
         getMvpView().showLoading();
 
-        getCompositeDisposable().add(getDataManager().doGoogleLoginApiCall(new LoginRequest.GoogleLoginRequest("test1", "test1"))
+        getCompositeDisposable().add(getDataManager()
+                .doGoogleLoginApiCall(new LoginRequest.GoogleLoginRequest("test1", "test1"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<LoginResponse>() {
@@ -133,7 +136,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
         // instruct LoginActivity to initiate facebook login
         getMvpView().showLoading();
 
-        getCompositeDisposable().add(getDataManager().doFacebookLoginApiCall(new LoginRequest.FacebookLoginRequest("test3", "test4"))
+        getCompositeDisposable().add(getDataManager()
+                .doFacebookLoginApiCall(new LoginRequest.FacebookLoginRequest("test3", "test4"))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<LoginResponse>() {

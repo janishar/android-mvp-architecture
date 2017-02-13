@@ -32,7 +32,7 @@ import butterknife.Unbinder;
 
 public abstract class BaseFragment extends Fragment implements MvpView {
 
-    private BaseActivity activity;
+    private BaseActivity mActivity;
     private Unbinder mUnBinder;
 
     @Override
@@ -46,73 +46,73 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         super.onAttach(context);
         if (context instanceof BaseActivity) {
             BaseActivity activity = (BaseActivity) context;
-            this.activity = activity;
+            this.mActivity = activity;
             activity.onFragmentAttached();
         }
     }
 
     @Override
     public void showLoading() {
-        if (activity != null) {
-            activity.showLoading();
+        if (mActivity != null) {
+            mActivity.showLoading();
         }
     }
 
     @Override
     public void hideLoading() {
-        if (activity != null) {
-            activity.hideLoading();
+        if (mActivity != null) {
+            mActivity.hideLoading();
         }
     }
 
     @Override
     public void onError(String message) {
-        if (activity != null) {
-            activity.onError(message);
+        if (mActivity != null) {
+            mActivity.onError(message);
         }
     }
 
     @Override
     public void onError(@StringRes int resId) {
-        if (activity != null) {
-            activity.onError(resId);
+        if (mActivity != null) {
+            mActivity.onError(resId);
         }
     }
 
     @Override
     public boolean isNetworkConnected() {
-        if (activity != null) {
-            return activity.isNetworkConnected();
+        if (mActivity != null) {
+            return mActivity.isNetworkConnected();
         }
         return false;
     }
 
     @Override
     public void onDetach() {
-        activity = null;
+        mActivity = null;
         super.onDetach();
     }
 
     @Override
     public void hideKeyboard() {
-        if (activity != null) {
-            activity.hideKeyboard();
+        if (mActivity != null) {
+            mActivity.hideKeyboard();
         }
     }
 
     @Override
     public void openActivityOnTokenExpire() {
-        if (activity != null) {
-            activity.openActivityOnTokenExpire();
+        if (mActivity != null) {
+            mActivity.openActivityOnTokenExpire();
         }
     }
 
     public ActivityComponent getActivityComponent() {
-        return activity.getActivityComponent();
+        return mActivity.getActivityComponent();
     }
 
     public BaseActivity getBaseActivity() {
-        return activity;
+        return mActivity;
     }
 
     public void setUnBinder(Unbinder unBinder) {

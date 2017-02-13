@@ -35,7 +35,8 @@ import io.reactivex.schedulers.Schedulers;
  * Created by janisharali on 27/01/17.
  */
 
-public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> implements MainMvpPresenter<V> {
+public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
+        implements MainMvpPresenter<V> {
 
     private static final String TAG = MainPresenter.class.getSimpleName();
 

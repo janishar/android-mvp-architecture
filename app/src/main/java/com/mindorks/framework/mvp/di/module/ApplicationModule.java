@@ -109,7 +109,8 @@ public class ApplicationModule {
 
     @Provides
     @Singleton
-    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey, PreferencesHelper preferencesHelper) {
+    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey,
+                                                           PreferencesHelper preferencesHelper) {
         return new ApiHeader.ProtectedApiHeader(
                 apiKey,
                 preferencesHelper.getCurrentUserId(),

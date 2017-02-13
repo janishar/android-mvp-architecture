@@ -75,7 +75,8 @@ public class Question {
     private transient QuestionDao myDao;
 
     @Generated(hash = 103353390)
-    public Question(Long id, String questionText, String imgUrl, String createdAt, String updatedAt) {
+    public Question(Long id, String questionText, String imgUrl, String createdAt,
+                    String updatedAt) {
         this.id = id;
         this.questionText = questionText;
         this.imgUrl = imgUrl;

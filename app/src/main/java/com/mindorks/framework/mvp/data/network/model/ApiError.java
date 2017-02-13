@@ -72,7 +72,8 @@ public class ApiError {
         ApiError apiError = (ApiError) object;
 
         if (errorCode != apiError.errorCode) return false;
-        if (statusCode != null ? !statusCode.equals(apiError.statusCode) : apiError.statusCode != null)
+        if (statusCode != null ? !statusCode.equals(apiError.statusCode)
+                : apiError.statusCode != null)
             return false;
         return message != null ? message.equals(apiError.message) : apiError.message == null;
 

@@ -46,9 +46,10 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by janisharali on 27/01/17.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements MvpView, BaseFragment.Callback {
+public abstract class BaseActivity extends AppCompatActivity
+        implements MvpView, BaseFragment.Callback {
 
-    private ProgressDialog progressDialog;
+    private ProgressDialog mProgressDialog;
 
     private ActivityComponent mActivityComponent;
 
@@ -89,13 +90,13 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
     @Override
     public void showLoading() {
         hideLoading();
-        progressDialog = CommonUtils.showLoadingDialog(this);
+        mProgressDialog = CommonUtils.showLoadingDialog(this);
     }
 
     @Override
     public void hideLoading() {
-        if (progressDialog != null && progressDialog.isShowing()) {
-            progressDialog.cancel();
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.cancel();
         }
     }
 
@@ -109,9 +110,11 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
     }
 
     private void showSnackBar(String message) {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT);
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
+                message, Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
-        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+        TextView textView = (TextView) sbView
+                .findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
         snackbar.show();
     }
@@ -139,7 +142,8 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView,
     public void hideKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager)
+                    getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }

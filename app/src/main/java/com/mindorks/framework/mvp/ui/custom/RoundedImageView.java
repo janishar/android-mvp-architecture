@@ -51,7 +51,8 @@ public class RoundedImageView extends ImageView {
     }
 
     @TargetApi(21)
-    public RoundedImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public RoundedImageView(Context context, AttributeSet attrs,
+                            int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 

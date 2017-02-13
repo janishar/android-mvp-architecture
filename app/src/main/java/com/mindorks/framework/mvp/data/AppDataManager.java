@@ -98,17 +98,20 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest request) {
+    public Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
+                                                                  request) {
         return mApiHelper.doGoogleLoginApiCall(request);
     }
 
     @Override
-    public Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest request) {
+    public Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
+                                                                    request) {
         return mApiHelper.doFacebookLoginApiCall(request);
     }
 
     @Override
-    public Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request) {
+    public Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
+                                                                  request) {
         return mApiHelper.doServerLoginApiCall(request);
     }
 
@@ -247,11 +250,15 @@ public class AppDataManager implements DataManager {
         return mDbHelper.isQuestionEmpty()
                 .concatMap(new Function<Boolean, ObservableSource<? extends Boolean>>() {
                     @Override
-                    public ObservableSource<? extends Boolean> apply(Boolean isEmpty) throws Exception {
+                    public ObservableSource<? extends Boolean> apply(Boolean isEmpty)
+                            throws Exception {
                         if (isEmpty) {
-                            Type type = $Gson$Types.newParameterizedTypeWithOwner(null, List.class, Question.class);
+                            Type type = $Gson$Types
+                                    .newParameterizedTypeWithOwner(null, List.class,
+                                            Question.class);
                             List<Question> questionList = gson.fromJson(
-                                    CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_QUESTIONS),
+                                    CommonUtils.loadJSONFromAsset(mContext,
+                                            AppConstants.SEED_DATABASE_QUESTIONS),
                                     type);
 
                             return saveQuestionList(questionList);
@@ -270,12 +277,15 @@ public class AppDataManager implements DataManager {
         return mDbHelper.isOptionEmpty()
                 .concatMap(new Function<Boolean, ObservableSource<? extends Boolean>>() {
                     @Override
-                    public ObservableSource<? extends Boolean> apply(Boolean isEmpty) throws Exception {
+                    public ObservableSource<? extends Boolean> apply(Boolean isEmpty)
+                            throws Exception {
                         if (isEmpty) {
                             Type type = new TypeToken<List<Option>>() {
-                            }.getType();
+                            }
+                                    .getType();
                             List<Option> optionList = gson.fromJson(
-                                    CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_OPTIONS),
+                                    CommonUtils.loadJSONFromAsset(mContext,
+                                            AppConstants.SEED_DATABASE_OPTIONS),
                                     type);
 
                             return saveOptionList(optionList);
