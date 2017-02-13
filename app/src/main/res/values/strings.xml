@@ -55,4 +55,5 @@
     <string name="link_mvp_repo">2. https://github.com/MindorksOpenSource/android-mvp-architecture</string>
     <string name="link_mindorks_blog">3. https://blog.mindorks.com</string>
     <string name="link_mindorks_repo">4. https://github.com/MindorksOpenSource</string>
+    <string name="version">"version"</string>
 </resources>

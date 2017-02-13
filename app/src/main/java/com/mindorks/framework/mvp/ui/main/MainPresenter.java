@@ -16,6 +16,7 @@
 package com.mindorks.framework.mvp.ui.main;
 
 import com.androidnetworking.error.ANError;
+import com.mindorks.framework.mvp.BuildConfig;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
@@ -113,17 +114,22 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public String getUserName() {
-        return getDataManager().getCurrentUserName();
-    }
+    public void updateInfoToNavMenu() {
+        if (!isViewAttached()) {
+            return;
+        }
+        getMvpView().updateAppVersion(BuildConfig.VERSION_NAME);
 
-    @Override
-    public String getUserEmail() {
-        return getDataManager().getCurrentUserEmail();
-    }
+        final String currentUserName = getDataManager().getCurrentUserName();
+        if (currentUserName != null && currentUserName.length() > 0) {
+            getMvpView().updateUserName(currentUserName);
+        }
 
-    @Override
-    public String getUserProfilePicUrl() {
-        return getDataManager().getCurrentUserProfilePicUrl();
+        final String currentUserEmail = getDataManager().getCurrentUserEmail();
+        if (currentUserEmail != null && currentUserEmail.length() > 0) {
+            getMvpView().updateUserEmail(currentUserEmail);
+        }
+
+        getMvpView().updateUserProfilePic(getDataManager().getCurrentUserProfilePicUrl());
     }
 }
