@@ -29,6 +29,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.widget.ImageView;
 
 
@@ -37,6 +38,8 @@ import android.widget.ImageView;
  */
 
 public class RoundedImageView extends ImageView {
+
+    private static final String TAG = "RoundedImageView";
 
     public RoundedImageView(Context context) {
         super(context);
@@ -92,7 +95,7 @@ public class RoundedImageView extends ImageView {
             Bitmap roundBitmap = getRoundedCroppedBitmap(bitmap, Math.min(w, h));
             canvas.drawBitmap(roundBitmap, 0, 0, null);
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e(TAG, "onDraw Exception", e);
         }
 
     }
@@ -100,10 +103,11 @@ public class RoundedImageView extends ImageView {
     private Bitmap getRoundedCroppedBitmap(Bitmap bitmap, int radius) {
         Bitmap finalBitmap;
 
-        if (bitmap.getWidth() != radius || bitmap.getHeight() != radius)
+        if (bitmap.getWidth() != radius || bitmap.getHeight() != radius) {
             finalBitmap = Bitmap.createScaledBitmap(bitmap, radius, radius, false);
-        else
+        } else {
             finalBitmap = bitmap;
+        }
 
         Bitmap output = Bitmap.createBitmap(finalBitmap.getWidth(),
                 finalBitmap.getHeight(), Config.ARGB_8888);

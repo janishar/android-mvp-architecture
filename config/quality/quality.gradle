@@ -91,6 +91,7 @@ task pmd(type: Pmd, group: 'Verification', description: 'Inspect sourcecode for 
     source 'src'
     include '**/*.java'
     exclude '**/gen/**'
+    exclude '**/model/**'
 
     reports {
         xml.enabled = true

@@ -19,6 +19,8 @@ package com.mindorks.framework.mvp.ui.base;
  * Created by janisharali on 27/01/17.
  */
 
+import android.util.Log;
+
 import com.androidnetworking.common.ANConstants;
 import com.androidnetworking.error.ANError;
 import com.google.gson.Gson;
@@ -40,6 +42,8 @@ import io.reactivex.disposables.CompositeDisposable;
  * can be accessed from the children classes by calling getMvpView().
  */
 public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
+
+    private static final String TAG = "RoundedImageView";
 
     private final DataManager mDataManager;
 
@@ -126,7 +130,7 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
                     getMvpView().onError(apiError.getMessage());
             }
         } catch (JsonSyntaxException | NullPointerException e) {
-            e.printStackTrace();
+            Log.e(TAG, "handleApiError", e);
             getMvpView().onError(R.string.api_default_error);
         }
     }
