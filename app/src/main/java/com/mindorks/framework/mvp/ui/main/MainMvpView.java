@@ -40,5 +40,5 @@ public interface MainMvpView extends MvpView {
 
     void updateUserProfilePic(String currentUserProfilePicUrl);
 
-    void updateAppVersion(String versionName);
+    void updateAppVersion();
 }

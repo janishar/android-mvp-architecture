@@ -133,7 +133,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
-    public void updateAppVersion(String versionName) {
+    public void updateAppVersion() {
         String version = getString(R.string.version) + " " + BuildConfig.VERSION_NAME;
         mAppVersionTextView.setText(version);
     }
@@ -150,7 +150,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void updateUserProfilePic(String currentUserProfilePicUrl) {
-        //todo use Picasso or Imageloader or Fresco or Glide to load the ImageURL to mProfileImageView
+        //load profile pic url into ANImageView
     }
 
     @Override
@@ -241,7 +241,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mDrawer.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
         setupNavMenu();
-        mPresenter.updateInfoToNavMenu();
+        mPresenter.onNavMenuCreated();
         setupCardContainerView();
         mPresenter.onViewInitialized();
     }
@@ -284,22 +284,23 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
         mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
 
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                mDrawer.closeDrawer(GravityCompat.START);
-                switch (item.getItemId()) {
-                    case R.id.nav_item_about:
-                        mPresenter.onDrawerOptionAboutClick();
-                        return true;
-                    case R.id.nav_item_logout:
-                        mPresenter.onDrawerOptionLogoutClick();
-                        return true;
-                    default:
-                        return false;
-                }
-            }
-        });
+        mNavigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        mDrawer.closeDrawer(GravityCompat.START);
+                        switch (item.getItemId()) {
+                            case R.id.nav_item_about:
+                                mPresenter.onDrawerOptionAboutClick();
+                                return true;
+                            case R.id.nav_item_logout:
+                                mPresenter.onDrawerOptionLogoutClick();
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
     }
 
     @Override
