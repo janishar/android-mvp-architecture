@@ -133,6 +133,27 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
+    public void updateAppVersion(String versionName) {
+        String version = getString(R.string.version) + " " + BuildConfig.VERSION_NAME;
+        mAppVersionTextView.setText(version);
+    }
+
+    @Override
+    public void updateUserName(String currentUserName) {
+        mNameTextView.setText(currentUserName);
+    }
+
+    @Override
+    public void updateUserEmail(String currentUserEmail) {
+        mEmailTextView.setText(currentUserEmail);
+    }
+
+    @Override
+    public void updateUserProfilePic(String currentUserProfilePicUrl) {
+        //todo use Picasso or Imageloader or Fresco or Glide to load the ImageURL to mProfileImageView
+    }
+
+    @Override
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();
@@ -220,6 +241,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mDrawer.addDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
         setupNavMenu();
+        mPresenter.updateInfoToNavMenu();
         setupCardContainerView();
         mPresenter.onViewInitialized();
     }
@@ -262,22 +284,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
         mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
         mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
 
-        String version = "version " + BuildConfig.VERSION_NAME;
-        mAppVersionTextView.setText(version);
-
-
-        String name = mPresenter.getUserName();
-        if (name != null) {
-            mNameTextView.setText(name);
-        }
-
-        String email = mPresenter.getUserEmail();
-        if (email != null) {
-            mEmailTextView.setText(email);
-        }
-
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView
-                .OnNavigationItemSelectedListener() {
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 mDrawer.closeDrawer(GravityCompat.START);

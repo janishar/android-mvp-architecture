@@ -33,4 +33,12 @@ public interface MainMvpView extends MvpView {
     void refreshQuestionnaire(List<Question> questionList);
 
     void reloadQuestionnaire(List<Question> questionList);
+
+    void updateUserName(String currentUserName);
+
+    void updateUserEmail(String currentUserEmail);
+
+    void updateUserProfilePic(String currentUserProfilePicUrl);
+
+    void updateAppVersion(String versionName);
 }
