@@ -16,11 +16,11 @@
 package com.mindorks.framework.mvp.data.db;
 
 import android.content.Context;
-import android.util.Log;
 
 import com.mindorks.framework.mvp.data.db.model.DaoMaster;
 import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.di.DatabaseInfo;
+import com.mindorks.framework.mvp.utils.MvpLogger;
 
 import org.greenrobot.greendao.database.Database;
 
@@ -42,7 +42,7 @@ public class DbOpenHelper extends DaoMaster.OpenHelper {
     @Override
     public void onUpgrade(Database db, int oldVersion, int newVersion) {
         super.onUpgrade(db, oldVersion, newVersion);
-        Log.d("DEBUG", "DB_OLD_VERSION : " + oldVersion + ", DB_NEW_VERSION : " + newVersion);
+        MvpLogger.d("DEBUG", "DB_OLD_VERSION : " + oldVersion + ", DB_NEW_VERSION : " + newVersion);
         switch (oldVersion) {
             case 1:
             case 2:

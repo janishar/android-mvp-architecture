@@ -23,6 +23,7 @@ import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.component.ApplicationComponent;
 import com.mindorks.framework.mvp.di.component.DaggerApplicationComponent;
 import com.mindorks.framework.mvp.di.module.ApplicationModule;
+import com.mindorks.framework.mvp.utils.MvpLogger;
 
 import javax.inject.Inject;
 
@@ -51,6 +52,8 @@ public class MvpApp extends Application {
                 .applicationModule(new ApplicationModule(this)).build();
 
         mApplicationComponent.inject(this);
+
+        MvpLogger.init();
 
         AndroidNetworking.initialize(getApplicationContext());
         if (BuildConfig.DEBUG) {
