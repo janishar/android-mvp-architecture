@@ -113,17 +113,25 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     }
 
     @Override
-    public String getUserName() {
-        return getDataManager().getCurrentUserName();
-    }
+    public void onNavMenuCreated() {
+        if (!isViewAttached()) {
+            return;
+        }
+        getMvpView().updateAppVersion();
 
-    @Override
-    public String getUserEmail() {
-        return getDataManager().getCurrentUserEmail();
-    }
+        final String currentUserName = getDataManager().getCurrentUserName();
+        if (currentUserName != null && !currentUserName.isEmpty()) {
+            getMvpView().updateUserName(currentUserName);
+        }
 
-    @Override
-    public String getUserProfilePicUrl() {
-        return getDataManager().getCurrentUserProfilePicUrl();
+        final String currentUserEmail = getDataManager().getCurrentUserEmail();
+        if (currentUserEmail != null && !currentUserEmail.isEmpty()) {
+            getMvpView().updateUserEmail(currentUserEmail);
+        }
+
+        final String profilePicUrl = getDataManager().getCurrentUserProfilePicUrl();
+        if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
+            getMvpView().updateUserProfilePic(profilePicUrl);
+        }
     }
 }

@@ -30,14 +30,9 @@ public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V>
 
     void onDrawerOptionLogoutClick();
 
-    String getUserName();
-
-    String getUserEmail();
-
-    String getUserProfilePicUrl();
-
     void onViewInitialized();
 
     void onCardExhausted();
 
+    void onNavMenuCreated();
 }
