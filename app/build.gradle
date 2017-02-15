@@ -87,6 +87,9 @@ dependencies {
     // swipe view
     compile "com.mindorks:placeholderview:$rootProject.placeholderviewVersion"
 
+    // logger
+    compile "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
     // dependencies for local unit tests
     testCompile "junit:junit:$rootProject.ext.junitVersion"
     testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"

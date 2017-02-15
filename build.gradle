@@ -61,6 +61,7 @@ ext {
     greenDaoVersion = '3.2.0'
     placeholderviewVersion = '0.6.1'
     debugDBVersion = '1.0.0'
+    timberVersion = '4.5.1'
 
     //Test dependencies
     junitVersion = '4.12'
