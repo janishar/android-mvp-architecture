@@ -75,12 +75,22 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserName(),
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
+
+                        if(!isViewAttached()) {
+                            return;
+                        }
+
                         getMvpView().hideLoading();
                         getMvpView().openMainActivity();
+
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+
+                        if(!isViewAttached()) {
+                            return;
+                        }
 
                         getMvpView().hideLoading();
 
@@ -113,12 +123,20 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
 
+                        if(!isViewAttached()) {
+                            return;
+                        }
+
                         getMvpView().hideLoading();
                         getMvpView().openMainActivity();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+
+                        if(!isViewAttached()) {
+                            return;
+                        }
 
                         getMvpView().hideLoading();
 
@@ -151,12 +169,20 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
 
+                        if(!isViewAttached()) {
+                            return;
+                        }
+
                         getMvpView().hideLoading();
                         getMvpView().openMainActivity();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+
+                        if(!isViewAttached()) {
+                            return;
+                        }
 
                         getMvpView().hideLoading();
 

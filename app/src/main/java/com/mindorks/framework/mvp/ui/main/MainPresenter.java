@@ -60,6 +60,10 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                 .subscribe(new Consumer<LogoutResponse>() {
                     @Override
                     public void accept(LogoutResponse response) throws Exception {
+                        if(!isViewAttached()) {
+                            return;
+                        }
+
                         getDataManager().setUserAsLoggedOut();
                         getMvpView().hideLoading();
                         getMvpView().openLoginActivity();
@@ -67,6 +71,9 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        if(!isViewAttached()) {
+                            return;
+                        }
 
                         getMvpView().hideLoading();
 
@@ -89,6 +96,10 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                 .subscribe(new Consumer<List<Question>>() {
                     @Override
                     public void accept(List<Question> questionList) throws Exception {
+                        if(!isViewAttached()) {
+                            return;
+                        }
+
                         if (questionList != null) {
                             getMvpView().refreshQuestionnaire(questionList);
                         }
@@ -105,6 +116,10 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                 .subscribe(new Consumer<List<Question>>() {
                     @Override
                     public void accept(List<Question> questionList) throws Exception {
+                        if(!isViewAttached()) {
+                            return;
+                        }
+
                         if (questionList != null) {
                             getMvpView().reloadQuestionnaire(questionList);
                         }
