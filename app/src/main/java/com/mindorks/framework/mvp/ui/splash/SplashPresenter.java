@@ -59,11 +59,17 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V>
                 .subscribe(new Consumer<Boolean>() {
                     @Override
                     public void accept(Boolean aBoolean) throws Exception {
+                        if(!isViewAttached()) {
+                            return;
+                        }
                         decideNextActivity();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        if(!isViewAttached()) {
+                            return;
+                        }
                         getMvpView().onError(R.string.some_error);
                         decideNextActivity();
                     }
