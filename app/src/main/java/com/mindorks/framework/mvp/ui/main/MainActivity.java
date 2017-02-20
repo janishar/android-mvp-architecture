@@ -108,6 +108,18 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
+    public void onBackPressed() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        String tag = AboutFragment.class.getSimpleName();
+        Fragment fragment = fragmentManager.findFragmentByTag(tag);
+        if (fragment == null) {
+            super.onBackPressed();
+        } else {
+            onFragmentDetached(tag);
+        }
+    }
+
+    @Override
     public void refreshQuestionnaire(List<Question> questionList) {
         for (Question question : questionList) {
             if (question != null
