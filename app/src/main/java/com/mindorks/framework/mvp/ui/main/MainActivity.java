@@ -110,12 +110,11 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     public void onBackPressed() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        String tag = AboutFragment.class.getSimpleName();
-        Fragment fragment = fragmentManager.findFragmentByTag(tag);
+        Fragment fragment = fragmentManager.findFragmentByTag(AboutFragment.TAG);
         if (fragment == null) {
             super.onBackPressed();
         } else {
-            onFragmentDetached(tag);
+            onFragmentDetached(AboutFragment.TAG);
         }
     }
 
