@@ -74,7 +74,6 @@ public class ActivityModule {
     }
 
     @Provides
-    @PerActivity
     AboutMvpPresenter<AboutMvpView> provideAboutPresenter(AboutPresenter<AboutMvpView>
                                                                   presenter) {
         return presenter;
