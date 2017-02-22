@@ -15,9 +15,7 @@
 
 package com.mindorks.framework.mvp.data;
 
-
 import android.content.Context;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.$Gson$Types;
@@ -26,7 +24,6 @@ import com.mindorks.framework.mvp.data.db.DbHelper;
 import com.mindorks.framework.mvp.data.db.model.Option;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.db.model.User;
-import com.mindorks.framework.mvp.data.network.ApiHeader;
 import com.mindorks.framework.mvp.data.network.ApiHelper;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
@@ -35,13 +32,10 @@ import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
 import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.utils.AppConstants;
 import com.mindorks.framework.mvp.utils.CommonUtils;
-
 import java.lang.reflect.Type;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.functions.Function;
@@ -72,11 +66,6 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public ApiHeader getApiHeader() {
-        return mApiHelper.getApiHeader();
-    }
-
-    @Override
     public String getAccessToken() {
         return mPreferencesHelper.getAccessToken();
     }
@@ -98,26 +87,69 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
-                                                                  request) {
-        return mApiHelper.doGoogleLoginApiCall(request);
+    public Observable<Object> doGoogleLogin(LoginRequest.GoogleLoginRequest request) {
+        return mApiHelper.doGoogleLoginApiCall(request)
+                .map(new Function<LoginResponse, Object>() {
+                    @Override
+                    public Object apply(LoginResponse loginResponse) throws Exception {
+                        updateUserInfo(
+                                loginResponse.getAccessToken(),
+                                loginResponse.getUserId(),
+                                DataManager.LoggedInMode.LOGGED_IN_MODE_GOOGLE,
+                                loginResponse.getUserName(),
+                                loginResponse.getUserEmail(),
+                                loginResponse.getGoogleProfilePicUrl());
+                        return Observable.empty();
+                    }
+                });
     }
 
     @Override
-    public Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
-                                                                    request) {
-        return mApiHelper.doFacebookLoginApiCall(request);
+    public Observable<Object> doFacebookLogin(LoginRequest.FacebookLoginRequest request) {
+        return mApiHelper.doFacebookLoginApiCall(request)
+                .map(new Function<LoginResponse, Object>() {
+                    @Override
+                    public Object apply(LoginResponse loginResponse) throws Exception {
+                        updateUserInfo(
+                                loginResponse.getAccessToken(),
+                                loginResponse.getUserId(),
+                                DataManager.LoggedInMode.LOGGED_IN_MODE_FB,
+                                loginResponse.getUserName(),
+                                loginResponse.getUserEmail(),
+                                loginResponse.getGoogleProfilePicUrl());
+                        return Observable.empty();
+                    }
+                });
     }
 
     @Override
-    public Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
-                                                                  request) {
-        return mApiHelper.doServerLoginApiCall(request);
+    public Observable<Object> doServerLogin(LoginRequest.ServerLoginRequest request) {
+        return mApiHelper.doServerLoginApiCall(request)
+                .map(new Function<LoginResponse, Object>() {
+                    @Override
+                    public Object apply(LoginResponse loginResponse) throws Exception {
+                        updateUserInfo(
+                                getAccessToken(),
+                                loginResponse.getUserId(),
+                                DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
+                                loginResponse.getUserName(),
+                                loginResponse.getUserEmail(),
+                                loginResponse.getGoogleProfilePicUrl());
+                        return Observable.empty();
+                    }
+                });
     }
 
     @Override
-    public Observable<LogoutResponse> doLogoutApiCall() {
-        return mApiHelper.doLogoutApiCall();
+    public Observable<Object> doLogout() {
+        return mApiHelper.doLogoutApiCall()
+                .map(new Function<LogoutResponse, Object>() {
+                    @Override
+                    public Object apply(LogoutResponse logoutResponse) throws Exception {
+                        setUserAsLoggedOut();
+                        return Observable.empty();
+                    }
+                });
     }
 
     @Override
