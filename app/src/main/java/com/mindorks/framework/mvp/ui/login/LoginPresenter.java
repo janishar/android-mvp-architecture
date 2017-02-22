@@ -67,12 +67,18 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
+                        if(!isViewAttached()){
+                            return;
+                        }
                         getMvpView().hideLoading();
                         getMvpView().openMainActivity();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        if(!isViewAttached()){
+                            return;
+                        }
                         getMvpView().hideLoading();
 
                         // handle the login error here
@@ -97,12 +103,18 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object aVoid) throws Exception {
+                        if(!isViewAttached()){
+                            return;
+                        }
                         getMvpView().hideLoading();
                         getMvpView().openMainActivity();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        if(!isViewAttached()){
+                            return;
+                        }
                         getMvpView().hideLoading();
 
                         // handle the login error here
@@ -126,12 +138,18 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object aVoid) throws Exception {
+                        if(!isViewAttached()){
+                            return;
+                        }
                         getMvpView().hideLoading();
                         getMvpView().openMainActivity();
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
+                        if(!isViewAttached()){
+                            return;
+                        }
                         getMvpView().hideLoading();
 
                         // handle the login error here
