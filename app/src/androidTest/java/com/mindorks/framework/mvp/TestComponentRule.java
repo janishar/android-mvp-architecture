@@ -21,6 +21,7 @@ import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.component.DaggerTestComponent;
 import com.mindorks.framework.mvp.di.component.TestComponent;
 import com.mindorks.framework.mvp.di.module.ApplicationTestModule;
+import com.mindorks.framework.mvp.view.base.MvpApp;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;

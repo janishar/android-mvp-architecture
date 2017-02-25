@@ -17,7 +17,7 @@ package com.mindorks.framework.mvp.data.network;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import com.mindorks.framework.mvp.di.ApiInfo;
+import com.mindorks.framework.mvp.di.scope.ApiInfo;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

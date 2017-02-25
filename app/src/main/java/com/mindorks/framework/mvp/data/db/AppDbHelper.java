@@ -52,6 +52,7 @@ public class AppDbHelper implements DbHelper {
                 return mDaoSession.getUserDao().insert(user);
             }
         });
+
     }
 
     @Override

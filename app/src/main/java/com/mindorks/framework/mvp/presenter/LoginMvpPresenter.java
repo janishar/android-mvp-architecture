@@ -13,22 +13,26 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.di.component;
+package com.mindorks.framework.mvp.presenter;
 
-import com.mindorks.framework.mvp.di.scope.PerService;
-import com.mindorks.framework.mvp.di.module.ServiceModule;
-import com.mindorks.framework.mvp.service.SyncService;
 
-import dagger.Component;
+import com.mindorks.framework.mvp.di.scope.PerActivity;
+import com.mindorks.framework.mvp.presenter.base.MvpPresenter;
+import com.mindorks.framework.mvp.view.presenterview.LoginMvpView;
 
 /**
- * Created by janisharali on 01/02/17.
+ * Created by janisharali on 27/01/17.
  */
 
-@PerService
-@Component(dependencies = ApplicationComponent.class, modules = ServiceModule.class)
-public interface ServiceComponent {
+//LoginMvpPresenter for user event handle 3 event can use make
+// 1-sign with mail and pass 2-sign with google 3-sign with facebook
+@PerActivity
+public interface LoginMvpPresenter<V extends LoginMvpView> extends MvpPresenter<V> {
 
-    void inject(SyncService service);
+    void onServerLoginClick(String email, String password);
+
+    void onGoogleLoginClick();
+
+    void onFacebookLoginClick();
 
 }

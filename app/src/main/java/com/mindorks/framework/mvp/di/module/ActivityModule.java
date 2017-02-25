@@ -18,20 +18,20 @@ package com.mindorks.framework.mvp.di.module;
 import android.app.Activity;
 import android.content.Context;
 
-import com.mindorks.framework.mvp.di.ActivityContext;
-import com.mindorks.framework.mvp.di.PerActivity;
-import com.mindorks.framework.mvp.ui.about.AboutMvpPresenter;
-import com.mindorks.framework.mvp.ui.about.AboutMvpView;
-import com.mindorks.framework.mvp.ui.about.AboutPresenter;
-import com.mindorks.framework.mvp.ui.login.LoginMvpPresenter;
-import com.mindorks.framework.mvp.ui.login.LoginMvpView;
-import com.mindorks.framework.mvp.ui.login.LoginPresenter;
-import com.mindorks.framework.mvp.ui.main.MainMvpPresenter;
-import com.mindorks.framework.mvp.ui.main.MainMvpView;
-import com.mindorks.framework.mvp.ui.main.MainPresenter;
-import com.mindorks.framework.mvp.ui.splash.SplashMvpPresenter;
-import com.mindorks.framework.mvp.ui.splash.SplashMvpView;
-import com.mindorks.framework.mvp.ui.splash.SplashPresenter;
+import com.mindorks.framework.mvp.di.scope.ActivityContext;
+import com.mindorks.framework.mvp.di.scope.PerActivity;
+import com.mindorks.framework.mvp.presenter.AboutMvpPresenter;
+import com.mindorks.framework.mvp.view.presenterview.AboutMvpView;
+import com.mindorks.framework.mvp.presenter.AboutPresenter;
+import com.mindorks.framework.mvp.presenter.LoginMvpPresenter;
+import com.mindorks.framework.mvp.view.presenterview.LoginMvpView;
+import com.mindorks.framework.mvp.presenter.LoginPresenter;
+import com.mindorks.framework.mvp.presenter.MainMvpPresenter;
+import com.mindorks.framework.mvp.view.presenterview.MainMvpView;
+import com.mindorks.framework.mvp.presenter.MainPresenter;
+import com.mindorks.framework.mvp.presenter.SplashMvpPresenter;
+import com.mindorks.framework.mvp.view.presenterview.SplashMvpView;
+import com.mindorks.framework.mvp.presenter.SplashPresenter;
 
 import dagger.Module;
 import dagger.Provides;
@@ -72,6 +72,7 @@ public class ActivityModule {
                                                                      presenter) {
         return presenter;
     }
+
 
     @Provides
     @PerActivity

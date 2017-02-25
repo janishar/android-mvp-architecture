@@ -29,10 +29,10 @@ import com.mindorks.framework.mvp.data.network.ApiHelper;
 import com.mindorks.framework.mvp.data.network.AppApiHelper;
 import com.mindorks.framework.mvp.data.prefs.AppPreferencesHelper;
 import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
-import com.mindorks.framework.mvp.di.ApiInfo;
-import com.mindorks.framework.mvp.di.ApplicationContext;
-import com.mindorks.framework.mvp.di.DatabaseInfo;
-import com.mindorks.framework.mvp.di.PreferenceInfo;
+import com.mindorks.framework.mvp.di.scope.ApiInfo;
+import com.mindorks.framework.mvp.di.scope.ApplicationContext;
+import com.mindorks.framework.mvp.di.scope.DatabaseInfo;
+import com.mindorks.framework.mvp.di.scope.PreferenceInfo;
 import com.mindorks.framework.mvp.utils.AppConstants;
 
 import javax.inject.Singleton;

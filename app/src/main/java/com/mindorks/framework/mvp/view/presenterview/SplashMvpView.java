@@ -13,22 +13,19 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.di.component;
+package com.mindorks.framework.mvp.view.presenterview;
 
-import com.mindorks.framework.mvp.di.scope.PerService;
-import com.mindorks.framework.mvp.di.module.ServiceModule;
-import com.mindorks.framework.mvp.service.SyncService;
-
-import dagger.Component;
+import com.mindorks.framework.mvp.view.presenterview.base.MvpView;
 
 /**
- * Created by janisharali on 01/02/17.
+ * Created by janisharali on 27/01/17.
  */
 
-@PerService
-@Component(dependencies = ApplicationComponent.class, modules = ServiceModule.class)
-public interface ServiceComponent {
+public interface SplashMvpView extends MvpView {
 
-    void inject(SyncService service);
+    void openLoginActivity();
 
+    void openMainActivity();
+
+    void startSyncService();
 }

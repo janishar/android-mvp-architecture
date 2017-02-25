@@ -32,7 +32,7 @@ import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
-import com.mindorks.framework.mvp.di.ApplicationContext;
+import com.mindorks.framework.mvp.di.scope.ApplicationContext;
 import com.mindorks.framework.mvp.utils.AppConstants;
 import com.mindorks.framework.mvp.utils.CommonUtils;
 

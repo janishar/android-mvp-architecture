@@ -13,22 +13,18 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.di.component;
+package com.mindorks.framework.mvp.presenter;
 
-import com.mindorks.framework.mvp.di.scope.PerService;
-import com.mindorks.framework.mvp.di.module.ServiceModule;
-import com.mindorks.framework.mvp.service.SyncService;
 
-import dagger.Component;
+import com.mindorks.framework.mvp.di.scope.PerActivity;
+import com.mindorks.framework.mvp.presenter.base.MvpPresenter;
+import com.mindorks.framework.mvp.view.presenterview.AboutMvpView;
 
 /**
- * Created by janisharali on 01/02/17.
+ * Created by janisharali on 28/01/17.
  */
 
-@PerService
-@Component(dependencies = ApplicationComponent.class, modules = ServiceModule.class)
-public interface ServiceComponent {
-
-    void inject(SyncService service);
+@PerActivity
+public interface AboutMvpPresenter<V extends AboutMvpView> extends MvpPresenter<V> {
 
 }

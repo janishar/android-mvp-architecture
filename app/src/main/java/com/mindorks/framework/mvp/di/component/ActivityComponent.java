@@ -15,12 +15,12 @@
 
 package com.mindorks.framework.mvp.di.component;
 
-import com.mindorks.framework.mvp.di.PerActivity;
+import com.mindorks.framework.mvp.di.scope.PerActivity;
 import com.mindorks.framework.mvp.di.module.ActivityModule;
-import com.mindorks.framework.mvp.ui.about.AboutFragment;
-import com.mindorks.framework.mvp.ui.login.LoginActivity;
-import com.mindorks.framework.mvp.ui.main.MainActivity;
-import com.mindorks.framework.mvp.ui.splash.SplashActivity;
+import com.mindorks.framework.mvp.view.fragment.AboutFragment;
+import com.mindorks.framework.mvp.view.activity.LoginActivity;
+import com.mindorks.framework.mvp.view.activity.MainActivity;
+import com.mindorks.framework.mvp.view.activity.SplashActivity;
 
 import dagger.Component;
 

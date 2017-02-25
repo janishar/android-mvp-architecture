@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.mindorks.framework.mvp.MvpApp"
+        android:name="com.mindorks.framework.mvp.view.base.MvpApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,7 +29,7 @@
         <service android:name=".service.SyncService" />
 
         <activity
-            android:name="com.mindorks.framework.mvp.ui.splash.SplashActivity"
+            android:name="com.mindorks.framework.mvp.view.activity.SplashActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeFullScreen">
@@ -40,12 +40,12 @@
         </activity>
 
         <activity
-            android:name="com.mindorks.framework.mvp.ui.login.LoginActivity"
+            android:name="com.mindorks.framework.mvp.view.activity.LoginActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.mindorks.framework.mvp.ui.main.MainActivity"
+            android:name="com.mindorks.framework.mvp.view.activity.MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
 

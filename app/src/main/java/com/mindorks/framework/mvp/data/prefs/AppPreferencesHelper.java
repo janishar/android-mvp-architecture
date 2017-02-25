@@ -19,8 +19,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.mindorks.framework.mvp.data.DataManager;
-import com.mindorks.framework.mvp.di.ApplicationContext;
-import com.mindorks.framework.mvp.di.PreferenceInfo;
+import com.mindorks.framework.mvp.di.scope.ApplicationContext;
+import com.mindorks.framework.mvp.di.scope.PreferenceInfo;
 import com.mindorks.framework.mvp.utils.AppConstants;
 
 import javax.inject.Inject;

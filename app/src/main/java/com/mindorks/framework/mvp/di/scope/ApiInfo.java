@@ -13,22 +13,18 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.di.component;
+package com.mindorks.framework.mvp.di.scope;
 
-import com.mindorks.framework.mvp.di.scope.PerService;
-import com.mindorks.framework.mvp.di.module.ServiceModule;
-import com.mindorks.framework.mvp.service.SyncService;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
-import dagger.Component;
+import javax.inject.Qualifier;
 
 /**
- * Created by janisharali on 01/02/17.
+ * Created by janisharali on 27/01/17.
  */
 
-@PerService
-@Component(dependencies = ApplicationComponent.class, modules = ServiceModule.class)
-public interface ServiceComponent {
-
-    void inject(SyncService service);
-
+@Qualifier
+@Retention(RetentionPolicy.RUNTIME)
+public @interface ApiInfo {
 }

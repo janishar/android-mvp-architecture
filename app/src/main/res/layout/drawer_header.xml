@@ -20,7 +20,7 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <com.mindorks.framework.mvp.ui.custom.RoundedImageView
+    <com.mindorks.framework.mvp.view.custom.RoundedImageView
         android:id="@+id/iv_profile_pic"
         android:layout_width="64dp"
         android:layout_height="64dp"

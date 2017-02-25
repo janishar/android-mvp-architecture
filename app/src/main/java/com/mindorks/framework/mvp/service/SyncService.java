@@ -21,7 +21,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 
-import com.mindorks.framework.mvp.MvpApp;
+import com.mindorks.framework.mvp.view.base.MvpApp;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.component.DaggerServiceComponent;
 import com.mindorks.framework.mvp.di.component.ServiceComponent;

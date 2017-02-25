@@ -13,37 +13,25 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.di.component;
+package com.mindorks.framework.mvp.presenter;
 
-import android.app.Application;
-import android.content.Context;
-
-import com.mindorks.framework.mvp.view.base.MvpApp;
 import com.mindorks.framework.mvp.data.DataManager;
-import com.mindorks.framework.mvp.di.scope.ApplicationContext;
-import com.mindorks.framework.mvp.di.module.ApplicationModule;
-import com.mindorks.framework.mvp.service.SyncService;
+import com.mindorks.framework.mvp.presenter.base.BasePresenter;
+import com.mindorks.framework.mvp.view.presenterview.AboutMvpView;
 
-import javax.inject.Singleton;
+import javax.inject.Inject;
 
-import dagger.Component;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
-@Singleton
-@Component(modules = ApplicationModule.class)
-public interface ApplicationComponent {
+public class AboutPresenter<V extends AboutMvpView> extends BasePresenter<V>
+        implements AboutMvpPresenter<V> {
 
-    void inject(MvpApp app);
-
-    void inject(SyncService service);
-
-    @ApplicationContext
-    Context context();
-
-    Application application();
-
-    DataManager getDataManager();
+    @Inject
+    public AboutPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
+        super(dataManager, compositeDisposable);
+    }
 }
