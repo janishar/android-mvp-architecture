@@ -43,7 +43,7 @@ import io.reactivex.disposables.CompositeDisposable;
  */
 public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
-    private static final String TAG = "RoundedImageView";
+    private static final String TAG = "BasePresenter";
 
     private final DataManager mDataManager;
 
