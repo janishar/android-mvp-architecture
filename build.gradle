@@ -55,7 +55,7 @@ ext {
     rx2AndroidNetworking = '0.0.1'
 
     dagger2Version = '2.8'
-    rxjava2Version = '2.0.5'
+    rxjava2Version = '2.0.6'
     rxandroidVersion = '2.0.1'
     butterKnifeVersion = '8.5.1'
     greenDaoVersion = '3.2.0'
