@@ -25,7 +25,6 @@ buildscript {
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
         classpath 'org.greenrobot:greendao-gradle-plugin:3.2.1'
-        classpath 'com.jakewharton:butterknife-gradle-plugin:8.5.1'
     }
 }
 

@@ -38,7 +38,6 @@ import android.widget.TextView;
 
 import com.mindorks.framework.mvp.BuildConfig;
 import com.mindorks.framework.mvp.R;
-import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.ui.about.AboutFragment;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
@@ -65,19 +64,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
 
-    @BindView(R2.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    @BindView(R2.id.drawer_view)
+    @BindView(R.id.drawer_view)
     DrawerLayout mDrawer;
 
-    @BindView(R2.id.navigation_view)
+    @BindView(R.id.navigation_view)
     NavigationView mNavigationView;
 
-    @BindView(R2.id.tv_app_version)
+    @BindView(R.id.tv_app_version)
     TextView mAppVersionTextView;
 
-    @BindView(R2.id.cards_container)
+    @BindView(R.id.cards_container)
     SwipePlaceHolderView mCardsContainerView;
 
     private TextView mNameTextView;

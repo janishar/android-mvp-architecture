@@ -22,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mindorks.framework.mvp.R;
-import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.ui.base.BaseFragment;
 
 import javax.inject.Inject;
@@ -74,7 +73,7 @@ public class AboutFragment extends BaseFragment implements AboutMvpView {
         });
     }
 
-    @OnClick(R2.id.nav_back_btn)
+    @OnClick(R.id.nav_back_btn)
     void onNavBackClick() {
         getBaseActivity().onFragmentDetached(AboutFragment.class.getSimpleName());
     }
