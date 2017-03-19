@@ -51,7 +51,7 @@ ext {
     gsonVersion = '2.8.0'
     calligraphyVersion = '2.2.0'
 
-    rx2AndroidNetworking = '0.0.1'
+    rx2AndroidNetworking = '1.0.0'
 
     dagger2Version = '2.8'
     rxjava2Version = '2.0.6'
