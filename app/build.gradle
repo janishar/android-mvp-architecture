@@ -62,11 +62,15 @@ dependencies {
     compile "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
 
     // network
-    compile "com.amitshekhar.android:rx2-android-networking:$rootProject.rx2AndroidNetworking"
+    compile "com.amitshekhar.android:rx2-android-networking:$rootProject.rx2FastAndroidNetworking"
+
+    // parser
     compile "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     // database
     compile "org.greenrobot:greendao:$rootProject.greenDaoVersion"
+
+    // debug database
     debugCompile "com.amitshekhar.android:debug-db:$rootProject.debugDBVersion"
 
     // dependency injection
