@@ -47,42 +47,57 @@
             android:layout_margin="20dp"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/et_email"
-                style="@style/TextStyle"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/input_border_bottom"
-                android:cursorVisible="true"
-                android:gravity="center|left|bottom"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:maxLength="50"
-                android:paddingBottom="10dp"
-                android:textColor="@color/black_effective"
-                android:textColorHint="@color/gray"
-                android:textSize="18sp" />
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
+                android:textColorHint="@color/gray">
 
-            <EditText
-                android:id="@+id/et_password"
-                style="@style/TextStyle"
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_email"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/input_border_bottom"
+                    android:cursorVisible="true"
+                    android:gravity="center|left|bottom"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:maxLength="50"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/black_effective"
+                    android:textSize="18sp" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp"
-                android:background="@drawable/input_border_bottom"
-                android:cursorVisible="true"
-                android:gravity="center|left|bottom"
                 android:hint="@string/password"
-                android:inputType="textPassword"
-                android:maxLength="50"
-                android:paddingBottom="10dp"
-                android:textColor="@color/black_effective"
+                app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
                 android:textColorHint="@color/gray"
-                android:textSize="18sp" />
+                app:passwordToggleEnabled="true">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_password"
+                    style="@style/TextStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/input_border_bottom"
+                    android:cursorVisible="true"
+                    android:gravity="center|left|bottom"
+                    android:inputType="textPassword"
+                    android:maxLength="50"
+                    android:paddingBottom="10dp"
+                    android:textColor="@color/black_effective"
+                    android:textSize="18sp" />
+
+            </android.support.design.widget.TextInputLayout>
 
             <Button
                 android:id="@+id/btn_server_login"
