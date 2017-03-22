@@ -9,9 +9,11 @@ This repository contains a detailed sample app that implements MVP architecture 
 </p>
 <br>
 <br>
+
 # Architecture Blueprint
 ![Blueprint](https://janishar.github.io/images/mvp-app-pics/mvp-arch.png)
 <br>
+
 # Project Structure
 ![Structure](https://janishar.github.io/images/mvp-app-pics/mvp-project-structure-diagram.png)
 <br>
