@@ -23,7 +23,7 @@ import timber.log.Timber;
  * Created by amitshekhar on 15/02/17.
  */
 
-public class MvpLogger {
+public class AppLogger {
 
     public static void init() {
         if (BuildConfig.DEBUG) {
