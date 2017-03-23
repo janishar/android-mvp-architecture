@@ -18,7 +18,6 @@ package com.mindorks.framework.mvp.ui.main;
 import com.androidnetworking.error.ANError;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.model.Question;
-import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
 
 import java.util.List;
@@ -54,36 +53,36 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     public void onDrawerOptionLogoutClick() {
         getMvpView().showLoading();
 
-        getCompositeDisposable().add(getDataManager().doLogoutApiCall()
+        getCompositeDisposable().add(getDataManager().doLogout()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<LogoutResponse>() {
-                    @Override
-                    public void accept(LogoutResponse response) throws Exception {
-                        if(!isViewAttached()) {
-                            return;
-                        }
+                .subscribe(new Consumer<Object>() {
+                               @Override
+                               public void accept(Object aVoid) throws Exception {
+                                   if(!isViewAttached()) {
+                                       return;
+                                   }
 
-                        getDataManager().setUserAsLoggedOut();
-                        getMvpView().hideLoading();
-                        getMvpView().openLoginActivity();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        if(!isViewAttached()) {
-                            return;
-                        }
+                                   getMvpView().hideLoading();
+                                   getMvpView().openLoginActivity();
+                               }
+                           },
+                        new Consumer<Throwable>() {
+                            @Override
+                            public void accept(Throwable throwable) throws Exception {
+                                if(!isViewAttached()) {
+                                    return;
+                                }
 
-                        getMvpView().hideLoading();
+                                getMvpView().hideLoading();
 
-                        // handle the login error here
-                        if (throwable instanceof ANError) {
-                            ANError anError = (ANError) throwable;
-                            handleApiError(anError);
-                        }
-                    }
-                }));
+                                // handle the login error here
+                                if (throwable instanceof ANError) {
+                                    ANError anError = (ANError) throwable;
+                                    handleApiError(anError);
+                                }
+                            }
+                        }));
 
     }
 

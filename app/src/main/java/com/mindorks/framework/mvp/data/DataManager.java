@@ -15,18 +15,16 @@
 
 package com.mindorks.framework.mvp.data;
 
-
 import com.mindorks.framework.mvp.data.db.DbHelper;
-import com.mindorks.framework.mvp.data.network.ApiHelper;
+import com.mindorks.framework.mvp.data.network.LoginApiHelper;
 import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
-
 import io.reactivex.Observable;
 
 /**
  * Created by janisharali on 27/01/17.
  */
 
-public interface DataManager extends DbHelper, PreferencesHelper, ApiHelper {
+public interface DataManager extends DbHelper, PreferencesHelper, LoginApiHelper {
 
     void updateApiHeader(Long userId, String accessToken);
 
