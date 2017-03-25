@@ -76,7 +76,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -88,7 +88,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                     @Override
                     public void accept(Throwable throwable) throws Exception {
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -123,7 +123,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -134,7 +134,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                     @Override
                     public void accept(Throwable throwable) throws Exception {
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -169,7 +169,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -180,7 +180,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                     @Override
                     public void accept(Throwable throwable) throws Exception {
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
