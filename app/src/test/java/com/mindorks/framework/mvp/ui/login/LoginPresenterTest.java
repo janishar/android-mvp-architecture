@@ -18,6 +18,7 @@ package com.mindorks.framework.mvp.ui.login;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
+import com.mindorks.framework.mvp.utils.rx.TestSchedulerProvider;
 
 import org.junit.After;
 import org.junit.Before;
@@ -25,17 +26,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import java.util.concurrent.Callable;
-
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
-import io.reactivex.android.plugins.RxAndroidPlugins;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.schedulers.TestScheduler;
 
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
@@ -50,25 +45,23 @@ public class LoginPresenterTest {
     LoginMvpView mMockLoginMvpView;
     @Mock
     DataManager mMockDataManager;
+
     private LoginPresenter<LoginMvpView> mLoginPresenter;
+    private TestScheduler testScheduler;
 
     @BeforeClass
     public static void onlyOnce() throws Exception {
-        RxAndroidPlugins.setInitMainThreadSchedulerHandler(
-                new Function<Callable<Scheduler>, Scheduler>() {
-                    @Override
-                    public Scheduler apply(Callable<Scheduler> schedulerCallable)
-                            throws Exception {
-                        return Schedulers.trampoline();
-                    }
-                });
     }
 
     @Before
     public void setUp() throws Exception {
-        MockitoAnnotations.initMocks(this);
         CompositeDisposable compositeDisposable = new CompositeDisposable();
-        mLoginPresenter = new LoginPresenter<>(mMockDataManager, compositeDisposable);
+        testScheduler = new TestScheduler();
+        TestSchedulerProvider testSchedulerProvider = new TestSchedulerProvider(testScheduler);
+        mLoginPresenter = new LoginPresenter<>(
+            mMockDataManager,
+            testSchedulerProvider,
+            compositeDisposable);
         mLoginPresenter.onAttach(mMockLoginMvpView);
     }
 
@@ -87,6 +80,8 @@ public class LoginPresenterTest {
 
         mLoginPresenter.onServerLoginClick(email, password);
 
+        testScheduler.triggerActions();
+
         verify(mMockLoginMvpView).showLoading();
         verify(mMockLoginMvpView).hideLoading();
         verify(mMockLoginMvpView).openMainActivity();
@@ -96,7 +91,6 @@ public class LoginPresenterTest {
     @After
     public void tearDown() throws Exception {
         mLoginPresenter.onDetach();
-        RxAndroidPlugins.reset();
     }
 
 }

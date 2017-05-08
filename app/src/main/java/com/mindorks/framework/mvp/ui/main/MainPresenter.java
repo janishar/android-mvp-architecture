@@ -20,15 +20,14 @@ import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
+import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -41,8 +40,10 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     private static final String TAG = MainPresenter.class.getSimpleName();
 
     @Inject
-    public MainPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
-        super(dataManager, compositeDisposable);
+    public MainPresenter(DataManager dataManager,
+                         SchedulerProvider schedulerProvider,
+                         CompositeDisposable compositeDisposable) {
+        super(dataManager, schedulerProvider, compositeDisposable);
     }
 
     @Override
@@ -55,8 +56,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         getMvpView().showLoading();
 
         getCompositeDisposable().add(getDataManager().doLogoutApiCall()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LogoutResponse>() {
                     @Override
                     public void accept(LogoutResponse response) throws Exception {
@@ -91,8 +92,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     public void onViewInitialized() {
         getCompositeDisposable().add(getDataManager()
                 .getAllQuestions()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<Question>>() {
                     @Override
                     public void accept(List<Question> questionList) throws Exception {
@@ -111,8 +112,8 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     public void onCardExhausted() {
         getCompositeDisposable().add(getDataManager()
                 .getAllQuestions()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<Question>>() {
                     @Override
                     public void accept(List<Question> questionList) throws Exception {

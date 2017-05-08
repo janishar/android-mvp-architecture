@@ -32,6 +32,8 @@ import com.mindorks.framework.mvp.ui.main.MainPresenter;
 import com.mindorks.framework.mvp.ui.splash.SplashMvpPresenter;
 import com.mindorks.framework.mvp.ui.splash.SplashMvpView;
 import com.mindorks.framework.mvp.ui.splash.SplashPresenter;
+import com.mindorks.framework.mvp.utils.rx.AppSchedulerProvider;
+import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;
@@ -64,6 +66,11 @@ public class ActivityModule {
     @Provides
     CompositeDisposable provideCompositeDisposable() {
         return new CompositeDisposable();
+    }
+
+    @Provides
+    SchedulerProvider provideSchedulerProvider(){
+        return new AppSchedulerProvider();
     }
 
     @Provides
