@@ -30,6 +30,7 @@ import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.network.model.ApiError;
 import com.mindorks.framework.mvp.utils.AppConstants;
+import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 import javax.net.ssl.HttpsURLConnection;
@@ -46,14 +47,17 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
     private static final String TAG = "BasePresenter";
 
     private final DataManager mDataManager;
-
+    private final SchedulerProvider mSchedulerProvider;
     private final CompositeDisposable mCompositeDisposable;
 
     private V mMvpView;
 
     @Inject
-    public BasePresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
+    public BasePresenter(DataManager dataManager,
+                         SchedulerProvider schedulerProvider,
+                         CompositeDisposable compositeDisposable) {
         this.mDataManager = dataManager;
+        this.mSchedulerProvider = schedulerProvider;
         this.mCompositeDisposable = compositeDisposable;
     }
 
@@ -82,6 +86,10 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
 
     public DataManager getDataManager() {
         return mDataManager;
+    }
+
+    public SchedulerProvider getSchedulerProvider() {
+        return mSchedulerProvider;
     }
 
     public CompositeDisposable getCompositeDisposable() {

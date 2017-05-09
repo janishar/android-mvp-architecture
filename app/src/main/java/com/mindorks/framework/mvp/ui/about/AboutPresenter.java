@@ -17,6 +17,7 @@ package com.mindorks.framework.mvp.ui.about;
 
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
+import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 
@@ -30,7 +31,9 @@ public class AboutPresenter<V extends AboutMvpView> extends BasePresenter<V>
         implements AboutMvpPresenter<V> {
 
     @Inject
-    public AboutPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
-        super(dataManager, compositeDisposable);
+    public AboutPresenter(DataManager dataManager,
+                          SchedulerProvider schedulerProvider,
+                          CompositeDisposable compositeDisposable) {
+        super(dataManager, schedulerProvider, compositeDisposable);
     }
 }
