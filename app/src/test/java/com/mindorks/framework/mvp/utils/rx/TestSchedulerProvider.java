@@ -7,26 +7,27 @@ import io.reactivex.schedulers.TestScheduler;
  * Created by hrskrs on 5/8/2017.
  */
 
-public class TestSchedulerProvider implements SchedulerProvider{
+public class TestSchedulerProvider implements SchedulerProvider {
 
-  private final TestScheduler testScheduler;
+    private final TestScheduler mTestScheduler;
 
-  public TestSchedulerProvider(TestScheduler testScheduler) {
-    this.testScheduler = testScheduler;
-  }
+    public TestSchedulerProvider(TestScheduler testScheduler) {
+        this.mTestScheduler = testScheduler;
+    }
 
-  @Override
-  public Scheduler ui() {
-    return testScheduler;
-  }
+    @Override
+    public Scheduler ui() {
+        return mTestScheduler;
+    }
 
-  @Override
-  public Scheduler computation() {
-    return testScheduler;
-  }
+    @Override
+    public Scheduler computation() {
+        return mTestScheduler;
+    }
 
-  @Override
-  public Scheduler io() {
-    return testScheduler;
-  }
+    @Override
+    public Scheduler io() {
+        return mTestScheduler;
+    }
+
 }

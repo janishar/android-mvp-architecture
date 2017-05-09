@@ -47,7 +47,7 @@ public class LoginPresenterTest {
     DataManager mMockDataManager;
 
     private LoginPresenter<LoginMvpView> mLoginPresenter;
-    private TestScheduler testScheduler;
+    private TestScheduler mTestScheduler;
 
     @BeforeClass
     public static void onlyOnce() throws Exception {
@@ -56,8 +56,8 @@ public class LoginPresenterTest {
     @Before
     public void setUp() throws Exception {
         CompositeDisposable compositeDisposable = new CompositeDisposable();
-        testScheduler = new TestScheduler();
-        TestSchedulerProvider testSchedulerProvider = new TestSchedulerProvider(testScheduler);
+        mTestScheduler = new TestScheduler();
+        TestSchedulerProvider testSchedulerProvider = new TestSchedulerProvider(mTestScheduler);
         mLoginPresenter = new LoginPresenter<>(
             mMockDataManager,
             testSchedulerProvider,
@@ -80,7 +80,7 @@ public class LoginPresenterTest {
 
         mLoginPresenter.onServerLoginClick(email, password);
 
-        testScheduler.triggerActions();
+        mTestScheduler.triggerActions();
 
         verify(mMockLoginMvpView).showLoading();
         verify(mMockLoginMvpView).hideLoading();
