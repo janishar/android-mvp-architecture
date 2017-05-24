@@ -21,6 +21,11 @@
             android:icon="@drawable/ic_info_24px"
             android:title="@string/about" />
         <item
+            android:id="@+id/nav_item_rate_us"
+            android:checked="true"
+            android:icon="@drawable/ic_rating"
+            android:title="@string/rate_us" />
+        <item
             android:id="@+id/nav_item_logout"
             android:checked="true"
             android:icon="@drawable/ic_power_settings_new_24px"

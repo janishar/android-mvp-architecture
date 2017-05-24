@@ -56,4 +56,20 @@
     <string name="link_mindorks_blog">3. https://blog.mindorks.com</string>
     <string name="link_mindorks_repo">4. https://github.com/MindorksOpenSource</string>
     <string name="version">"version"</string>
+
+    <!--rating dialog-->
+    <string name="rate_us">Rate Us</string>
+    <string name="rating_message">Please let us know, how can we improve ourselves?</string>
+    <string name="rating_play_store_redirect_message_line_1">Awesome! Thank you for the 5 stars.</string>
+    <string name="rating_play_store_redirect_message_line_2">Please help others, in knowing some good things about this app.</string>
+    <string name="rating_play_store_text">Rate us on Play Store</string>
+    <string name="rating_not_provided_error">Please provide us stars.</string>
+
+    <!--play store-->
+    <string name="app_google_play_store_link">"https://play.google.com/store/apps/details?id="</string>
+    <string name="app_market_link">"market://details?id="</string>
+
+    <!--button-->
+    <string name="later">Later</string>
+    <string name="submit">Submit</string>
 </resources>

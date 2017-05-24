@@ -150,4 +150,9 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
             getMvpView().updateUserProfilePic(profilePicUrl);
         }
     }
+
+    @Override
+    public void onDrawerRateUsClick() {
+        getMvpView().showRateUsDialog();
+    }
 }

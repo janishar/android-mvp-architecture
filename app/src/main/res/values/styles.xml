@@ -127,4 +127,22 @@
     <style name="TextAppearence.App.TextInputLayout" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/gray</item>
     </style>
+
+    <style name="TextStyle.EditText" parent="TextStyle">
+        <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
+    </style>
+
+    <style name="Button.Action.Positive" parent="Button">
+        <item name="android:textColor">@drawable/button_positive_text_drawable</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
+
+    <style name="Button.Action.Negative" parent="Button">
+        <item name="android:textColor">@drawable/button_negative_text_drawable</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:background">@color/transparent</item>
+    </style>
 </resources>

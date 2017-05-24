@@ -29,6 +29,9 @@ import com.mindorks.framework.mvp.ui.login.LoginPresenter;
 import com.mindorks.framework.mvp.ui.main.MainMvpPresenter;
 import com.mindorks.framework.mvp.ui.main.MainMvpView;
 import com.mindorks.framework.mvp.ui.main.MainPresenter;
+import com.mindorks.framework.mvp.ui.main.rating.RatingDialogMvpPresenter;
+import com.mindorks.framework.mvp.ui.main.rating.RatingDialogMvpView;
+import com.mindorks.framework.mvp.ui.main.rating.RatingDialogPresenter;
 import com.mindorks.framework.mvp.ui.splash.SplashMvpPresenter;
 import com.mindorks.framework.mvp.ui.splash.SplashMvpView;
 import com.mindorks.framework.mvp.ui.splash.SplashPresenter;
@@ -75,28 +78,34 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
-    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(SplashPresenter<SplashMvpView>
-                                                                     presenter) {
+    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(
+            SplashPresenter<SplashMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    AboutMvpPresenter<AboutMvpView> provideAboutPresenter(AboutPresenter<AboutMvpView>
-                                                                  presenter) {
-        return presenter;
-    }
-
-    @Provides
-    @PerActivity
-    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(LoginPresenter<LoginMvpView>
-                                                                  presenter) {
+    AboutMvpPresenter<AboutMvpView> provideAboutPresenter(
+            AboutPresenter<AboutMvpView> presenter) {
         return presenter;
     }
 
     @Provides
     @PerActivity
-    MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView>
-                                                               presenter) {
+    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(
+            LoginPresenter<LoginMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    @PerActivity
+    MainMvpPresenter<MainMvpView> provideMainPresenter(
+            MainPresenter<MainMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    RatingDialogMvpPresenter<RatingDialogMvpView> provideRateUsPresenter(
+            RatingDialogPresenter<RatingDialogMvpView> presenter) {
         return presenter;
     }
 }

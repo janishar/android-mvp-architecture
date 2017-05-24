@@ -15,45 +15,43 @@
 
 package com.mindorks.framework.mvp.ui.base;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.RelativeLayout;
 
 import com.mindorks.framework.mvp.di.component.ActivityComponent;
 
 import butterknife.Unbinder;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by janisharali on 24/05/17.
  */
 
-public abstract class BaseFragment extends Fragment implements MvpView {
+public abstract class BaseDialog extends DialogFragment implements DialogMvpView {
 
     private BaseActivity mActivity;
     private Unbinder mUnBinder;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setHasOptionsMenu(false);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        setUp(view);
-    }
-
-    @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         if (context instanceof BaseActivity) {
-            BaseActivity activity = (BaseActivity) context;
-            this.mActivity = activity;
-            activity.onFragmentAttached();
+            BaseActivity mActivity = (BaseActivity) context;
+            this.mActivity = mActivity;
+            mActivity.onFragmentAttached();
         }
     }
 
@@ -127,15 +125,15 @@ public abstract class BaseFragment extends Fragment implements MvpView {
         }
     }
 
+    public BaseActivity getBaseActivity() {
+        return mActivity;
+    }
+
     public ActivityComponent getActivityComponent() {
         if (mActivity != null) {
             return mActivity.getActivityComponent();
         }
         return null;
-    }
-
-    public BaseActivity getBaseActivity() {
-        return mActivity;
     }
 
     public void setUnBinder(Unbinder unBinder) {
@@ -144,18 +142,56 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
     protected abstract void setUp(View view);
 
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // the content
+        final RelativeLayout root = new RelativeLayout(getActivity());
+        root.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));
+
+        // creating the fullscreen dialog
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(root);
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog.getWindow().setLayout(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        dialog.setCanceledOnTouchOutside(false);
+
+        return dialog;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        setUp(view);
+    }
+
+    public void show(FragmentManager fragmentManager, String tag) {
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        Fragment prevFragment = fragmentManager.findFragmentByTag(tag);
+        if (prevFragment != null) {
+            transaction.remove(prevFragment);
+        }
+        transaction.addToBackStack(null);
+        show(transaction, tag);
+    }
+
+    @Override
+    public void dismissDialog() {
+        dismiss();
+    }
+
     @Override
     public void onDestroy() {
         if (mUnBinder != null) {
             mUnBinder.unbind();
         }
         super.onDestroy();
-    }
-
-    public interface Callback {
-
-        void onFragmentAttached();
-
-        void onFragmentDetached(String tag);
     }
 }

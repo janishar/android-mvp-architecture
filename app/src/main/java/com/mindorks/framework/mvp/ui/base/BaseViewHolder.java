@@ -13,28 +13,31 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.ui.main;
+package com.mindorks.framework.mvp.ui.base;
 
-
-import com.mindorks.framework.mvp.di.PerActivity;
-import com.mindorks.framework.mvp.ui.base.MvpPresenter;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by janisharali on 24/05/17.
  */
 
-@PerActivity
-public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
+public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
 
-    void onDrawerOptionAboutClick();
+    private int mCurrentPosition;
 
-    void onDrawerOptionLogoutClick();
+    public BaseViewHolder(View itemView) {
+        super(itemView);
+    }
 
-    void onDrawerRateUsClick();
+    protected abstract void clear();
 
-    void onViewInitialized();
+    public void onBind(int position) {
+        mCurrentPosition = position;
+        clear();
+    }
 
-    void onCardExhausted();
-
-    void onNavMenuCreated();
+    public int getCurrentPosition() {
+        return mCurrentPosition;
+    }
 }

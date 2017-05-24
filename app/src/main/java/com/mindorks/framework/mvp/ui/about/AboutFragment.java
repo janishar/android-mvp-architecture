@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mindorks.framework.mvp.R;
+import com.mindorks.framework.mvp.di.component.ActivityComponent;
 import com.mindorks.framework.mvp.ui.base.BaseFragment;
 
 import javax.inject.Inject;
@@ -54,11 +55,12 @@ public class AboutFragment extends BaseFragment implements AboutMvpView {
                              @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_about, container, false);
 
-        getActivityComponent().inject(this);
-
-        setUnBinder(ButterKnife.bind(this, view));
-
-        mPresenter.onAttach(this);
+        ActivityComponent component = getActivityComponent();
+        if (component != null) {
+            component.inject(this);
+            setUnBinder(ButterKnife.bind(this, view));
+            mPresenter.onAttach(this);
+        }
 
         return view;
     }

@@ -15,7 +15,6 @@
 
 package com.mindorks.framework.mvp.ui.custom;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -28,16 +27,16 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.widget.ImageView;
 
 
 /**
  * Created by janisharali on 01/02/17.
  */
 
-public class RoundedImageView extends ImageView {
+public class RoundedImageView extends AppCompatImageView {
 
     private static final String TAG = "RoundedImageView";
 
@@ -51,12 +50,6 @@ public class RoundedImageView extends ImageView {
 
     public RoundedImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-    }
-
-    @TargetApi(21)
-    public RoundedImageView(Context context, AttributeSet attrs,
-                            int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
     }
 
     @Override

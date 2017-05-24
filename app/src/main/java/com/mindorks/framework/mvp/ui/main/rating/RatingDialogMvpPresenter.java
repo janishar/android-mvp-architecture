@@ -13,28 +13,21 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.ui.main;
+package com.mindorks.framework.mvp.ui.main.rating;
 
-
-import com.mindorks.framework.mvp.di.PerActivity;
 import com.mindorks.framework.mvp.ui.base.MvpPresenter;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by janisharali on 22/03/17.
  */
 
-@PerActivity
-public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
+public interface RatingDialogMvpPresenter<V extends RatingDialogMvpView> extends MvpPresenter<V> {
 
-    void onDrawerOptionAboutClick();
+    void onRatingSubmitted(float rating, String message);
 
-    void onDrawerOptionLogoutClick();
+    void onCancelClicked();
 
-    void onDrawerRateUsClick();
+    void onLaterClicked();
 
-    void onViewInitialized();
-
-    void onCardExhausted();
-
-    void onNavMenuCreated();
+    void onPlayStoreRatingClicked();
 }

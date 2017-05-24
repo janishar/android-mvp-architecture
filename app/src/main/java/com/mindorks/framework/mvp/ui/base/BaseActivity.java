@@ -100,15 +100,6 @@ public abstract class BaseActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public void onError(String message) {
-        if (message != null) {
-            showSnackBar(message);
-        } else {
-            showSnackBar(getString(R.string.some_error));
-        }
-    }
-
     private void showSnackBar(String message) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
                 message, Snackbar.LENGTH_SHORT);
@@ -120,8 +111,27 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     @Override
+    public void onError(String message) {
+        showMessage(message);
+    }
+
+    @Override
     public void onError(@StringRes int resId) {
         onError(getString(resId));
+    }
+
+    @Override
+    public void showMessage(String message) {
+        if (message != null) {
+            showSnackBar(message);
+        } else {
+            showSnackBar(getString(R.string.some_error));
+        }
+    }
+
+    @Override
+    public void showMessage(@StringRes int resId) {
+        showMessage(getString(resId));
     }
 
     @Override

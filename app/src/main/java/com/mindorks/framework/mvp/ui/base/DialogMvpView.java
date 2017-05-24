@@ -13,28 +13,13 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.ui.main;
-
-
-import com.mindorks.framework.mvp.di.PerActivity;
-import com.mindorks.framework.mvp.ui.base.MvpPresenter;
+package com.mindorks.framework.mvp.ui.base;
 
 /**
- * Created by janisharali on 27/01/17.
+ * Created by janisharali on 24/05/17.
  */
 
-@PerActivity
-public interface MainMvpPresenter<V extends MainMvpView> extends MvpPresenter<V> {
+public interface DialogMvpView extends MvpView {
 
-    void onDrawerOptionAboutClick();
-
-    void onDrawerOptionLogoutClick();
-
-    void onDrawerRateUsClick();
-
-    void onViewInitialized();
-
-    void onCardExhausted();
-
-    void onNavMenuCreated();
+    void dismissDialog();
 }
