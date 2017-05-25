@@ -23,6 +23,9 @@ import com.mindorks.framework.mvp.di.PerActivity;
 import com.mindorks.framework.mvp.ui.about.AboutMvpPresenter;
 import com.mindorks.framework.mvp.ui.about.AboutMvpView;
 import com.mindorks.framework.mvp.ui.about.AboutPresenter;
+import com.mindorks.framework.mvp.ui.feed.FeedMvpPresenter;
+import com.mindorks.framework.mvp.ui.feed.FeedMvpView;
+import com.mindorks.framework.mvp.ui.feed.FeedPresenter;
 import com.mindorks.framework.mvp.ui.login.LoginMvpPresenter;
 import com.mindorks.framework.mvp.ui.login.LoginMvpView;
 import com.mindorks.framework.mvp.ui.login.LoginPresenter;
@@ -106,6 +109,12 @@ public class ActivityModule {
     @Provides
     RatingDialogMvpPresenter<RatingDialogMvpView> provideRateUsPresenter(
             RatingDialogPresenter<RatingDialogMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    FeedMvpPresenter<FeedMvpView> provideFeedPresenter(
+            FeedPresenter<FeedMvpView> presenter) {
         return presenter;
     }
 }

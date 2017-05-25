@@ -37,7 +37,7 @@ import io.reactivex.functions.Consumer;
 public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         implements MainMvpPresenter<V> {
 
-    private static final String TAG = MainPresenter.class.getSimpleName();
+    private static final String TAG = "MainPresenter";
 
     @Inject
     public MainPresenter(DataManager dataManager,
@@ -48,6 +48,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void onDrawerOptionAboutClick() {
+        getMvpView().closeNavigationDrawer();
         getMvpView().showAboutFragment();
     }
 
@@ -153,6 +154,13 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
 
     @Override
     public void onDrawerRateUsClick() {
+        getMvpView().closeNavigationDrawer();
         getMvpView().showRateUsDialog();
+    }
+
+    @Override
+    public void onDrawerMyFeedClick() {
+        getMvpView().closeNavigationDrawer();
+        getMvpView().openMyFeedActivity();
     }
 }

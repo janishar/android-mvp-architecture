@@ -31,6 +31,7 @@
     <!--Drawer Menus-->
     <string name="about">About</string>
     <string name="logout">Logout</string>
+    <string name="feed">My Feed</string>
 
     <!--App Message-->
     <string name="api_retry_error">Please retry!</string>
@@ -72,4 +73,7 @@
     <!--button-->
     <string name="later">Later</string>
     <string name="submit">Submit</string>
+
+    <!--feed-->
+    <string name="title">My Feed</string>
 </resources>

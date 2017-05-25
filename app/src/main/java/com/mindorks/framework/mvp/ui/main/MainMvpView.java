@@ -43,4 +43,12 @@ public interface MainMvpView extends MvpView {
     void updateAppVersion();
 
     void showRateUsDialog();
+
+    void openMyFeedActivity();
+
+    void closeNavigationDrawer();
+
+    void lockDrawer();
+
+    void unlockDrawer();
 }

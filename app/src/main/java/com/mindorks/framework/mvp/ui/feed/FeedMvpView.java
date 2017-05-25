@@ -13,13 +13,13 @@
  * limitations under the License
  */
 
-package com.mindorks.framework.mvp.ui.base;
+package com.mindorks.framework.mvp.ui.feed;
+
+import com.mindorks.framework.mvp.ui.base.MvpView;
 
 /**
- * Created by janisharali on 24/05/17.
+ * Created by janisharali on 25/05/17.
  */
 
-public interface DialogMvpView extends MvpView {
-
-    void dismissDialog(String tag);
+public interface FeedMvpView extends MvpView {
 }

@@ -183,8 +183,9 @@ public abstract class BaseDialog extends DialogFragment implements DialogMvpView
     }
 
     @Override
-    public void dismissDialog() {
+    public void dismissDialog(String tag) {
         dismiss();
+        getBaseActivity().onFragmentDetached(tag);
     }
 
     @Override

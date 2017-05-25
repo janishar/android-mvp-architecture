@@ -32,4 +32,6 @@ public interface RatingDialogMvpView extends DialogMvpView {
     void hideSubmitButton();
 
     void disableRatingStars();
+
+    void dismissDialog();
 }

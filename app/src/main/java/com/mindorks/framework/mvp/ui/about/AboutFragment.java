@@ -77,7 +77,7 @@ public class AboutFragment extends BaseFragment implements AboutMvpView {
 
     @OnClick(R.id.nav_back_btn)
     void onNavBackClick() {
-        getBaseActivity().onFragmentDetached(AboutFragment.class.getSimpleName());
+        getBaseActivity().onFragmentDetached(TAG);
     }
 
     @Override
