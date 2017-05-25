@@ -36,7 +36,7 @@ public final class ApiEndPoint {
             + "/588d161c100000a9072d2946";
 
     public static final String ENDPOINT_BLOG = BuildConfig.BASE_URL
-            + "/5926b73d120000b4026871b1";
+            + "/5926ce9d11000096006ccb30";
 
     public static final String ENDPOINT_OPEN_SOURCE = BuildConfig.BASE_URL
             + "/5926c34212000035026871cd";

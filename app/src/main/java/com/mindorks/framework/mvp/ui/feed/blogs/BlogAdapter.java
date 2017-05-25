@@ -29,6 +29,7 @@ import com.bumptech.glide.Glide;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.ui.base.BaseViewHolder;
+import com.mindorks.framework.mvp.utils.AppLogger;
 
 import java.util.List;
 
@@ -163,11 +164,15 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
                 @Override
                 public void onClick(View v) {
                     if (blog.getBlogUrl() != null) {
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        intent.addCategory(Intent.CATEGORY_BROWSABLE);
-                        intent.setData(Uri.parse(blog.getBlogUrl()));
-                        itemView.getContext().startActivity(intent);
+                        try {
+                            Intent intent = new Intent();
+                            intent.setAction(Intent.ACTION_VIEW);
+                            intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                            intent.setData(Uri.parse(blog.getBlogUrl()));
+                            itemView.getContext().startActivity(intent);
+                        } catch (Exception e) {
+                            AppLogger.d("url error");
+                        }
                     }
                 }
             });
