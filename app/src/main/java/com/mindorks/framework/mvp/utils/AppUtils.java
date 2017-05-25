@@ -32,7 +32,7 @@ public final class AppUtils {
         // This class is not publicly instantiable
     }
 
-    public static void openPlayStoreForCorrectify(Context context) {
+    public static void openPlayStoreForApp(Context context) {
         final String appPackageName = context.getPackageName();
         try {
             context.startActivity(new Intent(Intent.ACTION_VIEW,
