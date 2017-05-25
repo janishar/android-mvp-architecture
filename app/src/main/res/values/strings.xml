@@ -65,6 +65,7 @@
     <string name="rating_play_store_redirect_message_line_2">Please help others, in knowing some good things about this app.</string>
     <string name="rating_play_store_text">Rate us on Play Store</string>
     <string name="rating_not_provided_error">Please provide us stars.</string>
+    <string name="rating_thanks">Thank you!</string>
 
     <!--play store-->
     <string name="app_google_play_store_link">"https://play.google.com/store/apps/details?id="</string>

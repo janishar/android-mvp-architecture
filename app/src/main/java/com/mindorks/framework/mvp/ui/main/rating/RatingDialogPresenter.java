@@ -47,7 +47,7 @@ public class RatingDialogPresenter<V extends RatingDialogMvpView> extends BasePr
     public void onRatingSubmitted(final float rating, String message) {
 
         if (rating == 0) {
-            getMvpView().onError(R.string.rating_not_provided_error);
+            getMvpView().showMessage(R.string.rating_not_provided_error);
             return;
         }
 
@@ -65,10 +65,14 @@ public class RatingDialogPresenter<V extends RatingDialogMvpView> extends BasePr
 
         getMvpView().showLoading();
 
+        //for demo
+        getMvpView().hideLoading();
+        getMvpView().showMessage(R.string.rating_thanks);
+        getMvpView().dismissDialog();
+
     }
 
     private void sendRatingDataToServerInBackground(float rating) {
-
 
     }
 

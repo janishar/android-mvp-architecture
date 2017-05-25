@@ -15,6 +15,7 @@
 
 package com.mindorks.framework.mvp.ui.base;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +24,7 @@ import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.mindorks.framework.mvp.di.component.ActivityComponent;
+import com.mindorks.framework.mvp.utils.CommonUtils;
 
 import butterknife.Unbinder;
 
@@ -34,6 +36,7 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
     private BaseActivity mActivity;
     private Unbinder mUnBinder;
+    private ProgressDialog mProgressDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,15 +62,14 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
     @Override
     public void showLoading() {
-        if (mActivity != null) {
-            mActivity.showLoading();
-        }
+        hideLoading();
+        mProgressDialog = CommonUtils.showLoadingDialog(this.getContext());
     }
 
     @Override
     public void hideLoading() {
-        if (mActivity != null) {
-            mActivity.hideLoading();
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.cancel();
         }
     }
 
