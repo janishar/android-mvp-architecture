@@ -48,6 +48,10 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private Callback mCallback;
     private List<BlogResponse.Blog> mBlogResponseList;
 
+    public BlogAdapter(List<BlogResponse.Blog> blogResponseList) {
+        mBlogResponseList = blogResponseList;
+    }
+
     public void setCallback(Callback callback) {
         mCallback = callback;
     }

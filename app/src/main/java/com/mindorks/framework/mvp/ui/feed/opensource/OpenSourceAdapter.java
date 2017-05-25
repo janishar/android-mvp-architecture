@@ -48,6 +48,10 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     private Callback mCallback;
     private List<OpenSourceResponse.Repo> mOpenSourceResponseList;
 
+    public OpenSourceAdapter(List<OpenSourceResponse.Repo> openSourceResponseList) {
+        mOpenSourceResponseList = openSourceResponseList;
+    }
+
     public void setCallback(Callback callback) {
         mCallback = callback;
     }

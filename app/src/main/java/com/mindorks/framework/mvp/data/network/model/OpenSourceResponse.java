@@ -90,7 +90,7 @@ public class OpenSourceResponse {
         private String projectUrl;
 
         @Expose
-        @SerializedName("cover_img_url")
+        @SerializedName("img_url")
         private String coverImgUrl;
 
         @Expose

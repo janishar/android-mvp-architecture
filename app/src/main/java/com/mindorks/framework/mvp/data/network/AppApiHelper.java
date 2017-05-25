@@ -15,9 +15,11 @@
 
 package com.mindorks.framework.mvp.data.network;
 
+import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
+import com.mindorks.framework.mvp.data.network.model.OpenSourceResponse;
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 
 import javax.inject.Inject;
@@ -80,6 +82,22 @@ public class AppApiHelper implements ApiHelper {
                 .addHeaders(mApiHeader.getProtectedApiHeader())
                 .build()
                 .getObjectObservable(LogoutResponse.class);
+    }
+
+    @Override
+    public Observable<BlogResponse> getBlogApiCall() {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_BLOG)
+                .addHeaders(mApiHeader.getProtectedApiHeader())
+                .build()
+                .getObjectObservable(BlogResponse.class);
+    }
+
+    @Override
+    public Observable<OpenSourceResponse> getOpenSourceApiCall() {
+        return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_OPEN_SOURCE)
+                .addHeaders(mApiHeader.getProtectedApiHeader())
+                .build()
+                .getObjectObservable(OpenSourceResponse.class);
     }
 }
 

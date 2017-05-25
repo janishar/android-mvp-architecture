@@ -19,6 +19,8 @@ import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
+import com.mindorks.framework.mvp.data.network.model.BlogResponse;
+import com.mindorks.framework.mvp.data.network.model.OpenSourceResponse;
 import com.mindorks.framework.mvp.di.ActivityContext;
 import com.mindorks.framework.mvp.di.PerActivity;
 import com.mindorks.framework.mvp.ui.about.AboutMvpPresenter;
@@ -50,6 +52,8 @@ import com.mindorks.framework.mvp.ui.splash.SplashMvpView;
 import com.mindorks.framework.mvp.ui.splash.SplashPresenter;
 import com.mindorks.framework.mvp.utils.rx.AppSchedulerProvider;
 import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
+
+import java.util.ArrayList;
 
 import dagger.Module;
 import dagger.Provides;
@@ -147,12 +151,12 @@ public class ActivityModule {
 
     @Provides
     OpenSourceAdapter provideOpenSourceAdapter() {
-        return new OpenSourceAdapter();
+        return new OpenSourceAdapter(new ArrayList<OpenSourceResponse.Repo>());
     }
 
     @Provides
     BlogAdapter provideBlogAdapter() {
-        return new BlogAdapter();
+        return new BlogAdapter(new ArrayList<BlogResponse.Blog>());
     }
 
     @Provides

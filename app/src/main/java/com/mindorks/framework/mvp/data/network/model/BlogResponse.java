@@ -90,7 +90,7 @@ public class BlogResponse {
         private String blogUrl;
 
         @Expose
-        @SerializedName("cover_img_url")
+        @SerializedName("img_url")
         private String coverImgUrl;
 
         @Expose
@@ -106,7 +106,7 @@ public class BlogResponse {
         private String author;
 
         @Expose
-        @SerializedName("date")
+        @SerializedName("published_at")
         private String date;
 
         public String getBlogUrl() {

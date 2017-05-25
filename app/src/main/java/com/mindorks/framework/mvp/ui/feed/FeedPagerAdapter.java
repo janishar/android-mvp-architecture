@@ -40,9 +40,9 @@ public class FeedPagerAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                return OpenSourceFragment.newInstance();
-            case 1:
                 return BlogFragment.newInstance();
+            case 1:
+                return OpenSourceFragment.newInstance();
             default:
                 return null;
         }

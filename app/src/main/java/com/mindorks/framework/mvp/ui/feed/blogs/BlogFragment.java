@@ -25,8 +25,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.mindorks.framework.mvp.R;
+import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.di.component.ActivityComponent;
 import com.mindorks.framework.mvp.ui.base.BaseFragment;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -83,11 +86,18 @@ public class BlogFragment extends BaseFragment implements
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mBlogAdapter);
+
+        mPresenter.onViewPrepared();
     }
 
     @Override
     public void onBlogEmptyViewRetryClick() {
 
+    }
+
+    @Override
+    public void updateBlog(List<BlogResponse.Blog> blogList) {
+        mBlogAdapter.addItems(blogList);
     }
 
     @Override

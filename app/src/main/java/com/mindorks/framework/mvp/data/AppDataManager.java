@@ -28,9 +28,11 @@ import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.db.model.User;
 import com.mindorks.framework.mvp.data.network.ApiHeader;
 import com.mindorks.framework.mvp.data.network.ApiHelper;
+import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
+import com.mindorks.framework.mvp.data.network.model.OpenSourceResponse;
 import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
 import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.utils.AppConstants;
@@ -293,5 +295,15 @@ public class AppDataManager implements DataManager {
                         return Observable.just(false);
                     }
                 });
+    }
+
+    @Override
+    public Observable<BlogResponse> getBlogApiCall() {
+        return mApiHelper.getBlogApiCall();
+    }
+
+    @Override
+    public Observable<OpenSourceResponse> getOpenSourceApiCall() {
+        return mApiHelper.getOpenSourceApiCall();
     }
 }
