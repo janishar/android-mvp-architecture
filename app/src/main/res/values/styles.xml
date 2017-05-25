@@ -29,6 +29,7 @@
         <item name="android:typeface">sans</item>
         <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
         <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_white_24px</item>
     </style>
 
     <style name="AppThemeFullScreen" parent="AppTheme">
@@ -89,6 +90,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
+        <item name="colorControlNormal">@color/white</item>
     </style>
 
     <style name="Toolbar.TitleText" parent="TextStyle.Heading">
@@ -147,18 +149,24 @@
     </style>
 
     <style name="AppTab" parent="Widget.Design.TabLayout">
-        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.ActionBar</item>
         <item name="android:minHeight">?attr/actionBarSize</item>
         <item name="tabTextAppearance">@style/AppTab.TextAppearance</item>
         <item name="tabIndicatorHeight">2dp</item>
-        <item name="tabSelectedTextColor">@color/black_effective</item>
-        <item name="tabTextColor">@color/black_effective</item>
+        <item name="tabSelectedTextColor">@color/white</item>
+        <item name="tabTextColor">@color/white</item>
     </style>
 
     <style name="AppTab.TextAppearance" parent="TextAppearance.Design.Tab">
         <item name="textAllCaps">false</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="Button.Primary.Quiz.Empty" parent="Button.Primary">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:background">@drawable/button_primary_bg</item>
     </style>
 </resources>

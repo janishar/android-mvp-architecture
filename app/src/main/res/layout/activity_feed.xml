@@ -21,27 +21,26 @@
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp">
+        android:layout_height="wrap_content">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             style="@style/Toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             app:subtitleTextColor="@color/white"
             app:title="@string/title"
-            app:titleTextAppearance="@style/Toolbar.TitleText" />
+            app:titleTextAppearance="@style/Toolbar.TitleText"
+            app:titleTextColor="@color/white" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tab_layout"
             style="@style/AppTab"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@color/colorPrimary"
             app:tabGravity="fill"
-            app:tabIndicatorColor="@color/colorAccent" />
+            app:tabIndicatorColor="@color/white" />
 
     </android.support.design.widget.AppBarLayout>
 

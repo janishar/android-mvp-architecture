@@ -15,8 +15,9 @@
 
 package com.mindorks.framework.mvp.di.module;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.mindorks.framework.mvp.di.ActivityContext;
 import com.mindorks.framework.mvp.di.PerActivity;
@@ -25,7 +26,16 @@ import com.mindorks.framework.mvp.ui.about.AboutMvpView;
 import com.mindorks.framework.mvp.ui.about.AboutPresenter;
 import com.mindorks.framework.mvp.ui.feed.FeedMvpPresenter;
 import com.mindorks.framework.mvp.ui.feed.FeedMvpView;
+import com.mindorks.framework.mvp.ui.feed.FeedPagerAdapter;
 import com.mindorks.framework.mvp.ui.feed.FeedPresenter;
+import com.mindorks.framework.mvp.ui.feed.blogs.BlogAdapter;
+import com.mindorks.framework.mvp.ui.feed.blogs.BlogMvpPresenter;
+import com.mindorks.framework.mvp.ui.feed.blogs.BlogMvpView;
+import com.mindorks.framework.mvp.ui.feed.blogs.BlogPresenter;
+import com.mindorks.framework.mvp.ui.feed.opensource.OpenSourceAdapter;
+import com.mindorks.framework.mvp.ui.feed.opensource.OpenSourceMvpPresenter;
+import com.mindorks.framework.mvp.ui.feed.opensource.OpenSourceMvpView;
+import com.mindorks.framework.mvp.ui.feed.opensource.OpenSourcePresenter;
 import com.mindorks.framework.mvp.ui.login.LoginMvpPresenter;
 import com.mindorks.framework.mvp.ui.login.LoginMvpView;
 import com.mindorks.framework.mvp.ui.login.LoginPresenter;
@@ -52,9 +62,9 @@ import io.reactivex.disposables.CompositeDisposable;
 @Module
 public class ActivityModule {
 
-    private Activity mActivity;
+    private AppCompatActivity mActivity;
 
-    public ActivityModule(Activity activity) {
+    public ActivityModule(AppCompatActivity activity) {
         this.mActivity = activity;
     }
 
@@ -65,7 +75,7 @@ public class ActivityModule {
     }
 
     @Provides
-    Activity provideActivity() {
+    AppCompatActivity provideActivity() {
         return mActivity;
     }
 
@@ -116,5 +126,37 @@ public class ActivityModule {
     FeedMvpPresenter<FeedMvpView> provideFeedPresenter(
             FeedPresenter<FeedMvpView> presenter) {
         return presenter;
+    }
+
+    @Provides
+    OpenSourceMvpPresenter<OpenSourceMvpView> provideOpenSourcePresenter(
+            OpenSourcePresenter<OpenSourceMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    BlogMvpPresenter<BlogMvpView> provideBlogMvpPresenter(
+            BlogPresenter<BlogMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    FeedPagerAdapter provideFeedPagerAdapter(AppCompatActivity activity) {
+        return new FeedPagerAdapter(activity.getSupportFragmentManager());
+    }
+
+    @Provides
+    OpenSourceAdapter provideOpenSourceAdapter() {
+        return new OpenSourceAdapter();
+    }
+
+    @Provides
+    BlogAdapter provideBlogAdapter() {
+        return new BlogAdapter();
+    }
+
+    @Provides
+    LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
+        return new LinearLayoutManager(activity);
     }
 }

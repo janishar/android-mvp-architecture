@@ -18,8 +18,10 @@ package com.mindorks.framework.mvp.ui.feed;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -40,8 +42,17 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
     @Inject
     FeedMvpPresenter<FeedMvpView> mPresenter;
 
+    @Inject
+    FeedPagerAdapter mPagerAdapter;
+
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
+
+    @BindView(R.id.feed_view_pager)
+    ViewPager mViewPager;
+
+    @BindView(R.id.tab_layout)
+    TabLayout mTabLayout;
 
     public static Intent getStartIntent(Context context) {
         Intent intent = new Intent(context, FeedActivity.class);
@@ -71,6 +82,34 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
+
+        mPagerAdapter.setCount(2);
+
+        mViewPager.setAdapter(mPagerAdapter);
+
+        mTabLayout.addTab(mTabLayout.newTab().setText(getString(R.string.open_source)));
+        mTabLayout.addTab(mTabLayout.newTab().setText(getString(R.string.blog)));
+
+        mViewPager.setOffscreenPageLimit(mTabLayout.getTabCount());
+
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
+
+        mTabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                mViewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
 
     @Override
