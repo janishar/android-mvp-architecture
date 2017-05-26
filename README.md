@@ -9,6 +9,13 @@ This repository contains a detailed sample app that implements MVP architecture 
   <img src="https://janishar.github.io/gifs/mvp-app.gif" width="250">
 </p>
 <br>
+<p align="center">
+  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-drawer.png" width="200">
+  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-rating.png" width="200">
+  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-feed.png" width="200">
+  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-empty-state.png" width="200">
+</p>
+<br>
 <br>
 
 # Architecture Blueprint
