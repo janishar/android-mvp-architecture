@@ -15,9 +15,11 @@
 
 package com.mindorks.framework.mvp.data.network;
 
+import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
+import com.mindorks.framework.mvp.data.network.model.OpenSourceResponse;
 
 import io.reactivex.Observable;
 
@@ -36,4 +38,8 @@ public interface ApiHelper {
     Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request);
 
     Observable<LogoutResponse> doLogoutApiCall();
+
+    Observable<BlogResponse> getBlogApiCall();
+
+    Observable<OpenSourceResponse> getOpenSourceApiCall();
 }

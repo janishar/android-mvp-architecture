@@ -43,6 +43,7 @@ task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code
     source 'src'
     include '**/*.java'
     exclude '**/model/**'
+    exclude '**/AppLogger.java'
     reports {
         xml.enabled = true
         xml {

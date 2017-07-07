@@ -22,13 +22,12 @@ import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
 import com.mindorks.framework.mvp.utils.CommonUtils;
+import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -40,8 +39,10 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
     private static final String TAG = "LoginPresenter";
 
     @Inject
-    public LoginPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
-        super(dataManager, compositeDisposable);
+    public LoginPresenter(DataManager dataManager,
+                          SchedulerProvider schedulerProvider,
+                          CompositeDisposable compositeDisposable) {
+        super(dataManager, schedulerProvider, compositeDisposable);
     }
 
     @Override
@@ -63,8 +64,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
 
         getCompositeDisposable().add(getDataManager()
                 .doServerLoginApiCall(new LoginRequest.ServerLoginRequest(email, password))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LoginResponse>() {
                     @Override
                     public void accept(LoginResponse response) throws Exception {
@@ -76,7 +77,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -88,7 +89,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                     @Override
                     public void accept(Throwable throwable) throws Exception {
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -110,8 +111,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
 
         getCompositeDisposable().add(getDataManager()
                 .doGoogleLoginApiCall(new LoginRequest.GoogleLoginRequest("test1", "test1"))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LoginResponse>() {
                     @Override
                     public void accept(LoginResponse response) throws Exception {
@@ -123,7 +124,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -134,7 +135,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                     @Override
                     public void accept(Throwable throwable) throws Exception {
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -156,8 +157,8 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
 
         getCompositeDisposable().add(getDataManager()
                 .doFacebookLoginApiCall(new LoginRequest.FacebookLoginRequest("test3", "test4"))
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LoginResponse>() {
                     @Override
                     public void accept(LoginResponse response) throws Exception {
@@ -169,7 +170,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                                 response.getUserEmail(),
                                 response.getGoogleProfilePicUrl());
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -180,7 +181,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
                     @Override
                     public void accept(Throwable throwable) throws Exception {
 
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 

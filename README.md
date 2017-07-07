@@ -1,5 +1,6 @@
 # Android MVP Architecture: Sample App
 [![Mindorks](https://img.shields.io/badge/mindorks-opensource-blue.svg)](https://mindorks.com/open-source-projects)
+[![Mindorks Community](https://img.shields.io/badge/join-community-blue.svg)](https://mindorks.com/join-community)
 
 This repository contains a detailed sample app that implements MVP architecture using Dagger2, GreenDao, RxJava, FastAndroidNetworking, PlaceHolderView and AndroidDebugDatabase
 <p align="center">
@@ -8,10 +9,19 @@ This repository contains a detailed sample app that implements MVP architecture 
   <img src="https://janishar.github.io/gifs/mvp-app.gif" width="250">
 </p>
 <br>
+<p align="center">
+  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-drawer.png" width="200">
+  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-rating.png" width="200">
+  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-feed.png" width="200">
+  <img src="https://janishar.github.io/images/mvp-app-pics/mvp-empty-state.png" width="200">
+</p>
 <br>
+<br>
+
 # Architecture Blueprint
 ![Blueprint](https://janishar.github.io/images/mvp-app-pics/mvp-arch.png)
 <br>
+
 # Project Structure
 ![Structure](https://janishar.github.io/images/mvp-app-pics/mvp-project-structure-diagram.png)
 <br>
@@ -19,6 +29,7 @@ This repository contains a detailed sample app that implements MVP architecture 
 # Read the below listed articles. They describe the MVP concepts and the Project structure.
 1. [MVP: Part 1](https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-1-74efaf1cda40#.lkml1yggq)
 2. [MVP: Part 2](https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-2-b2ac6f3f9637#.dge0wl8rl)
+3. [MVP: Part 3](https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-3-dialog-viewpager-and-7bdfab86aabb)
 
 #### The app has following packages:
 1. **data**: It contains all the data accessing and manipulating components.
@@ -49,7 +60,7 @@ This repository contains a detailed sample app that implements MVP architecture 
 7. [Android Tinder Swipe View Example](https://blog.mindorks.com/android-tinder-swipe-view-example-3eca9b0d4794#.u7i7jbbvy)
 8. [Debugging Android Databases And Shared Preferences In The Easiest Way](https://blog.mindorks.com/debugging-android-databases-and-shared-preferences-in-the-easiest-way-e5f705dfc06b#.pxw0hvnws)
 
-###[Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
+[Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
 
 ### License
 ```

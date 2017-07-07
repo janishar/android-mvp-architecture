@@ -29,6 +29,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,12 +39,13 @@ import android.widget.TextView;
 
 import com.mindorks.framework.mvp.BuildConfig;
 import com.mindorks.framework.mvp.R;
-import com.mindorks.framework.mvp.R2;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.ui.about.AboutFragment;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.custom.RoundedImageView;
+import com.mindorks.framework.mvp.ui.feed.FeedActivity;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
+import com.mindorks.framework.mvp.ui.main.rating.RateUsDialog;
 import com.mindorks.framework.mvp.utils.ScreenUtils;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
@@ -65,19 +67,19 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Inject
     MainMvpPresenter<MainMvpView> mPresenter;
 
-    @BindView(R2.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar mToolbar;
 
-    @BindView(R2.id.drawer_view)
+    @BindView(R.id.drawer_view)
     DrawerLayout mDrawer;
 
-    @BindView(R2.id.navigation_view)
+    @BindView(R.id.navigation_view)
     NavigationView mNavigationView;
 
-    @BindView(R2.id.tv_app_version)
+    @BindView(R.id.tv_app_version)
     TextView mAppVersionTextView;
 
-    @BindView(R2.id.cards_container)
+    @BindView(R.id.cards_container)
     SwipePlaceHolderView mCardsContainerView;
 
     private TextView mNameTextView;
@@ -165,6 +167,13 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        if (mDrawer != null)
+            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+    }
+
+    @Override
     protected void onDestroy() {
         mPresenter.onDetach();
         super.onDestroy();
@@ -172,8 +181,6 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void onFragmentAttached() {
-        if (mDrawer != null)
-            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
     }
 
     @Override
@@ -187,19 +194,31 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                     .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
                     .remove(fragment)
                     .commitNow();
-            if (mDrawer != null)
-                mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            unlockDrawer();
         }
     }
 
     @Override
     public void showAboutFragment() {
+        lockDrawer();
         getSupportFragmentManager()
                 .beginTransaction()
                 .disallowAddToBackStack()
                 .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
                 .add(R.id.cl_root_view, AboutFragment.newInstance(), AboutFragment.TAG)
                 .commit();
+    }
+
+    @Override
+    public void lockDrawer() {
+        if (mDrawer != null)
+            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    @Override
+    public void unlockDrawer() {
+        if (mDrawer != null)
+            mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 
     @Override
@@ -304,6 +323,12 @@ public class MainActivity extends BaseActivity implements MainMvpView {
                             case R.id.nav_item_about:
                                 mPresenter.onDrawerOptionAboutClick();
                                 return true;
+                            case R.id.nav_item_rate_us:
+                                mPresenter.onDrawerRateUsClick();
+                                return true;
+                            case R.id.nav_item_feed:
+                                mPresenter.onDrawerMyFeedClick();
+                                return true;
                             case R.id.nav_item_logout:
                                 mPresenter.onDrawerOptionLogoutClick();
                                 return true;
@@ -318,5 +343,22 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void openLoginActivity() {
         startActivity(LoginActivity.getStartIntent(this));
         finish();
+    }
+
+    @Override
+    public void showRateUsDialog() {
+        RateUsDialog.newInstance().show(getSupportFragmentManager());
+    }
+
+    @Override
+    public void openMyFeedActivity() {
+        startActivity(FeedActivity.getStartIntent(this));
+    }
+
+    @Override
+    public void closeNavigationDrawer() {
+        if (mDrawer != null) {
+            mDrawer.closeDrawer(Gravity.START);
+        }
     }
 }

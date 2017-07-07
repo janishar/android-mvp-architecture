@@ -20,15 +20,14 @@ import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
+import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.schedulers.Schedulers;
 
 
 /**
@@ -38,15 +37,18 @@ import io.reactivex.schedulers.Schedulers;
 public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         implements MainMvpPresenter<V> {
 
-    private static final String TAG = MainPresenter.class.getSimpleName();
+    private static final String TAG = "MainPresenter";
 
     @Inject
-    public MainPresenter(DataManager dataManager, CompositeDisposable compositeDisposable) {
-        super(dataManager, compositeDisposable);
+    public MainPresenter(DataManager dataManager,
+                         SchedulerProvider schedulerProvider,
+                         CompositeDisposable compositeDisposable) {
+        super(dataManager, schedulerProvider, compositeDisposable);
     }
 
     @Override
     public void onDrawerOptionAboutClick() {
+        getMvpView().closeNavigationDrawer();
         getMvpView().showAboutFragment();
     }
 
@@ -55,12 +57,12 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         getMvpView().showLoading();
 
         getCompositeDisposable().add(getDataManager().doLogoutApiCall()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<LogoutResponse>() {
                     @Override
                     public void accept(LogoutResponse response) throws Exception {
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -71,7 +73,7 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -91,12 +93,12 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     public void onViewInitialized() {
         getCompositeDisposable().add(getDataManager()
                 .getAllQuestions()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<Question>>() {
                     @Override
                     public void accept(List<Question> questionList) throws Exception {
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -111,12 +113,12 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     public void onCardExhausted() {
         getCompositeDisposable().add(getDataManager()
                 .getAllQuestions()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
                 .subscribe(new Consumer<List<Question>>() {
                     @Override
                     public void accept(List<Question> questionList) throws Exception {
-                        if(!isViewAttached()) {
+                        if (!isViewAttached()) {
                             return;
                         }
 
@@ -148,5 +150,17 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
             getMvpView().updateUserProfilePic(profilePicUrl);
         }
+    }
+
+    @Override
+    public void onDrawerRateUsClick() {
+        getMvpView().closeNavigationDrawer();
+        getMvpView().showRateUsDialog();
+    }
+
+    @Override
+    public void onDrawerMyFeedClick() {
+        getMvpView().closeNavigationDrawer();
+        getMvpView().openMyFeedActivity();
     }
 }
