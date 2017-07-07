@@ -122,7 +122,7 @@ public class ApplicationTestModule {
     @Singleton
     CalligraphyConfig provideCalligraphyDefaultConfig() {
         return new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/source-sans-pro/SourceSansPro-Regular.ttf")
+                .setDefaultFontPath("fonts/source-sans-pro/sourcesanspro_regular.ttf")
                 .setFontAttrId(R.attr.fontPath)
                 .build();
     }

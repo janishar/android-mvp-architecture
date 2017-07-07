@@ -59,8 +59,6 @@ dependencies {
     compile "com.android.support:support-vector-drawable:$rootProject.supportLibraryVersion"
     compile "com.android.support:animated-vector-drawable:$rootProject.supportLibraryVersion"
 
-    // font
-    compile "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
 
     // network
     compile "com.amitshekhar.android:rx2-android-networking:$rootProject.rx2AndroidNetworking"
