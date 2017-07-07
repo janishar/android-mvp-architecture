@@ -39,7 +39,6 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 /**
  * Created by amitshekhar on 03/02/17.
@@ -118,12 +117,5 @@ public class ApplicationTestModule {
                 preferencesHelper.getAccessToken());
     }
 
-    @Provides
-    @Singleton
-    CalligraphyConfig provideCalligraphyDefaultConfig() {
-        return new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/source-sans-pro/sourcesanspro_regular.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build();
-    }
+
 }
