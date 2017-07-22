@@ -59,7 +59,13 @@ This repository contains a detailed sample app that implements MVP architecture 
 6. [Migrating from RxJava 1.0 to RxJava 2.0 and Learn RxJava by Examples](https://blog.mindorks.com/migrating-from-rxjava1-to-rxjava2-5dac0a94b4aa#.3lg46kora)
 7. [Android Tinder Swipe View Example](https://blog.mindorks.com/android-tinder-swipe-view-example-3eca9b0d4794#.u7i7jbbvy)
 8. [Debugging Android Databases And Shared Preferences In The Easiest Way](https://blog.mindorks.com/debugging-android-databases-and-shared-preferences-in-the-easiest-way-e5f705dfc06b#.pxw0hvnws)
+9. [RxJava Anatomy: What is RxJava, how RxJava is designed, and how RxJava works.](https://blog.mindorks.com/rxjava-anatomy-what-is-rxjava-how-rxjava-is-designed-and-how-rxjava-works-d357b3aca586)
+10. [Powerful Android ORM: greenDAO 3 Tutorial](https://mindorks.com/blog/powerful-android-orm-greendao-3-tutorial)
 
+### Playstore App of Mindorks build on this MVP architecture
+[Correctify: An English Editing and Learning app](https://play.google.com/store/apps/details?id=com.mindorks.correctify)
+
+### Mindorks open source projects
 [Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
 
 ### License
