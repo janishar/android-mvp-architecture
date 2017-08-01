@@ -25,6 +25,7 @@ import android.widget.EditText;
  * Created by janisharali on 27/01/17.
  */
 
+@SuppressWarnings("unused")
 public final class KeyboardUtils {
 
     private KeyboardUtils() {

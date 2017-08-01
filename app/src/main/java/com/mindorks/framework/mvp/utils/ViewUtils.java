@@ -27,6 +27,7 @@ import com.mindorks.framework.mvp.R;
  * Created by janisharali on 27/01/17.
  */
 
+@SuppressWarnings("unused")
 public final class ViewUtils {
 
     private ViewUtils() {

@@ -37,6 +37,7 @@ import java.util.regex.Pattern;
  * Created by janisharali on 27/01/17.
  */
 
+@SuppressWarnings("unused")
 public final class CommonUtils {
 
     private static final String TAG = "CommonUtils";

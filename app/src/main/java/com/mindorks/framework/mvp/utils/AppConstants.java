@@ -19,6 +19,7 @@ package com.mindorks.framework.mvp.utils;
  * Created by amitshekhar on 08/01/17.
  */
 
+@SuppressWarnings("unused")
 public final class AppConstants {
 
     public static final String STATUS_CODE_SUCCESS = "success";
