@@ -82,6 +82,7 @@ public final class CommonUtils {
 
         int size = is.available();
         byte[] buffer = new byte[size];
+        //noinspection ResultOfMethodCallIgnored
         is.read(buffer);
         is.close();
 
