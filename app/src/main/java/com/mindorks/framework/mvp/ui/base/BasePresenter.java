@@ -148,8 +148,8 @@ public class BasePresenter<V extends MvpView> implements MvpPresenter<V> {
         getDataManager().setAccessToken(null);
     }
 
-    public static class MvpViewNotAttachedException extends RuntimeException {
-        public MvpViewNotAttachedException() {
+    private static class MvpViewNotAttachedException extends RuntimeException {
+        MvpViewNotAttachedException() {
             super("Please call Presenter.onAttach(MvpView) before" +
                     " requesting data to the Presenter");
         }

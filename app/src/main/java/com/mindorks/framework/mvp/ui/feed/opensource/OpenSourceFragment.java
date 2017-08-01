@@ -43,6 +43,7 @@ import butterknife.ButterKnife;
 public class OpenSourceFragment extends BaseFragment implements
         OpenSourceMvpView, OpenSourceAdapter.Callback {
 
+    @SuppressWarnings("unused")
     private static final String TAG = "OpenSourceFragment";
 
     @Inject

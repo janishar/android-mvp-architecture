@@ -86,13 +86,8 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     private TextView mEmailTextView;
 
-    private RoundedImageView mProfileImageView;
-
-    private ActionBarDrawerToggle mDrawerToggle;
-
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
-        return intent;
+        return new Intent(context, MainActivity.class);
     }
 
     @Override
@@ -251,7 +246,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     @Override
     protected void setUp() {
         setSupportActionBar(mToolbar);
-        mDrawerToggle = new ActionBarDrawerToggle(
+        ActionBarDrawerToggle mDrawerToggle = new ActionBarDrawerToggle(
                 this,
                 mDrawer,
                 mToolbar,
@@ -310,7 +305,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     void setupNavMenu() {
         View headerLayout = mNavigationView.getHeaderView(0);
-        mProfileImageView = (RoundedImageView) headerLayout.findViewById(R.id.iv_profile_pic);
+        @SuppressWarnings("unused") RoundedImageView mProfileImageView = (RoundedImageView) headerLayout.findViewById(R.id.iv_profile_pic);
         mNameTextView = (TextView) headerLayout.findViewById(R.id.tv_name);
         mEmailTextView = (TextView) headerLayout.findViewById(R.id.tv_email);
 

@@ -53,7 +53,7 @@ public class FeedPagerAdapter extends FragmentStatePagerAdapter {
         return mTabCount;
     }
 
-    public void setCount(int count) {
+    void setCount(int count) {
         mTabCount = count;
     }
 }

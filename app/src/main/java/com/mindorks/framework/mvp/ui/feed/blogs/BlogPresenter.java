@@ -35,9 +35,9 @@ public class BlogPresenter<V extends BlogMvpView> extends BasePresenter<V>
         implements BlogMvpPresenter<V> {
 
     @Inject
-    public BlogPresenter(DataManager dataManager,
-                         SchedulerProvider schedulerProvider,
-                         CompositeDisposable compositeDisposable) {
+    BlogPresenter(DataManager dataManager,
+                  SchedulerProvider schedulerProvider,
+                  CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 

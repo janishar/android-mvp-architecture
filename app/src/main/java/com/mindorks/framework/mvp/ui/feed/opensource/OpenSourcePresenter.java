@@ -35,9 +35,9 @@ public class OpenSourcePresenter<V extends OpenSourceMvpView> extends BasePresen
         implements OpenSourceMvpPresenter<V> {
 
     @Inject
-    public OpenSourcePresenter(DataManager dataManager,
-                               SchedulerProvider schedulerProvider,
-                               CompositeDisposable compositeDisposable) {
+    OpenSourcePresenter(DataManager dataManager,
+                        SchedulerProvider schedulerProvider,
+                        CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 

@@ -39,8 +39,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
     SplashMvpPresenter<SplashMvpView> mPresenter;
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, SplashActivity.class);
-        return intent;
+        return new Intent(context, SplashActivity.class);
     }
 
     @Override

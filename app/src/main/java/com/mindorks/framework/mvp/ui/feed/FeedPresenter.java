@@ -34,9 +34,9 @@ public class FeedPresenter<V extends MvpView> extends BasePresenter<V> implement
     private static final String TAG = "FeedPresenter";
 
     @Inject
-    public FeedPresenter(DataManager dataManager,
-                         SchedulerProvider schedulerProvider,
-                         CompositeDisposable compositeDisposable) {
+    FeedPresenter(DataManager dataManager,
+                  SchedulerProvider schedulerProvider,
+                  CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 }
