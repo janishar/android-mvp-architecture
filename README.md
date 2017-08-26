@@ -71,6 +71,9 @@ This repository contains a detailed sample app that implements MVP architecture 
 ### Mindorks open source projects
 [Check out Mindorks awesome open source projects here](https://mindorks.com/open-source-projects)
 
+### How do I use this project?
+This is a boilerplate project aimed to help bootstrap new Android MVP Applications. Feel free to fork this application or use [AndroidStarters](http://androidstarters.com/) to create new app using this boilerplate.
+
 ### License
 ```
    Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
