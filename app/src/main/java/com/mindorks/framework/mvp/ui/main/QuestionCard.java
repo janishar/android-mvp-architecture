@@ -56,10 +56,11 @@ public class QuestionCard {
 
     private Question mQuestion;
 
-    public QuestionCard(Question question) {
+    QuestionCard(Question question) {
         mQuestion = question;
     }
 
+    @SuppressWarnings("unused")
     @Resolve
     private void onResolved() {
 

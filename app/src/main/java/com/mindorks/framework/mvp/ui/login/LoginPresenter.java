@@ -39,9 +39,9 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V>
     private static final String TAG = "LoginPresenter";
 
     @Inject
-    public LoginPresenter(DataManager dataManager,
-                          SchedulerProvider schedulerProvider,
-                          CompositeDisposable compositeDisposable) {
+    LoginPresenter(DataManager dataManager,
+                   SchedulerProvider schedulerProvider,
+                   CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 

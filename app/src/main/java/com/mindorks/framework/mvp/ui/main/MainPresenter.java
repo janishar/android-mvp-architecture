@@ -37,12 +37,13 @@ import io.reactivex.functions.Consumer;
 public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
         implements MainMvpPresenter<V> {
 
+    @SuppressWarnings("unused")
     private static final String TAG = "MainPresenter";
 
     @Inject
-    public MainPresenter(DataManager dataManager,
-                         SchedulerProvider schedulerProvider,
-                         CompositeDisposable compositeDisposable) {
+    MainPresenter(DataManager dataManager,
+                  SchedulerProvider schedulerProvider,
+                  CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 

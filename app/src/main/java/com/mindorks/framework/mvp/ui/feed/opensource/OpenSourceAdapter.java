@@ -42,8 +42,8 @@ import butterknife.OnClick;
 
 public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
-    public static final int VIEW_TYPE_EMPTY = 0;
-    public static final int VIEW_TYPE_NORMAL = 1;
+    private static final int VIEW_TYPE_EMPTY = 0;
+    private static final int VIEW_TYPE_NORMAL = 1;
 
     private Callback mCallback;
     private List<OpenSourceResponse.Repo> mOpenSourceResponseList;
@@ -52,7 +52,7 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         mOpenSourceResponseList = openSourceResponseList;
     }
 
-    public void setCallback(Callback callback) {
+    void setCallback(Callback callback) {
         mCallback = callback;
     }
 
@@ -93,16 +93,16 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
-    public void addItems(List<OpenSourceResponse.Repo> repoList) {
+    void addItems(List<OpenSourceResponse.Repo> repoList) {
         mOpenSourceResponseList.addAll(repoList);
         notifyDataSetChanged();
     }
 
-    public interface Callback {
+    interface Callback {
         void onRepoEmptyViewRetryClick();
     }
 
-    public class ViewHolder extends BaseViewHolder {
+    class ViewHolder extends BaseViewHolder {
 
         @BindView(R.id.cover_image_view)
         ImageView coverImageView;
@@ -113,7 +113,7 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.content_text_view)
         TextView contentTextView;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -160,7 +160,7 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
-    public class EmptyViewHolder extends BaseViewHolder {
+    class EmptyViewHolder extends BaseViewHolder {
 
         @BindView(R.id.btn_retry)
         Button retryButton;

@@ -31,9 +31,9 @@ public class AboutPresenter<V extends AboutMvpView> extends BasePresenter<V>
         implements AboutMvpPresenter<V> {
 
     @Inject
-    public AboutPresenter(DataManager dataManager,
-                          SchedulerProvider schedulerProvider,
-                          CompositeDisposable compositeDisposable) {
+    AboutPresenter(DataManager dataManager,
+                   SchedulerProvider schedulerProvider,
+                   CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 }

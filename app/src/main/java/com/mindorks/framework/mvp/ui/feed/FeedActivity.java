@@ -55,8 +55,7 @@ public class FeedActivity extends BaseActivity implements FeedMvpView {
     TabLayout mTabLayout;
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, FeedActivity.class);
-        return intent;
+        return new Intent(context, FeedActivity.class);
     }
 
     @Override

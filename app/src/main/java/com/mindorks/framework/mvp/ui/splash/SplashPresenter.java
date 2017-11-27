@@ -35,9 +35,9 @@ public class SplashPresenter<V extends SplashMvpView> extends BasePresenter<V>
         implements SplashMvpPresenter<V> {
 
     @Inject
-    public SplashPresenter(DataManager dataManager,
-                           SchedulerProvider schedulerProvider,
-                           CompositeDisposable compositeDisposable) {
+    SplashPresenter(DataManager dataManager,
+                    SchedulerProvider schedulerProvider,
+                    CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 

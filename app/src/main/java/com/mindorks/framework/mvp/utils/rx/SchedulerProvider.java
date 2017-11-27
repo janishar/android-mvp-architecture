@@ -6,6 +6,7 @@ import io.reactivex.Scheduler;
  * Created by hrskrs on 5/8/2017.
  */
 
+@SuppressWarnings("unused")
 public interface SchedulerProvider {
 
     Scheduler ui();

@@ -23,6 +23,7 @@ import android.view.WindowManager;
  * Created by janisharali on 27/01/17.
  */
 
+@SuppressWarnings("unused")
 public class ScreenUtils {
 
     private ScreenUtils() {

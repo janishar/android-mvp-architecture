@@ -43,8 +43,8 @@ import butterknife.OnClick;
 
 public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
-    public static final int VIEW_TYPE_EMPTY = 0;
-    public static final int VIEW_TYPE_NORMAL = 1;
+    private static final int VIEW_TYPE_EMPTY = 0;
+    private static final int VIEW_TYPE_NORMAL = 1;
 
     private Callback mCallback;
     private List<BlogResponse.Blog> mBlogResponseList;
@@ -53,7 +53,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         mBlogResponseList = blogResponseList;
     }
 
-    public void setCallback(Callback callback) {
+    void setCallback(Callback callback) {
         mCallback = callback;
     }
 
@@ -94,16 +94,16 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
-    public void addItems(List<BlogResponse.Blog> blogList) {
+    void addItems(List<BlogResponse.Blog> blogList) {
         mBlogResponseList.addAll(blogList);
         notifyDataSetChanged();
     }
 
-    public interface Callback {
+    interface Callback {
         void onBlogEmptyViewRetryClick();
     }
 
-    public class ViewHolder extends BaseViewHolder {
+    class ViewHolder extends BaseViewHolder {
 
         @BindView(R.id.cover_image_view)
         ImageView coverImageView;
@@ -120,7 +120,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.content_text_view)
         TextView contentTextView;
 
-        public ViewHolder(View itemView) {
+        ViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
@@ -179,7 +179,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         }
     }
 
-    public class EmptyViewHolder extends BaseViewHolder {
+    class EmptyViewHolder extends BaseViewHolder {
 
         @BindView(R.id.btn_retry)
         Button retryButton;
@@ -187,7 +187,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
         @BindView(R.id.tv_message)
         TextView messageTextView;
 
-        public EmptyViewHolder(View itemView) {
+        EmptyViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

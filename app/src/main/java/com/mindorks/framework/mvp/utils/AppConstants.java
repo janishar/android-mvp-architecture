@@ -19,6 +19,7 @@ package com.mindorks.framework.mvp.utils;
  * Created by amitshekhar on 08/01/17.
  */
 
+@SuppressWarnings("unused")
 public final class AppConstants {
 
     public static final String STATUS_CODE_SUCCESS = "success";
@@ -34,7 +35,7 @@ public final class AppConstants {
     public static final String SEED_DATABASE_OPTIONS = "seed/options.json";
     public static final String SEED_DATABASE_QUESTIONS = "seed/questions.json";
 
-    public static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
+    static final String TIMESTAMP_FORMAT = "yyyyMMdd_HHmmss";
 
     private AppConstants() {
         // This utility class is not publicly instantiable

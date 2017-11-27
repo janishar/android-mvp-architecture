@@ -37,6 +37,7 @@ import java.util.regex.Pattern;
  * Created by janisharali on 27/01/17.
  */
 
+@SuppressWarnings("unused")
 public final class CommonUtils {
 
     private static final String TAG = "CommonUtils";
@@ -82,6 +83,7 @@ public final class CommonUtils {
 
         int size = is.available();
         byte[] buffer = new byte[size];
+        //noinspection ResultOfMethodCallIgnored
         is.read(buffer);
         is.close();
 

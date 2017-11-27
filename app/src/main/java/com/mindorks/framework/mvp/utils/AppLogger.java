@@ -23,6 +23,7 @@ import timber.log.Timber;
  * Created by amitshekhar on 15/02/17.
  */
 
+@SuppressWarnings("unused")
 public class AppLogger {
 
     public static void init() {

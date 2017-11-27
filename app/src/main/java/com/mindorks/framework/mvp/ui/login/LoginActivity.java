@@ -48,8 +48,7 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     EditText mPasswordEditText;
 
     public static Intent getStartIntent(Context context) {
-        Intent intent = new Intent(context, LoginActivity.class);
-        return intent;
+        return new Intent(context, LoginActivity.class);
     }
 
     @Override
