@@ -27,7 +27,6 @@ import com.mindorks.framework.mvp.utils.AppLogger;
 
 import javax.inject.Inject;
 
-import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 
 /**
@@ -38,9 +37,6 @@ public class MvpApp extends Application {
 
     @Inject
     DataManager mDataManager;
-
-    @Inject
-    CalligraphyConfig mCalligraphyConfig;
 
     private ApplicationComponent mApplicationComponent;
 
@@ -60,7 +56,6 @@ public class MvpApp extends Application {
             AndroidNetworking.enableLogging(Level.BODY);
         }
 
-        CalligraphyConfig.initDefault(mCalligraphyConfig);
     }
 
     public ApplicationComponent getComponent() {

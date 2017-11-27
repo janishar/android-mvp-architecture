@@ -28,7 +28,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:typeface">sans</item>
         <item name="drawerArrowStyle">@style/MaterialDrawer.DrawerArrowStyle</item>
-        <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
+        <item name="android:fontFamily">@font/sourcesanspro_regular</item>
         <item name="android:homeAsUpIndicator">@drawable/ic_arrow_back_white_24px</item>
     </style>
 
@@ -43,21 +43,6 @@
         <item name="color">@color/white</item>
     </style>
 
-    <style name="TextAppearance.Text.Regular" parent="android:TextAppearance">
-        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Regular.ttf</item>
-    </style>
-
-    <style name="TextAppearance.Text.Bold" parent="android:TextAppearance">
-        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Bold.ttf</item>
-    </style>
-
-    <style name="TextAppearance.Text.Light" parent="android:TextAppearance">
-        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Light.ttf</item>
-    </style>
-
-    <style name="TextAppearance.Text.Italic" parent="android:TextAppearance">
-        <item name="fontPath">fonts/source-sans-pro/SourceSansPro-Italic.ttf</item>
-    </style>
 
     <style name="TextStyle">
         <item name="android:layout_marginTop">2dp</item>
@@ -68,22 +53,22 @@
     </style>
 
     <style name="TextStyle.Title" parent="TextStyle">
-        <item name="android:textAppearance">@style/TextAppearance.Text.Regular</item>
+        <item name="android:fontFamily">@font/sourcesanspro_regular</item>
     </style>
 
     <style name="TextStyle.Title.Sub" parent="TextStyle.Title">
-        <item name="android:textAppearance">@style/TextAppearance.Text.Light</item>
+        <item name="android:fontFamily">@font/sourcesanspro_light</item>
         <item name="android:textSize">14sp</item>
     </style>
 
     <style name="TextStyle.Heading" parent="TextStyle">
         <item name="android:textSize">16sp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Text.Bold</item>
+        <item name="android:fontFamily">@font/sourcesanspro_bold</item>
     </style>
 
     <style name="TextStyle.Comment" parent="TextStyle">
         <item name="android:textSize">16sp</item>
-        <item name="android:textAppearance">@style/TextAppearance.Text.Italic</item>
+        <item name="android:fontFamily">@font/sourcesanspro_italic</item>
     </style>
 
     <style name="Toolbar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
