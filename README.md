@@ -92,4 +92,5 @@ This is a boilerplate project aimed to help bootstrap new Android MVP Applicatio
 ```
 
 ### Contributing to Android MVP Architecture
-Just make pull request. You are in!
+All pull requests are welcome, make sure to follow the [contribution guidelines](CONTRIBUTING.md)
+when you submit pull request.
