@@ -46,6 +46,7 @@ import javax.inject.Singleton;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
+import io.reactivex.Single;
 import io.reactivex.functions.Function;
 
 /**
@@ -100,25 +101,25 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
-                                                                  request) {
+    public Single<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
+                                                              request) {
         return mApiHelper.doGoogleLoginApiCall(request);
     }
 
     @Override
-    public Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
-                                                                    request) {
+    public Single<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
+                                                                request) {
         return mApiHelper.doFacebookLoginApiCall(request);
     }
 
     @Override
-    public Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
-                                                                  request) {
+    public Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
+                                                              request) {
         return mApiHelper.doServerLoginApiCall(request);
     }
 
     @Override
-    public Observable<LogoutResponse> doLogoutApiCall() {
+    public Single<LogoutResponse> doLogoutApiCall() {
         return mApiHelper.doLogoutApiCall();
     }
 
@@ -298,12 +299,12 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<BlogResponse> getBlogApiCall() {
+    public Single<BlogResponse> getBlogApiCall() {
         return mApiHelper.getBlogApiCall();
     }
 
     @Override
-    public Observable<OpenSourceResponse> getOpenSourceApiCall() {
+    public Single<OpenSourceResponse> getOpenSourceApiCall() {
         return mApiHelper.getOpenSourceApiCall();
     }
 }
