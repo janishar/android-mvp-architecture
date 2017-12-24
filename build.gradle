@@ -44,17 +44,17 @@ task clean(type: Delete) {
 ext {
     // Sdk and tools
     minSdkVersion = 16
-    targetSdkVersion = 25
-    compileSdkVersion = 25
-    buildToolsVersion = '27.0.2'
+    targetSdkVersion = 26
+    compileSdkVersion = 26
+    buildToolsVersion = '26.0.2'
 
     // App dependencies
-    supportLibraryVersion = '25.3.1'
+    supportLibraryVersion = '26.1.0'
     gsonVersion = '2.8.0'
     calligraphyVersion = '2.2.0'
     glideVersion = '3.7.0'
 
-    rx2FastAndroidNetworking = '1.0.0'
+    rx2FastAndroidNetworking = '1.0.1'
 
     dagger2Version = '2.8'
     rxjava2Version = '2.0.6'

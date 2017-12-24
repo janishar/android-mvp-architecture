@@ -21,7 +21,7 @@ import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.data.network.model.OpenSourceResponse;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 
 /**
  * Created by janisharali on 27/01/17.
@@ -31,15 +31,15 @@ public interface ApiHelper {
 
     ApiHeader getApiHeader();
 
-    Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest request);
+    Single<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest request);
 
-    Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest request);
+    Single<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest request);
 
-    Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request);
+    Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request);
 
-    Observable<LogoutResponse> doLogoutApiCall();
+    Single<LogoutResponse> doLogoutApiCall();
 
-    Observable<BlogResponse> getBlogApiCall();
+    Single<BlogResponse> getBlogApiCall();
 
-    Observable<OpenSourceResponse> getOpenSourceApiCall();
+    Single<OpenSourceResponse> getOpenSourceApiCall();
 }

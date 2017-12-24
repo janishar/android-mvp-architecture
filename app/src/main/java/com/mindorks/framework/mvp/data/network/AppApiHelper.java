@@ -25,7 +25,7 @@ import com.rx2androidnetworking.Rx2AndroidNetworking;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import io.reactivex.Observable;
+import io.reactivex.Single;
 
 /**
  * Created by janisharali on 28/01/17.
@@ -47,57 +47,57 @@ public class AppApiHelper implements ApiHelper {
     }
 
     @Override
-    public Observable<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
-                                                                  request) {
+    public Single<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
+                                                              request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_GOOGLE_LOGIN)
                 .addHeaders(mApiHeader.getPublicApiHeader())
                 .addBodyParameter(request)
                 .build()
-                .getObjectObservable(LoginResponse.class);
+                .getObjectSingle(LoginResponse.class);
     }
 
     @Override
-    public Observable<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
-                                                                    request) {
+    public Single<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
+                                                                request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_FACEBOOK_LOGIN)
                 .addHeaders(mApiHeader.getPublicApiHeader())
                 .addBodyParameter(request)
                 .build()
-                .getObjectObservable(LoginResponse.class);
+                .getObjectSingle(LoginResponse.class);
     }
 
     @Override
-    public Observable<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
-                                                                  request) {
+    public Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
+                                                              request) {
         return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_SERVER_LOGIN)
                 .addHeaders(mApiHeader.getPublicApiHeader())
                 .addBodyParameter(request)
                 .build()
-                .getObjectObservable(LoginResponse.class);
+                .getObjectSingle(LoginResponse.class);
     }
 
     @Override
-    public Observable<LogoutResponse> doLogoutApiCall() {
+    public Single<LogoutResponse> doLogoutApiCall() {
         return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_LOGOUT)
                 .addHeaders(mApiHeader.getProtectedApiHeader())
                 .build()
-                .getObjectObservable(LogoutResponse.class);
+                .getObjectSingle(LogoutResponse.class);
     }
 
     @Override
-    public Observable<BlogResponse> getBlogApiCall() {
+    public Single<BlogResponse> getBlogApiCall() {
         return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_BLOG)
                 .addHeaders(mApiHeader.getProtectedApiHeader())
                 .build()
-                .getObjectObservable(BlogResponse.class);
+                .getObjectSingle(BlogResponse.class);
     }
 
     @Override
-    public Observable<OpenSourceResponse> getOpenSourceApiCall() {
+    public Single<OpenSourceResponse> getOpenSourceApiCall() {
         return Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_OPEN_SOURCE)
                 .addHeaders(mApiHeader.getProtectedApiHeader())
                 .build()
-                .getObjectObservable(OpenSourceResponse.class);
+                .getObjectSingle(OpenSourceResponse.class);
     }
 }
 
