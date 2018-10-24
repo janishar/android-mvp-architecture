@@ -48,7 +48,7 @@ greendao {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
 
     // android support libraries
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
