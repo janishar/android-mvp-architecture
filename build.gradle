@@ -49,7 +49,7 @@ ext {
     buildToolsVersion = '26.0.2'
 
     // App dependencies
-    supportLibraryVersion = '26.1.0'
+    supportLibraryVersion = '27.0.2'
     gsonVersion = '2.8.0'
     calligraphyVersion = '2.2.0'
     glideVersion = '3.7.0'
@@ -69,4 +69,17 @@ ext {
     junitVersion = '4.12'
     espressoVersion = '2.2.2'
     mockitoVersion = '2.7.1'
+}
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency { details ->
+            // Force all of the primary support libraries to use the same version.
+            if (details.requested.group == 'com.android.support'
+                    && details.requested.name != 'multidex'
+                    && details.requested.name != 'multidex-instrumentation') {
+                details.useVersion supportLibraryVersion
+            }
+        }
+    }
 }
