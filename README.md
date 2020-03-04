@@ -66,6 +66,8 @@ This repository contains a detailed sample app that implements MVP architecture 
 ### Playstore App of Mindorks build on this MVP architecture
 [Correctify: An English Editing and Learning app](https://play.google.com/store/apps/details?id=com.mindorks.correctify)
 
+### Looking for MVVM Architecture for Beginners - [Check here](https://github.com/MindorksOpenSource/MVVM-Architecture-Android-Beginners)
+
 ### Looking for MVVM Architecture - [Check here](https://github.com/MindorksOpenSource/android-mvvm-architecture)
 
 ### Looking for Kotlin MVP Architecture - [Check here](https://github.com/MindorksOpenSource/android-kotlin-mvp-architecture)
