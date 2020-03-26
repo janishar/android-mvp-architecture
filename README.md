@@ -63,8 +63,7 @@ This repository contains a detailed sample app that implements MVP architecture 
 9. [RxJava Anatomy: What is RxJava, how RxJava is designed, and how RxJava works.](https://blog.mindorks.com/rxjava-anatomy-what-is-rxjava-how-rxjava-is-designed-and-how-rxjava-works-d357b3aca586)
 10. [Powerful Android ORM: greenDAO 3 Tutorial](https://mindorks.com/blog/powerful-android-orm-greendao-3-tutorial)
 
-### Playstore App of Mindorks build on this MVP architecture
-[Correctify: An English Editing and Learning app](https://play.google.com/store/apps/details?id=com.mindorks.correctify)
+### Learn to build a ride-sharing Android app like Uber, Lyft - [Check here](https://github.com/MindorksOpenSource/ridesharing-uber-lyft-app)
 
 ### Looking for MVVM Architecture for Beginners - [Check here](https://github.com/MindorksOpenSource/MVVM-Architecture-Android-Beginners)
 
