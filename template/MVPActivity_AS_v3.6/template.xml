@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<template
+    format="5"
+    revision="1"
+     name="MVP Activity"
+    minApi="14"
+    minBuildApi="14"
+    description="Creates a new MVP activity">
+
+    <category value="Activity" />
+    <formfactor value="Mobile" />
+
+    <parameter
+        id="folderName"
+        name="Folder Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="demo"
+        help="MVP root folder" />
+
+     <parameter
+        id="className"
+        name="Class Name ** Do not suffix Activity **"
+        type="string"
+        constraints="class|unique|nonempty"
+        default="Demo"
+        help="The name of the class to create" />
+
+    <parameter
+        id="activityClass"
+        name="Activity Name"
+        type="string"
+        constraints="class|unique|nonempty"
+        suggest="${className}Activity"
+        default="DemoActivity"
+        help="The name of the activity class to create" />
+
+
+    <parameter
+        id="activityLayout"
+        name="Activity Layout Name"
+        type="string"
+        constraints="layout|unique|nonempty"
+        suggest="${classToResource(activityClass)}_activity"
+        default="main_activity"
+        help="The name of the layout to create for the activity" />
+
+
+    <parameter
+        id="isLauncher"
+        name="Launcher Activity"
+        type="boolean"
+        default="false"
+        help="If true, this activity will have a CATEGORY_LAUNCHER intent filter, making it visible in the launcher" />
+
+
+
+    <!-- 128x128 thumbnails relative to template.xml -->
+    <thumbs>
+        <!-- default thumbnail is required -->
+        <thumb>template_blank_activity.png</thumb>
+    </thumbs>
+
+    <globals file="globals.xml.ftl" />
+    <execute file="recipe.xml.ftl" />
+
+</template>
