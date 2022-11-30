@@ -50,9 +50,9 @@ This repository contains a detailed sample app that implements MVP architecture 
 1. [Introduction to Dagger 2: Part 1](https://janisharali.com/blog/introduction-to-dagger-2-using-dependency-injection-in-android-part-1-223289c2a01b#.ki6nt86l6)
 2. [Introduction to Dagger 2: Part 2](https://janisharali.com/blog/introduction-to-dagger-2-using-dependency-injection-in-android-part-2-b55857911bcd#.mkpzyk8sa)
 3. [Android Dagger2: Critical things to know before you implement](https://janisharali.com/blog/android-dagger2-critical-things-to-know-before-you-implement-275663aecc3e#.bskiz1879)
-7. [Android Tinder Swipe View Example](https://janisharali.com/blog/android-tinder-swipe-view-example-3eca9b0d4794#.u7i7jbbvy)
-9. [RxJava Anatomy: What is RxJava, how RxJava is designed, and how RxJava works.](https://janisharali.com/blog/rxjava-anatomy-what-is-rxjava-how-rxjava-is-designed-and-how-rxjava-works-d357b3aca586)
-10. [Powerful Android ORM: greenDAO 3 Tutorial](https://blog.mindorks.com/powerful-android-orm-greendao-3-tutorial)
+4. [Android Tinder Swipe View Example](https://janisharali.com/blog/android-tinder-swipe-view-example-3eca9b0d4794#.u7i7jbbvy)
+5. [RxJava Anatomy: What is RxJava, how RxJava is designed, and how RxJava works.](https://janisharali.com/blog/rxjava-anatomy-what-is-rxjava-how-rxjava-is-designed-and-how-rxjava-works-d357b3aca586)
+6. [Powerful Android ORM: greenDAO 3 Tutorial](https://blog.mindorks.com/powerful-android-orm-greendao-3-tutorial)
 
 ### Looking for MVVM Architecture - [Check here](https://github.com/janishar/android-mvvm-architecture)
 
