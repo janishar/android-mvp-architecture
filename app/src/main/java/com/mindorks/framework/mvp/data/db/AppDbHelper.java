@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.db;
 
 import com.mindorks.framework.mvp.data.db.model.DaoMaster;
@@ -20,20 +19,15 @@ import com.mindorks.framework.mvp.data.db.model.DaoSession;
 import com.mindorks.framework.mvp.data.db.model.Option;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.db.model.User;
-
 import java.util.List;
 import java.util.concurrent.Callable;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
 import io.reactivex.Observable;
-
 
 /**
  * Created by janisharali on 08/12/16.
  */
-
 @Singleton
 public class AppDbHelper implements DbHelper {
 
@@ -47,6 +41,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<Long> insertUser(final User user) {
         return Observable.fromCallable(new Callable<Long>() {
+
             @Override
             public Long call() throws Exception {
                 return mDaoSession.getUserDao().insert(user);
@@ -57,6 +52,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<List<User>> getAllUsers() {
         return Observable.fromCallable(new Callable<List<User>>() {
+
             @Override
             public List<User> call() throws Exception {
                 return mDaoSession.getUserDao().loadAll();
@@ -67,6 +63,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<List<Question>> getAllQuestions() {
         return Observable.fromCallable(new Callable<List<Question>>() {
+
             @Override
             public List<Question> call() throws Exception {
                 return mDaoSession.getQuestionDao().loadAll();
@@ -77,6 +74,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<Boolean> isQuestionEmpty() {
         return Observable.fromCallable(new Callable<Boolean>() {
+
             @Override
             public Boolean call() throws Exception {
                 return !(mDaoSession.getQuestionDao().count() > 0);
@@ -87,6 +85,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<Boolean> isOptionEmpty() {
         return Observable.fromCallable(new Callable<Boolean>() {
+
             @Override
             public Boolean call() throws Exception {
                 return !(mDaoSession.getOptionDao().count() > 0);
@@ -97,6 +96,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<Boolean> saveQuestion(final Question question) {
         return Observable.fromCallable(new Callable<Boolean>() {
+
             @Override
             public Boolean call() throws Exception {
                 mDaoSession.getQuestionDao().insert(question);
@@ -108,6 +108,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<Boolean> saveOption(final Option option) {
         return Observable.fromCallable(new Callable<Boolean>() {
+
             @Override
             public Boolean call() throws Exception {
                 mDaoSession.getOptionDao().insertInTx(option);
@@ -119,6 +120,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<Boolean> saveQuestionList(final List<Question> questionList) {
         return Observable.fromCallable(new Callable<Boolean>() {
+
             @Override
             public Boolean call() throws Exception {
                 mDaoSession.getQuestionDao().insertInTx(questionList);
@@ -130,6 +132,7 @@ public class AppDbHelper implements DbHelper {
     @Override
     public Observable<Boolean> saveOptionList(final List<Option> optionList) {
         return Observable.fromCallable(new Callable<Boolean>() {
+
             @Override
             public Boolean call() throws Exception {
                 mDaoSession.getOptionDao().insertInTx(optionList);

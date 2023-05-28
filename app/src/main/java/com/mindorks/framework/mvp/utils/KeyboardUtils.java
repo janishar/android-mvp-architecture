@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.utils;
 
 import android.app.Activity;
@@ -24,7 +23,6 @@ import android.widget.EditText;
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public final class KeyboardUtils {
 
     private KeyboardUtils() {
@@ -33,9 +31,9 @@ public final class KeyboardUtils {
 
     public static void hideSoftInput(Activity activity) {
         View view = activity.getCurrentFocus();
-        if (view == null) view = new View(activity);
-        InputMethodManager imm = (InputMethodManager) activity
-                .getSystemService(Activity.INPUT_METHOD_SERVICE);
+        if (view == null)
+            view = new View(activity);
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
@@ -43,15 +41,12 @@ public final class KeyboardUtils {
         edit.setFocusable(true);
         edit.setFocusableInTouchMode(true);
         edit.requestFocus();
-        InputMethodManager imm = (InputMethodManager) context
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(edit, 0);
     }
 
     public static void toggleSoftInput(Context context) {
-        InputMethodManager imm = (InputMethodManager) context
-                .getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
     }
-
 }

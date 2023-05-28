@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.network.model;
 
 import com.google.gson.annotations.Expose;
@@ -21,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by janisharali on 08/01/17.
  */
-
 public class LoginRequest {
 
     private LoginRequest() {
@@ -29,6 +27,7 @@ public class LoginRequest {
     }
 
     public static class ServerLoginRequest {
+
         @Expose
         @SerializedName("email")
         private String email;
@@ -60,14 +59,14 @@ public class LoginRequest {
 
         @Override
         public boolean equals(Object object) {
-            if (this == object) return true;
-            if (object == null || getClass() != object.getClass()) return false;
-
+            if (this == object)
+                return true;
+            if (object == null || getClass() != object.getClass())
+                return false;
             ServerLoginRequest that = (ServerLoginRequest) object;
-
-            if (email != null ? !email.equals(that.email) : that.email != null) return false;
+            if (email != null ? !email.equals(that.email) : that.email != null)
+                return false;
             return password != null ? password.equals(that.password) : that.password == null;
-
         }
 
         @Override
@@ -79,6 +78,7 @@ public class LoginRequest {
     }
 
     public static class GoogleLoginRequest {
+
         @Expose
         @SerializedName("google_user_id")
         private String googleUserId;
@@ -110,16 +110,14 @@ public class LoginRequest {
 
         @Override
         public boolean equals(Object object) {
-            if (this == object) return true;
-            if (object == null || getClass() != object.getClass()) return false;
-
+            if (this == object)
+                return true;
+            if (object == null || getClass() != object.getClass())
+                return false;
             GoogleLoginRequest that = (GoogleLoginRequest) object;
-
-            if (googleUserId != null ? !googleUserId.equals(that.googleUserId)
-                    : that.googleUserId != null)
+            if (googleUserId != null ? !googleUserId.equals(that.googleUserId) : that.googleUserId != null)
                 return false;
             return idToken != null ? idToken.equals(that.idToken) : that.idToken == null;
-
         }
 
         @Override
@@ -131,6 +129,7 @@ public class LoginRequest {
     }
 
     public static class FacebookLoginRequest {
+
         @Expose
         @SerializedName("fb_user_id")
         private String fbUserId;
@@ -162,16 +161,14 @@ public class LoginRequest {
 
         @Override
         public boolean equals(Object object) {
-            if (this == object) return true;
-            if (object == null || getClass() != object.getClass()) return false;
-
+            if (this == object)
+                return true;
+            if (object == null || getClass() != object.getClass())
+                return false;
             FacebookLoginRequest that = (FacebookLoginRequest) object;
-
             if (fbUserId != null ? !fbUserId.equals(that.fbUserId) : that.fbUserId != null)
                 return false;
-            return fbAccessToken != null ? fbAccessToken.equals(that.fbAccessToken)
-                    : that.fbAccessToken == null;
-
+            return fbAccessToken != null ? fbAccessToken.equals(that.fbAccessToken) : that.fbAccessToken == null;
         }
 
         @Override

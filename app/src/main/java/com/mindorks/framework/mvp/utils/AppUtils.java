@@ -12,20 +12,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.utils;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-
 import com.mindorks.framework.mvp.R;
-
 
 /**
  * Created by janisharali on 24/05/17.
  */
-
 public final class AppUtils {
 
     private AppUtils() {
@@ -35,16 +31,9 @@ public final class AppUtils {
     public static void openPlayStoreForApp(Context context) {
         final String appPackageName = context.getPackageName();
         try {
-            context.startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(context
-                            .getResources()
-                            .getString(R.string.app_market_link) + appPackageName)));
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(context.getResources().getString(R.string.app_market_link) + appPackageName)));
         } catch (android.content.ActivityNotFoundException e) {
-            context.startActivity(new Intent(Intent.ACTION_VIEW,
-                    Uri.parse(context
-                            .getResources()
-                            .getString(R.string.app_google_play_store_link) + appPackageName)));
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(context.getResources().getString(R.string.app_google_play_store_link) + appPackageName)));
         }
     }
-
 }

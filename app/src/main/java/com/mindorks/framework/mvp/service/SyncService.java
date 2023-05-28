@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.service;
 
 import android.app.Service;
@@ -20,19 +19,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
-
 import com.mindorks.framework.mvp.MvpApp;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.component.DaggerServiceComponent;
 import com.mindorks.framework.mvp.di.component.ServiceComponent;
 import com.mindorks.framework.mvp.utils.AppLogger;
-
 import javax.inject.Inject;
 
 /**
  * Created by janisharali on 01/02/17.
  */
-
 public class SyncService extends Service {
 
     private static final String TAG = "SyncService";
@@ -56,9 +52,7 @@ public class SyncService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
-        ServiceComponent component = DaggerServiceComponent.builder()
-                .applicationComponent(((MvpApp) getApplication()).getComponent())
-                .build();
+        ServiceComponent component = DaggerServiceComponent.builder().applicationComponent(((MvpApp) getApplication()).getComponent()).build();
         component.inject(this);
     }
 

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.main.rating;
 
 import android.graphics.PorterDuff;
@@ -26,14 +25,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
-
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.di.component.ActivityComponent;
 import com.mindorks.framework.mvp.ui.base.BaseDialog;
 import com.mindorks.framework.mvp.utils.AppUtils;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -41,7 +37,6 @@ import butterknife.OnClick;
 /**
  * Created by janisharali on 21/03/17.
  */
-
 public class RateUsDialog extends BaseDialog implements RatingDialogMvpView {
 
     private static final String TAG = "RateUsDialog";
@@ -64,7 +59,6 @@ public class RateUsDialog extends BaseDialog implements RatingDialogMvpView {
     @BindView(R.id.btn_submit)
     Button mSubmitButton;
 
-
     public static RateUsDialog newInstance() {
         RateUsDialog fragment = new RateUsDialog();
         Bundle bundle = new Bundle();
@@ -73,28 +67,20 @@ public class RateUsDialog extends BaseDialog implements RatingDialogMvpView {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.dialog_rate_us, container, false);
-
         ActivityComponent component = getActivityComponent();
         if (component != null) {
-
             component.inject(this);
-
             setUnBinder(ButterKnife.bind(this, view));
-
             mPresenter.onAttach(this);
         }
-
         return view;
     }
 
     public void show(FragmentManager fragmentManager) {
         super.show(fragmentManager, TAG);
     }
-
 
     @Override
     public void openPlayStoreForRating() {
@@ -113,25 +99,19 @@ public class RateUsDialog extends BaseDialog implements RatingDialogMvpView {
 
     @Override
     protected void setUp(View view) {
-
         mRatingMessageView.setVisibility(View.GONE);
         mPlayStoreRatingView.setVisibility(View.GONE);
-
         LayerDrawable stars = (LayerDrawable) mRatingBar.getProgressDrawable();
-        stars.getDrawable(2)
-                .setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow), PorterDuff.Mode.SRC_ATOP);
-        stars.getDrawable(0)
-                .setColorFilter(ContextCompat.getColor(getContext(), R.color.shadow), PorterDuff.Mode.SRC_ATOP);
-        stars.getDrawable(1)
-                .setColorFilter(ContextCompat.getColor(getContext(), R.color.shadow), PorterDuff.Mode.SRC_ATOP);
-
+        stars.getDrawable(2).setColorFilter(ContextCompat.getColor(getContext(), R.color.yellow), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(0).setColorFilter(ContextCompat.getColor(getContext(), R.color.shadow), PorterDuff.Mode.SRC_ATOP);
+        stars.getDrawable(1).setColorFilter(ContextCompat.getColor(getContext(), R.color.shadow), PorterDuff.Mode.SRC_ATOP);
         mSubmitButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 mPresenter.onRatingSubmitted(mRatingBar.getRating(), mMessage.getText().toString());
             }
         });
-
     }
 
     @OnClick(R.id.btn_later)

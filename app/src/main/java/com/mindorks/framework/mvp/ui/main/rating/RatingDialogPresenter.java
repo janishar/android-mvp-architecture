@@ -12,45 +12,35 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.main.rating;
-
 
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
 import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
-
 import javax.inject.Inject;
-
 import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by janisharali on 22/03/17.
  */
-
-public class RatingDialogPresenter<V extends RatingDialogMvpView> extends BasePresenter<V>
-        implements RatingDialogMvpPresenter<V> {
+public class RatingDialogPresenter<V extends RatingDialogMvpView> extends BasePresenter<V> implements RatingDialogMvpPresenter<V> {
 
     public static final String TAG = "RatingDialogPresenter";
 
     private boolean isRatingSecondaryActionShown = false;
 
     @Inject
-    public RatingDialogPresenter(DataManager dataManager,
-                                 SchedulerProvider schedulerProvider,
-                                 CompositeDisposable compositeDisposable) {
+    public RatingDialogPresenter(DataManager dataManager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 
     @Override
     public void onRatingSubmitted(final float rating, String message) {
-
         if (rating == 0) {
             getMvpView().showMessage(R.string.rating_not_provided_error);
             return;
         }
-
         if (!isRatingSecondaryActionShown) {
             if (rating == 5) {
                 getMvpView().showPlayStoreRatingView();
@@ -62,18 +52,14 @@ public class RatingDialogPresenter<V extends RatingDialogMvpView> extends BasePr
             isRatingSecondaryActionShown = true;
             return;
         }
-
         getMvpView().showLoading();
-
         //for demo
         getMvpView().hideLoading();
         getMvpView().showMessage(R.string.rating_thanks);
         getMvpView().dismissDialog();
-
     }
 
     private void sendRatingDataToServerInBackground(float rating) {
-
     }
 
     @Override

@@ -12,9 +12,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.login;
-
 
 import com.mindorks.framework.mvp.di.PerActivity;
 import com.mindorks.framework.mvp.ui.base.MvpPresenter;
@@ -22,7 +20,6 @@ import com.mindorks.framework.mvp.ui.base.MvpPresenter;
 /**
  * Created by janisharali on 27/01/17.
  */
-
 @PerActivity
 public interface LoginMvpPresenter<V extends LoginMvpView> extends MvpPresenter<V> {
 
@@ -31,5 +28,4 @@ public interface LoginMvpPresenter<V extends LoginMvpView> extends MvpPresenter<
     void onGoogleLoginClick();
 
     void onFacebookLoginClick();
-
 }

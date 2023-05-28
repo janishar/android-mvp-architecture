@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.base;
 
 import android.support.v7.widget.RecyclerView;
@@ -21,7 +20,6 @@ import android.view.View;
 /**
  * Created by janisharali on 24/05/17.
  */
-
 public abstract class BaseViewHolder extends RecyclerView.ViewHolder {
 
     private int mCurrentPosition;

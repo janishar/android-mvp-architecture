@@ -12,13 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.base;
 
 /**
  * Created by janisharali on 24/05/17.
  */
-
 public interface DialogMvpView extends MvpView {
 
     void dismissDialog(String tag);

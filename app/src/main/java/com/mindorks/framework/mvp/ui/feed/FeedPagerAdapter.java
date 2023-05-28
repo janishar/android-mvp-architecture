@@ -12,20 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.feed;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
 import com.mindorks.framework.mvp.ui.feed.blogs.BlogFragment;
 import com.mindorks.framework.mvp.ui.feed.opensource.OpenSourceFragment;
 
 /**
  * Created by Janisharali on 25/05/2017.
  */
-
 public class FeedPagerAdapter extends FragmentStatePagerAdapter {
 
     private int mTabCount;
@@ -37,8 +34,7 @@ public class FeedPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-
-        switch (position) {
+        switch(position) {
             case 0:
                 return BlogFragment.newInstance();
             case 1:

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.base;
 
 import android.app.Dialog;
@@ -31,18 +30,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.RelativeLayout;
-
 import com.mindorks.framework.mvp.di.component.ActivityComponent;
-
 import butterknife.Unbinder;
 
 /**
  * Created by janisharali on 24/05/17.
  */
-
 public abstract class BaseDialog extends DialogFragment implements DialogMvpView {
 
     private BaseActivity mActivity;
+
     private Unbinder mUnBinder;
 
     @Override
@@ -147,22 +144,16 @@ public abstract class BaseDialog extends DialogFragment implements DialogMvpView
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // the content
         final RelativeLayout root = new RelativeLayout(getActivity());
-        root.setLayoutParams(new ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT));
-
+        root.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         // creating the fullscreen dialog
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(root);
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.getWindow().setLayout(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         }
         dialog.setCanceledOnTouchOutside(false);
-
         return dialog;
     }
 

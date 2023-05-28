@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.login;
 
 import android.content.Context;
@@ -20,22 +19,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.main.MainActivity;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public class LoginActivity extends BaseActivity implements LoginMvpView {
 
     @Inject
@@ -56,18 +50,14 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         getActivityComponent().inject(this);
-
         setUnBinder(ButterKnife.bind(this));
-
         mPresenter.onAttach(LoginActivity.this);
     }
 
     @OnClick(R.id.btn_server_login)
     void onServerLoginClick(View v) {
-        mPresenter.onServerLoginClick(mEmailEditText.getText().toString(),
-                mPasswordEditText.getText().toString());
+        mPresenter.onServerLoginClick(mEmailEditText.getText().toString(), mPasswordEditText.getText().toString());
     }
 
     @OnClick(R.id.ib_google_login)
@@ -95,6 +85,5 @@ public class LoginActivity extends BaseActivity implements LoginMvpView {
 
     @Override
     protected void setUp() {
-
     }
 }

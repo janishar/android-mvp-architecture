@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.feed.opensource;
 
 import com.mindorks.framework.mvp.ui.base.MvpPresenter;
@@ -20,9 +19,7 @@ import com.mindorks.framework.mvp.ui.base.MvpPresenter;
 /**
  * Created by janisharali on 25/05/17.
  */
-
-public interface OpenSourceMvpPresenter<V extends OpenSourceMvpView>
-        extends MvpPresenter<V> {
+public interface OpenSourceMvpPresenter<V extends OpenSourceMvpView> extends MvpPresenter<V> {
 
     void onViewPrepared();
 }

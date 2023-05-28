@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.feed.blogs;
 
 import android.content.Intent;
@@ -24,15 +23,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.ui.base.BaseViewHolder;
 import com.mindorks.framework.mvp.utils.AppLogger;
-
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -40,13 +36,14 @@ import butterknife.OnClick;
 /**
  * Created by Janisharali on 25-05-2017.
  */
-
 public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public static final int VIEW_TYPE_EMPTY = 0;
+
     public static final int VIEW_TYPE_NORMAL = 1;
 
     private Callback mCallback;
+
     private List<BlogResponse.Blog> mBlogResponseList;
 
     public BlogAdapter(List<BlogResponse.Blog> blogResponseList) {
@@ -64,15 +61,12 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        switch (viewType) {
+        switch(viewType) {
             case VIEW_TYPE_NORMAL:
-                return new ViewHolder(
-                        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_blog_view, parent, false));
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_blog_view, parent, false));
             case VIEW_TYPE_EMPTY:
             default:
-                return new EmptyViewHolder(
-                        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false));
+                return new EmptyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false));
         }
     }
 
@@ -100,6 +94,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public interface Callback {
+
         void onBlogEmptyViewRetryClick();
     }
 
@@ -133,34 +128,24 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         public void onBind(int position) {
             super.onBind(position);
-
             final BlogResponse.Blog blog = mBlogResponseList.get(position);
-
             if (blog.getCoverImgUrl() != null) {
-                Glide.with(itemView.getContext())
-                        .load(blog.getCoverImgUrl())
-                        .asBitmap()
-                        .centerCrop()
-                        .into(coverImageView);
+                Glide.with(itemView.getContext()).load(blog.getCoverImgUrl()).asBitmap().centerCrop().into(coverImageView);
             }
-
             if (blog.getTitle() != null) {
                 titleTextView.setText(blog.getTitle());
             }
-
             if (blog.getAuthor() != null) {
                 authorTextView.setText(blog.getAuthor());
             }
-
             if (blog.getDate() != null) {
                 dateTextView.setText(blog.getDate());
             }
-
             if (blog.getDescription() != null) {
                 contentTextView.setText(blog.getDescription());
             }
-
             itemView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     if (blog.getBlogUrl() != null) {
@@ -194,7 +179,6 @@ public class BlogAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @Override
         protected void clear() {
-
         }
 
         @OnClick(R.id.btn_retry)

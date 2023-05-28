@@ -12,26 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.di.component;
 
 import android.app.Application;
 import android.content.Context;
-
 import com.mindorks.framework.mvp.MvpApp;
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.di.module.ApplicationModule;
 import com.mindorks.framework.mvp.service.SyncService;
-
 import javax.inject.Singleton;
-
 import dagger.Component;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 @Singleton
 @Component(modules = ApplicationModule.class)
 public interface ApplicationComponent {

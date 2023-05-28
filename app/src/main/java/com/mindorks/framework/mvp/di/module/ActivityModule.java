@@ -12,13 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.di.module;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-
 import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.data.network.model.OpenSourceResponse;
 import com.mindorks.framework.mvp.di.ActivityContext;
@@ -52,9 +50,7 @@ import com.mindorks.framework.mvp.ui.splash.SplashMvpView;
 import com.mindorks.framework.mvp.ui.splash.SplashPresenter;
 import com.mindorks.framework.mvp.utils.rx.AppSchedulerProvider;
 import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
-
 import java.util.ArrayList;
-
 import dagger.Module;
 import dagger.Provides;
 import io.reactivex.disposables.CompositeDisposable;
@@ -62,7 +58,6 @@ import io.reactivex.disposables.CompositeDisposable;
 /**
  * Created by janisharali on 27/01/17.
  */
-
 @Module
 public class ActivityModule {
 
@@ -95,52 +90,44 @@ public class ActivityModule {
 
     @Provides
     @PerActivity
-    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(
-            SplashPresenter<SplashMvpView> presenter) {
+    SplashMvpPresenter<SplashMvpView> provideSplashPresenter(SplashPresenter<SplashMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    AboutMvpPresenter<AboutMvpView> provideAboutPresenter(
-            AboutPresenter<AboutMvpView> presenter) {
-        return presenter;
-    }
-
-    @Provides
-    @PerActivity
-    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(
-            LoginPresenter<LoginMvpView> presenter) {
+    AboutMvpPresenter<AboutMvpView> provideAboutPresenter(AboutPresenter<AboutMvpView> presenter) {
         return presenter;
     }
 
     @Provides
     @PerActivity
-    MainMvpPresenter<MainMvpView> provideMainPresenter(
-            MainPresenter<MainMvpView> presenter) {
+    LoginMvpPresenter<LoginMvpView> provideLoginPresenter(LoginPresenter<LoginMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    RatingDialogMvpPresenter<RatingDialogMvpView> provideRateUsPresenter(
-            RatingDialogPresenter<RatingDialogMvpView> presenter) {
+    @PerActivity
+    MainMvpPresenter<MainMvpView> provideMainPresenter(MainPresenter<MainMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    FeedMvpPresenter<FeedMvpView> provideFeedPresenter(
-            FeedPresenter<FeedMvpView> presenter) {
+    RatingDialogMvpPresenter<RatingDialogMvpView> provideRateUsPresenter(RatingDialogPresenter<RatingDialogMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    OpenSourceMvpPresenter<OpenSourceMvpView> provideOpenSourcePresenter(
-            OpenSourcePresenter<OpenSourceMvpView> presenter) {
+    FeedMvpPresenter<FeedMvpView> provideFeedPresenter(FeedPresenter<FeedMvpView> presenter) {
         return presenter;
     }
 
     @Provides
-    BlogMvpPresenter<BlogMvpView> provideBlogMvpPresenter(
-            BlogPresenter<BlogMvpView> presenter) {
+    OpenSourceMvpPresenter<OpenSourceMvpView> provideOpenSourcePresenter(OpenSourcePresenter<OpenSourceMvpView> presenter) {
+        return presenter;
+    }
+
+    @Provides
+    BlogMvpPresenter<BlogMvpView> provideBlogMvpPresenter(BlogPresenter<BlogMvpView> presenter) {
         return presenter;
     }
 

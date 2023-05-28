@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.network.model;
 
 import com.google.gson.annotations.Expose;
@@ -21,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by janisharali on 08/01/17.
  */
-
 public class LogoutResponse {
 
     @Expose
@@ -50,15 +48,14 @@ public class LogoutResponse {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-
+        if (this == object)
+            return true;
+        if (object == null || getClass() != object.getClass())
+            return false;
         LogoutResponse that = (LogoutResponse) object;
-
         if (statusCode != null ? !statusCode.equals(that.statusCode) : that.statusCode != null)
             return false;
         return message != null ? message.equals(that.message) : that.message == null;
-
     }
 
     @Override

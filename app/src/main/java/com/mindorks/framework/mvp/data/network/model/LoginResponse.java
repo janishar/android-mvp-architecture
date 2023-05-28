@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.network.model;
 
 import com.google.gson.annotations.Expose;
@@ -21,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by janisharali on 08/01/17.
  */
-
 public class LoginResponse {
 
     @Expose
@@ -134,31 +132,28 @@ public class LoginResponse {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-
+        if (this == object)
+            return true;
+        if (object == null || getClass() != object.getClass())
+            return false;
         LoginResponse that = (LoginResponse) object;
-
         if (statusCode != null ? !statusCode.equals(that.statusCode) : that.statusCode != null)
             return false;
-        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null)
+            return false;
         if (accessToken != null ? !accessToken.equals(that.accessToken) : that.accessToken != null)
             return false;
         if (userName != null ? !userName.equals(that.userName) : that.userName != null)
             return false;
         if (userEmail != null ? !userEmail.equals(that.userEmail) : that.userEmail != null)
             return false;
-        if (serverProfilePicUrl != null ? !serverProfilePicUrl.equals(that.serverProfilePicUrl)
-                : that.serverProfilePicUrl != null)
+        if (serverProfilePicUrl != null ? !serverProfilePicUrl.equals(that.serverProfilePicUrl) : that.serverProfilePicUrl != null)
             return false;
-        if (fbProfilePicUrl != null ? !fbProfilePicUrl.equals(that.fbProfilePicUrl)
-                : that.fbProfilePicUrl != null)
+        if (fbProfilePicUrl != null ? !fbProfilePicUrl.equals(that.fbProfilePicUrl) : that.fbProfilePicUrl != null)
             return false;
-        if (googleProfilePicUrl != null ? !googleProfilePicUrl.equals(that.googleProfilePicUrl)
-                : that.googleProfilePicUrl != null)
+        if (googleProfilePicUrl != null ? !googleProfilePicUrl.equals(that.googleProfilePicUrl) : that.googleProfilePicUrl != null)
             return false;
         return message != null ? message.equals(that.message) : that.message == null;
-
     }
 
     @Override

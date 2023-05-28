@@ -12,12 +12,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data;
 
-
 import android.content.Context;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.$Gson$Types;
@@ -37,13 +34,10 @@ import com.mindorks.framework.mvp.data.prefs.PreferencesHelper;
 import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.utils.AppConstants;
 import com.mindorks.framework.mvp.utils.CommonUtils;
-
 import java.lang.reflect.Type;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
-
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
 import io.reactivex.Single;
@@ -52,22 +46,21 @@ import io.reactivex.functions.Function;
 /**
  * Created by janisharali on 27/01/17.
  */
-
 @Singleton
 public class AppDataManager implements DataManager {
 
     private static final String TAG = "AppDataManager";
 
     private final Context mContext;
+
     private final DbHelper mDbHelper;
+
     private final PreferencesHelper mPreferencesHelper;
+
     private final ApiHelper mApiHelper;
 
     @Inject
-    public AppDataManager(@ApplicationContext Context context,
-                          DbHelper dbHelper,
-                          PreferencesHelper preferencesHelper,
-                          ApiHelper apiHelper) {
+    public AppDataManager(@ApplicationContext Context context, DbHelper dbHelper, PreferencesHelper preferencesHelper, ApiHelper apiHelper) {
         mContext = context;
         mDbHelper = dbHelper;
         mPreferencesHelper = preferencesHelper;
@@ -101,20 +94,17 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Single<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest
-                                                              request) {
+    public Single<LoginResponse> doGoogleLoginApiCall(LoginRequest.GoogleLoginRequest request) {
         return mApiHelper.doGoogleLoginApiCall(request);
     }
 
     @Override
-    public Single<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest
-                                                                request) {
+    public Single<LoginResponse> doFacebookLoginApiCall(LoginRequest.FacebookLoginRequest request) {
         return mApiHelper.doFacebookLoginApiCall(request);
     }
 
     @Override
-    public Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest
-                                                              request) {
+    public Single<LoginResponse> doServerLoginApiCall(LoginRequest.ServerLoginRequest request) {
         return mApiHelper.doServerLoginApiCall(request);
     }
 
@@ -180,33 +170,19 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public void updateUserInfo(
-            String accessToken,
-            Long userId,
-            LoggedInMode loggedInMode,
-            String userName,
-            String email,
-            String profilePicPath) {
-
+    public void updateUserInfo(String accessToken, Long userId, LoggedInMode loggedInMode, String userName, String email, String profilePicPath) {
         setAccessToken(accessToken);
         setCurrentUserId(userId);
         setCurrentUserLoggedInMode(loggedInMode);
         setCurrentUserName(userName);
         setCurrentUserEmail(email);
         setCurrentUserProfilePicUrl(profilePicPath);
-
         updateApiHeader(userId, accessToken);
     }
 
     @Override
     public void setUserAsLoggedOut() {
-        updateUserInfo(
-                null,
-                null,
-                DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
-                null,
-                null,
-                null);
+        updateUserInfo(null, null, DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT, null, null, null);
     }
 
     @Override
@@ -246,56 +222,39 @@ public class AppDataManager implements DataManager {
 
     @Override
     public Observable<Boolean> seedDatabaseQuestions() {
-
         GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         final Gson gson = builder.create();
+        return mDbHelper.isQuestionEmpty().concatMap(new Function<Boolean, ObservableSource<? extends Boolean>>() {
 
-        return mDbHelper.isQuestionEmpty()
-                .concatMap(new Function<Boolean, ObservableSource<? extends Boolean>>() {
-                    @Override
-                    public ObservableSource<? extends Boolean> apply(Boolean isEmpty)
-                            throws Exception {
-                        if (isEmpty) {
-                            Type type = $Gson$Types
-                                    .newParameterizedTypeWithOwner(null, List.class,
-                                            Question.class);
-                            List<Question> questionList = gson.fromJson(
-                                    CommonUtils.loadJSONFromAsset(mContext,
-                                            AppConstants.SEED_DATABASE_QUESTIONS),
-                                    type);
-
-                            return saveQuestionList(questionList);
-                        }
-                        return Observable.just(false);
-                    }
-                });
+            @Override
+            public ObservableSource<? extends Boolean> apply(Boolean isEmpty) throws Exception {
+                if (isEmpty) {
+                    Type type = $Gson$Types.newParameterizedTypeWithOwner(null, List.class, Question.class);
+                    List<Question> questionList = gson.fromJson(CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_QUESTIONS), type);
+                    return saveQuestionList(questionList);
+                }
+                return Observable.just(false);
+            }
+        });
     }
 
     @Override
     public Observable<Boolean> seedDatabaseOptions() {
-
         GsonBuilder builder = new GsonBuilder().excludeFieldsWithoutExposeAnnotation();
         final Gson gson = builder.create();
+        return mDbHelper.isOptionEmpty().concatMap(new Function<Boolean, ObservableSource<? extends Boolean>>() {
 
-        return mDbHelper.isOptionEmpty()
-                .concatMap(new Function<Boolean, ObservableSource<? extends Boolean>>() {
-                    @Override
-                    public ObservableSource<? extends Boolean> apply(Boolean isEmpty)
-                            throws Exception {
-                        if (isEmpty) {
-                            Type type = new TypeToken<List<Option>>() {
-                            }
-                                    .getType();
-                            List<Option> optionList = gson.fromJson(
-                                    CommonUtils.loadJSONFromAsset(mContext,
-                                            AppConstants.SEED_DATABASE_OPTIONS),
-                                    type);
-
-                            return saveOptionList(optionList);
-                        }
-                        return Observable.just(false);
-                    }
-                });
+            @Override
+            public ObservableSource<? extends Boolean> apply(Boolean isEmpty) throws Exception {
+                if (isEmpty) {
+                    Type type = new TypeToken<List<Option>>() {
+                    }.getType();
+                    List<Option> optionList = gson.fromJson(CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_OPTIONS), type);
+                    return saveOptionList(optionList);
+                }
+                return Observable.just(false);
+            }
+        });
     }
 
     @Override

@@ -12,24 +12,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.network;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 import com.mindorks.framework.mvp.di.ApiInfo;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 @Singleton
 public class ApiHeader {
 
     private ProtectedApiHeader mProtectedApiHeader;
+
     private PublicApiHeader mPublicApiHeader;
 
     @Inject

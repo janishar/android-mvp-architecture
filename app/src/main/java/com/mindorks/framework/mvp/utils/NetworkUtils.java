@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.utils;
 
 import android.content.Context;
@@ -22,7 +21,6 @@ import android.net.NetworkInfo;
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public final class NetworkUtils {
 
     private NetworkUtils() {
@@ -30,8 +28,7 @@ public final class NetworkUtils {
     }
 
     public static boolean isNetworkConnected(Context context) {
-        ConnectivityManager cm =
-                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
     }

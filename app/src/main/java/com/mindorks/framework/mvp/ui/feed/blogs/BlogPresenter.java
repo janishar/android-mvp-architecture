@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.feed.blogs;
 
 import com.androidnetworking.error.ANError;
@@ -20,9 +19,7 @@ import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
 import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
-
 import javax.inject.Inject;
-
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
@@ -30,49 +27,39 @@ import io.reactivex.functions.Consumer;
 /**
  * Created by janisharali on 25/05/17.
  */
-
-public class BlogPresenter<V extends BlogMvpView> extends BasePresenter<V>
-        implements BlogMvpPresenter<V> {
+public class BlogPresenter<V extends BlogMvpView> extends BasePresenter<V> implements BlogMvpPresenter<V> {
 
     @Inject
-    public BlogPresenter(DataManager dataManager,
-                         SchedulerProvider schedulerProvider,
-                         CompositeDisposable compositeDisposable) {
+    public BlogPresenter(DataManager dataManager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 
     @Override
     public void onViewPrepared() {
         getMvpView().showLoading();
-        getCompositeDisposable().add(getDataManager()
-                .getBlogApiCall()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<BlogResponse>() {
-                    @Override
-                    public void accept(@NonNull BlogResponse blogResponse)
-                            throws Exception {
-                        if (blogResponse != null && blogResponse.getData() != null) {
-                            getMvpView().updateBlog(blogResponse.getData());
-                        }
-                        getMvpView().hideLoading();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(@NonNull Throwable throwable)
-                            throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
+        getCompositeDisposable().add(getDataManager().getBlogApiCall().subscribeOn(getSchedulerProvider().io()).observeOn(getSchedulerProvider().ui()).subscribe(new Consumer<BlogResponse>() {
 
-                        getMvpView().hideLoading();
+            @Override
+            public void accept(@NonNull BlogResponse blogResponse) throws Exception {
+                if (blogResponse != null && blogResponse.getData() != null) {
+                    getMvpView().updateBlog(blogResponse.getData());
+                }
+                getMvpView().hideLoading();
+            }
+        }, new Consumer<Throwable>() {
 
-                        // handle the error here
-                        if (throwable instanceof ANError) {
-                            ANError anError = (ANError) throwable;
-                            handleApiError(anError);
-                        }
-                    }
-                }));
+            @Override
+            public void accept(@NonNull Throwable throwable) throws Exception {
+                if (!isViewAttached()) {
+                    return;
+                }
+                getMvpView().hideLoading();
+                // handle the error here
+                if (throwable instanceof ANError) {
+                    ANError anError = (ANError) throwable;
+                    handleApiError(anError);
+                }
+            }
+        }));
     }
 }

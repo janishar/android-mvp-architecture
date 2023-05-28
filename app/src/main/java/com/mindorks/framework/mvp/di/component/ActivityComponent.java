@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.di.component;
 
 import com.mindorks.framework.mvp.di.PerActivity;
@@ -25,13 +24,11 @@ import com.mindorks.framework.mvp.ui.login.LoginActivity;
 import com.mindorks.framework.mvp.ui.main.MainActivity;
 import com.mindorks.framework.mvp.ui.main.rating.RateUsDialog;
 import com.mindorks.framework.mvp.ui.splash.SplashActivity;
-
 import dagger.Component;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
@@ -51,5 +48,4 @@ public interface ActivityComponent {
     void inject(BlogFragment fragment);
 
     void inject(RateUsDialog dialog);
-
 }

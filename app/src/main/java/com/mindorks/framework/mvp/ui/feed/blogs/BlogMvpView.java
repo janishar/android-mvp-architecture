@@ -12,18 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.feed.blogs;
 
 import com.mindorks.framework.mvp.data.network.model.BlogResponse;
 import com.mindorks.framework.mvp.ui.base.MvpView;
-
 import java.util.List;
 
 /**
  * Created by janisharali on 25/05/17.
  */
-
 public interface BlogMvpView extends MvpView {
 
     void updateBlog(List<BlogResponse.Blog> blogList);

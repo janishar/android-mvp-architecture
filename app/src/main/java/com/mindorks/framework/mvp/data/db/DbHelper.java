@@ -12,22 +12,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.db;
 
 import com.mindorks.framework.mvp.data.db.model.Option;
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.db.model.User;
-
 import java.util.List;
-
 import io.reactivex.Observable;
-
 
 /**
  * Created by janisharali on 08/12/16.
  */
-
 public interface DbHelper {
 
     Observable<Long> insertUser(final User user);

@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.db.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
@@ -26,7 +24,6 @@ import org.greenrobot.greendao.annotation.Property;
 /**
  * Created by janisharali on 28/01/17.
  */
-
 @Entity(nameInDb = "options")
 public class Option {
 
@@ -61,8 +58,7 @@ public class Option {
     private String updatedAt;
 
     @Generated(hash = 435722130)
-    public Option(Long id, String optionText, Long questionId, boolean isCorrect,
-                  String createdAt, String updatedAt) {
+    public Option(Long id, String optionText, Long questionId, boolean isCorrect, String createdAt, String updatedAt) {
         this.id = id;
         this.optionText = optionText;
         this.questionId = questionId;

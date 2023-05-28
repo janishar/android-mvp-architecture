@@ -12,12 +12,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.di.module;
 
 import android.app.Application;
 import android.content.Context;
-
 import com.mindorks.framework.mvp.BuildConfig;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.AppDataManager;
@@ -34,9 +32,7 @@ import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.di.DatabaseInfo;
 import com.mindorks.framework.mvp.di.PreferenceInfo;
 import com.mindorks.framework.mvp.utils.AppConstants;
-
 import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
@@ -83,7 +79,6 @@ public class ApplicationTestModule {
     }
 
     // TODO : Mock all below for UI testing
-
     @Provides
     @Singleton
     DataManager provideDataManager(AppDataManager appDataManager) {
@@ -110,20 +105,13 @@ public class ApplicationTestModule {
 
     @Provides
     @Singleton
-    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey,
-                                                           PreferencesHelper preferencesHelper) {
-        return new ApiHeader.ProtectedApiHeader(
-                apiKey,
-                preferencesHelper.getCurrentUserId(),
-                preferencesHelper.getAccessToken());
+    ApiHeader.ProtectedApiHeader provideProtectedApiHeader(@ApiInfo String apiKey, PreferencesHelper preferencesHelper) {
+        return new ApiHeader.ProtectedApiHeader(apiKey, preferencesHelper.getCurrentUserId(), preferencesHelper.getAccessToken());
     }
 
     @Provides
     @Singleton
     CalligraphyConfig provideCalligraphyDefaultConfig() {
-        return new CalligraphyConfig.Builder()
-                .setDefaultFontPath("fonts/source-sans-pro/SourceSansPro-Regular.ttf")
-                .setFontAttrId(R.attr.fontPath)
-                .build();
+        return new CalligraphyConfig.Builder().setDefaultFontPath("fonts/source-sans-pro/SourceSansPro-Regular.ttf").setFontAttrId(R.attr.fontPath).build();
     }
 }

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.base;
 
 import android.annotation.TargetApi;
@@ -30,7 +29,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.mindorks.framework.mvp.MvpApp;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.di.component.ActivityComponent;
@@ -39,16 +37,13 @@ import com.mindorks.framework.mvp.di.module.ActivityModule;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
 import com.mindorks.framework.mvp.utils.CommonUtils;
 import com.mindorks.framework.mvp.utils.NetworkUtils;
-
 import butterknife.Unbinder;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
-public abstract class BaseActivity extends AppCompatActivity
-        implements MvpView, BaseFragment.Callback {
+public abstract class BaseActivity extends AppCompatActivity implements MvpView, BaseFragment.Callback {
 
     private ProgressDialog mProgressDialog;
 
@@ -59,11 +54,7 @@ public abstract class BaseActivity extends AppCompatActivity
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mActivityComponent = DaggerActivityComponent.builder()
-                .activityModule(new ActivityModule(this))
-                .applicationComponent(((MvpApp) getApplication()).getComponent())
-                .build();
-
+        mActivityComponent = DaggerActivityComponent.builder().activityModule(new ActivityModule(this)).applicationComponent(((MvpApp) getApplication()).getComponent()).build();
     }
 
     public ActivityComponent getActivityComponent() {
@@ -84,8 +75,7 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @TargetApi(Build.VERSION_CODES.M)
     public boolean hasPermission(String permission) {
-        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
-                checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
+        return Build.VERSION.SDK_INT < Build.VERSION_CODES.M || checkSelfPermission(permission) == PackageManager.PERMISSION_GRANTED;
     }
 
     @Override
@@ -102,11 +92,9 @@ public abstract class BaseActivity extends AppCompatActivity
     }
 
     private void showSnackBar(String message) {
-        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content),
-                message, Snackbar.LENGTH_SHORT);
+        Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_SHORT);
         View sbView = snackbar.getView();
-        TextView textView = (TextView) sbView
-                .findViewById(android.support.design.R.id.snackbar_text);
+        TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextColor(ContextCompat.getColor(this, R.color.white));
         snackbar.show();
     }
@@ -146,19 +134,16 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     public void onFragmentAttached() {
-
     }
 
     @Override
     public void onFragmentDetached(String tag) {
-
     }
 
     public void hideKeyboard() {
         View view = this.getCurrentFocus();
         if (view != null) {
-            InputMethodManager imm = (InputMethodManager)
-                    getSystemService(Context.INPUT_METHOD_SERVICE);
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
@@ -175,7 +160,6 @@ public abstract class BaseActivity extends AppCompatActivity
 
     @Override
     protected void onDestroy() {
-
         if (mUnBinder != null) {
             mUnBinder.unbind();
         }

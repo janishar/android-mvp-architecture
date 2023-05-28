@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.base;
 
 import android.annotation.TargetApi;
@@ -24,7 +23,6 @@ import android.view.ViewGroup;
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public abstract class BaseSubView extends ViewGroup implements SubMvpView {
 
     private MvpView mParentMvpView;

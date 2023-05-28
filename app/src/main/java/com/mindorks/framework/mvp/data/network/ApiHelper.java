@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.network;
 
 import com.mindorks.framework.mvp.data.network.model.BlogResponse;
@@ -20,13 +19,11 @@ import com.mindorks.framework.mvp.data.network.model.LoginRequest;
 import com.mindorks.framework.mvp.data.network.model.LoginResponse;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.data.network.model.OpenSourceResponse;
-
 import io.reactivex.Single;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public interface ApiHelper {
 
     ApiHeader getApiHeader();

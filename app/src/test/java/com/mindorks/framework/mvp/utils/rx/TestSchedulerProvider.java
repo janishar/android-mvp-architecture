@@ -6,7 +6,6 @@ import io.reactivex.schedulers.TestScheduler;
 /**
  * Created by hrskrs on 5/8/2017.
  */
-
 public class TestSchedulerProvider implements SchedulerProvider {
 
     private final TestScheduler mTestScheduler;
@@ -29,5 +28,4 @@ public class TestSchedulerProvider implements SchedulerProvider {
     public Scheduler io() {
         return mTestScheduler;
     }
-
 }
