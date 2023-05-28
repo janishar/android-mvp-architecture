@@ -70,12 +70,12 @@ public class ActivityModule {
     @Provides
     @ActivityContext
     Context provideContext() {
-        return mActivity;
+        return getActivityReference();
     }
 
     @Provides
     AppCompatActivity provideActivity() {
-        return mActivity;
+        return getActivityReference();
     }
 
     @Provides
@@ -149,5 +149,9 @@ public class ActivityModule {
     @Provides
     LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
         return new LinearLayoutManager(activity);
+    }
+
+    private Context getActivityReference() {
+        return mActivity;
     }
 }

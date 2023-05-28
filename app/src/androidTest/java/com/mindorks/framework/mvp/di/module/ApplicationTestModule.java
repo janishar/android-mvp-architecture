@@ -52,12 +52,12 @@ public class ApplicationTestModule {
     @Provides
     @ApplicationContext
     Context provideContext() {
-        return mApplication;
+        return getApplicationInstance();
     }
 
     @Provides
     Application provideApplication() {
-        return mApplication;
+        return getApplicationInstance();
     }
 
     @Provides
@@ -113,5 +113,9 @@ public class ApplicationTestModule {
     @Singleton
     CalligraphyConfig provideCalligraphyDefaultConfig() {
         return new CalligraphyConfig.Builder().setDefaultFontPath("fonts/source-sans-pro/SourceSansPro-Regular.ttf").setFontAttrId(R.attr.fontPath).build();
+    }
+
+    private Context getApplicationInstance() {
+        return mApplication;
     }
 }

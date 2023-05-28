@@ -69,15 +69,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
 
             @Override
             public void accept(Throwable throwable) throws Exception {
-                if (!isViewAttached()) {
-                    return;
-                }
-                getMvpView().hideLoading();
-                // handle the login error here
-                if (throwable instanceof ANError) {
-                    ANError anError = (ANError) throwable;
-                    handleApiError(anError);
-                }
+                handleLoginError(throwable);
             }
         }));
     }
@@ -101,15 +93,7 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
 
             @Override
             public void accept(Throwable throwable) throws Exception {
-                if (!isViewAttached()) {
-                    return;
-                }
-                getMvpView().hideLoading();
-                // handle the login error here
-                if (throwable instanceof ANError) {
-                    ANError anError = (ANError) throwable;
-                    handleApiError(anError);
-                }
+                handleLoginError(throwable);
             }
         }));
     }
@@ -133,16 +117,20 @@ public class LoginPresenter<V extends LoginMvpView> extends BasePresenter<V> imp
 
             @Override
             public void accept(Throwable throwable) throws Exception {
-                if (!isViewAttached()) {
-                    return;
-                }
-                getMvpView().hideLoading();
-                // handle the login error here
-                if (throwable instanceof ANError) {
-                    ANError anError = (ANError) throwable;
-                    handleApiError(anError);
-                }
+                handleLoginError(throwable);
             }
         }));
+    }
+
+    private void handleLoginError(Throwable throwable) throws Exception {
+        if (!isViewAttached()) {
+            return;
+        }
+        getMvpView().hideLoading();
+        // handle the login error here
+        if (throwable instanceof ANError) {
+            ANError anError = (ANError) throwable;
+            handleApiError(anError);
+        }
     }
 }

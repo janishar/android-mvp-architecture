@@ -64,18 +64,22 @@ public class RatingDialogPresenter<V extends RatingDialogMvpView> extends BasePr
 
     @Override
     public void onCancelClicked() {
-        getMvpView().dismissDialog();
+        hideDialog();
     }
 
     @Override
     public void onLaterClicked() {
-        getMvpView().dismissDialog();
+        hideDialog();
     }
 
     @Override
     public void onPlayStoreRatingClicked() {
         getMvpView().openPlayStoreForRating();
         sendRatingDataToServerInBackground(5);
+        getMvpView().dismissDialog();
+    }
+
+    private void hideDialog() {
         getMvpView().dismissDialog();
     }
 }

@@ -108,16 +108,20 @@ public class QuestionCard {
 
     @Click(R.id.btn_option_1)
     public void onOption1Click() {
-        showCorrectOptions();
+        showOptionsCorrect();
     }
 
     @Click(R.id.btn_option_2)
     public void onOption2Click() {
-        showCorrectOptions();
+        showOptionsCorrect();
     }
 
     @Click(R.id.btn_option_3)
     public void onOption3Click() {
+        showOptionsCorrect();
+    }
+
+    private void showOptionsCorrect() {
         showCorrectOptions();
     }
 }

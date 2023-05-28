@@ -16,16 +16,20 @@ public class TestSchedulerProvider implements SchedulerProvider {
 
     @Override
     public Scheduler ui() {
-        return mTestScheduler;
+        return getTestScheduler();
     }
 
     @Override
     public Scheduler computation() {
-        return mTestScheduler;
+        return getTestScheduler();
     }
 
     @Override
     public Scheduler io() {
+        return getTestScheduler();
+    }
+
+    private Scheduler getTestScheduler() {
         return mTestScheduler;
     }
 }
