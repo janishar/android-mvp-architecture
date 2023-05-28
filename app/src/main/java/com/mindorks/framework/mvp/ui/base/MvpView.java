@@ -12,13 +12,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.base;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 import android.support.annotation.StringRes;
 
 /**
@@ -45,5 +43,4 @@ public interface MvpView {
     boolean isNetworkConnected();
 
     void hideKeyboard();
-
 }

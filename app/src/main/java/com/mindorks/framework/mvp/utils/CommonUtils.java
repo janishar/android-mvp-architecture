@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.utils;
 
 import android.annotation.SuppressLint;
@@ -22,9 +21,7 @@ import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.provider.Settings;
-
 import com.mindorks.framework.mvp.R;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -36,7 +33,6 @@ import java.util.regex.Pattern;
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public final class CommonUtils {
 
     private static final String TAG = "CommonUtils";
@@ -66,25 +62,19 @@ public final class CommonUtils {
     public static boolean isEmailValid(String email) {
         Pattern pattern;
         Matcher matcher;
-        final String EMAIL_PATTERN =
-                "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        final String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
         pattern = Pattern.compile(EMAIL_PATTERN);
         matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
-    public static String loadJSONFromAsset(Context context, String jsonFileName)
-            throws IOException {
-
+    public static String loadJSONFromAsset(Context context, String jsonFileName) throws IOException {
         AssetManager manager = context.getAssets();
         InputStream is = manager.open(jsonFileName);
-
         int size = is.available();
         byte[] buffer = new byte[size];
         is.read(buffer);
         is.close();
-
         return new String(buffer, "UTF-8");
     }
 

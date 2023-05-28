@@ -12,17 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.utils;
 
 import com.mindorks.framework.mvp.BuildConfig;
-
 import timber.log.Timber;
 
 /**
  * Created by amitshekhar on 15/02/17.
  */
-
 public class AppLogger {
 
     public static void init() {
@@ -62,5 +59,4 @@ public class AppLogger {
     public static void e(Throwable throwable, String s, Object... objects) {
         Timber.e(throwable, s, objects);
     }
-
 }

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.custom;
 
 import android.content.Context;
@@ -31,11 +30,9 @@ import android.support.v7.widget.AppCompatImageView;
 import android.util.AttributeSet;
 import android.util.Log;
 
-
 /**
  * Created by janisharali on 01/02/17.
  */
-
 public class RoundedImageView extends AppCompatImageView {
 
     private static final String TAG = "RoundedImageView";
@@ -54,25 +51,19 @@ public class RoundedImageView extends AppCompatImageView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
         try {
             Drawable drawable = getDrawable();
-
             if (drawable == null) {
                 return;
             }
-
             if (getWidth() == 0 || getHeight() == 0) {
                 return;
             }
-
             Bitmap bitmap;
             int w = getWidth(), h = getHeight();
-
             if (w <= 0 || h <= 0) {
                 return;
             }
-
             if (drawable instanceof BitmapDrawable) {
                 Bitmap b = ((BitmapDrawable) drawable).getBitmap();
                 bitmap = b.copy(Bitmap.Config.ARGB_8888, true);
@@ -80,48 +71,35 @@ public class RoundedImageView extends AppCompatImageView {
                 bitmap = Bitmap.createBitmap(w, h, Config.ARGB_8888);
                 Canvas c = new Canvas(bitmap);
                 c.drawColor(((ColorDrawable) drawable).getColor());
-
             } else {
                 return;
             }
-
             Bitmap roundBitmap = getRoundedCroppedBitmap(bitmap, Math.min(w, h));
             canvas.drawBitmap(roundBitmap, 0, 0, null);
         } catch (Exception e) {
             Log.e(TAG, "onDraw Exception", e);
         }
-
     }
 
     private Bitmap getRoundedCroppedBitmap(Bitmap bitmap, int radius) {
         Bitmap finalBitmap;
-
         if (bitmap.getWidth() != radius || bitmap.getHeight() != radius) {
             finalBitmap = Bitmap.createScaledBitmap(bitmap, radius, radius, false);
         } else {
             finalBitmap = bitmap;
         }
-
-        Bitmap output = Bitmap.createBitmap(finalBitmap.getWidth(),
-                finalBitmap.getHeight(), Config.ARGB_8888);
+        Bitmap output = Bitmap.createBitmap(finalBitmap.getWidth(), finalBitmap.getHeight(), Config.ARGB_8888);
         Canvas canvas = new Canvas(output);
-
         final Paint paint = new Paint();
-        final Rect rect = new Rect(0, 0, finalBitmap.getWidth(),
-                finalBitmap.getHeight());
-
+        final Rect rect = new Rect(0, 0, finalBitmap.getWidth(), finalBitmap.getHeight());
         paint.setAntiAlias(true);
         paint.setFilterBitmap(true);
         paint.setDither(true);
         canvas.drawARGB(0, 0, 0, 0);
         paint.setColor(Color.parseColor("#BAB399"));
-        canvas.drawCircle(finalBitmap.getWidth() / 2,
-                finalBitmap.getHeight() / 2,
-                finalBitmap.getWidth() / 2, paint);
+        canvas.drawCircle(finalBitmap.getWidth() / 2, finalBitmap.getHeight() / 2, finalBitmap.getWidth() / 2, paint);
         paint.setXfermode(new PorterDuffXfermode(Mode.SRC_IN));
         canvas.drawBitmap(finalBitmap, rect, rect, paint);
-
         return output;
     }
-
 }

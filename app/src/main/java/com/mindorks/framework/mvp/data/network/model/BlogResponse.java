@@ -12,18 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.network.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 /**
  * Created by janisharali on 28/01/17.
  */
-
 public class BlogResponse {
 
     @Expose
@@ -64,15 +61,16 @@ public class BlogResponse {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof BlogResponse)) return false;
-
+        if (this == o)
+            return true;
+        if (!(o instanceof BlogResponse))
+            return false;
         BlogResponse that = (BlogResponse) o;
-
-        if (!statusCode.equals(that.statusCode)) return false;
-        if (!message.equals(that.message)) return false;
+        if (!statusCode.equals(that.statusCode))
+            return false;
+        if (!message.equals(that.message))
+            return false;
         return data.equals(that.data);
-
     }
 
     @Override
@@ -159,18 +157,22 @@ public class BlogResponse {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Blog)) return false;
-
+            if (this == o)
+                return true;
+            if (!(o instanceof Blog))
+                return false;
             Blog blog = (Blog) o;
-
-            if (!blogUrl.equals(blog.blogUrl)) return false;
-            if (!coverImgUrl.equals(blog.coverImgUrl)) return false;
-            if (!title.equals(blog.title)) return false;
-            if (!description.equals(blog.description)) return false;
-            if (!author.equals(blog.author)) return false;
+            if (!blogUrl.equals(blog.blogUrl))
+                return false;
+            if (!coverImgUrl.equals(blog.coverImgUrl))
+                return false;
+            if (!title.equals(blog.title))
+                return false;
+            if (!description.equals(blog.description))
+                return false;
+            if (!author.equals(blog.author))
+                return false;
             return date.equals(blog.date);
-
         }
 
         @Override

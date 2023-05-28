@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.main;
 
 import com.androidnetworking.error.ANError;
@@ -21,28 +20,20 @@ import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.data.network.model.LogoutResponse;
 import com.mindorks.framework.mvp.ui.base.BasePresenter;
 import com.mindorks.framework.mvp.utils.rx.SchedulerProvider;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.functions.Consumer;
-
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
-public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
-        implements MainMvpPresenter<V> {
+public class MainPresenter<V extends MainMvpView> extends BasePresenter<V> implements MainMvpPresenter<V> {
 
     private static final String TAG = "MainPresenter";
 
     @Inject
-    public MainPresenter(DataManager dataManager,
-                         SchedulerProvider schedulerProvider,
-                         CompositeDisposable compositeDisposable) {
+    public MainPresenter(DataManager dataManager, SchedulerProvider schedulerProvider, CompositeDisposable compositeDisposable) {
         super(dataManager, schedulerProvider, compositeDisposable);
     }
 
@@ -55,78 +46,64 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
     @Override
     public void onDrawerOptionLogoutClick() {
         getMvpView().showLoading();
+        getCompositeDisposable().add(getDataManager().doLogoutApiCall().subscribeOn(getSchedulerProvider().io()).observeOn(getSchedulerProvider().ui()).subscribe(new Consumer<LogoutResponse>() {
 
-        getCompositeDisposable().add(getDataManager().doLogoutApiCall()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<LogoutResponse>() {
-                    @Override
-                    public void accept(LogoutResponse response) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
+            @Override
+            public void accept(LogoutResponse response) throws Exception {
+                if (!isViewAttached()) {
+                    return;
+                }
+                getDataManager().setUserAsLoggedOut();
+                getMvpView().hideLoading();
+                getMvpView().openLoginActivity();
+            }
+        }, new Consumer<Throwable>() {
 
-                        getDataManager().setUserAsLoggedOut();
-                        getMvpView().hideLoading();
-                        getMvpView().openLoginActivity();
-                    }
-                }, new Consumer<Throwable>() {
-                    @Override
-                    public void accept(Throwable throwable) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
-
-                        getMvpView().hideLoading();
-
-                        // handle the login error here
-                        if (throwable instanceof ANError) {
-                            ANError anError = (ANError) throwable;
-                            handleApiError(anError);
-                        }
-                    }
-                }));
-
+            @Override
+            public void accept(Throwable throwable) throws Exception {
+                if (!isViewAttached()) {
+                    return;
+                }
+                getMvpView().hideLoading();
+                // handle the login error here
+                if (throwable instanceof ANError) {
+                    ANError anError = (ANError) throwable;
+                    handleApiError(anError);
+                }
+            }
+        }));
     }
 
     @Override
     public void onViewInitialized() {
-        getCompositeDisposable().add(getDataManager()
-                .getAllQuestions()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Question>>() {
-                    @Override
-                    public void accept(List<Question> questionList) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
+        getCompositeDisposable().add(getDataManager().getAllQuestions().subscribeOn(getSchedulerProvider().io()).observeOn(getSchedulerProvider().ui()).subscribe(new Consumer<List<Question>>() {
 
-                        if (questionList != null) {
-                            getMvpView().refreshQuestionnaire(questionList);
-                        }
-                    }
-                }));
+            @Override
+            public void accept(List<Question> questionList) throws Exception {
+                if (!isViewAttached()) {
+                    return;
+                }
+                if (questionList != null) {
+                    getMvpView().refreshQuestionnaire(questionList);
+                }
+            }
+        }));
     }
 
     @Override
     public void onCardExhausted() {
-        getCompositeDisposable().add(getDataManager()
-                .getAllQuestions()
-                .subscribeOn(getSchedulerProvider().io())
-                .observeOn(getSchedulerProvider().ui())
-                .subscribe(new Consumer<List<Question>>() {
-                    @Override
-                    public void accept(List<Question> questionList) throws Exception {
-                        if (!isViewAttached()) {
-                            return;
-                        }
+        getCompositeDisposable().add(getDataManager().getAllQuestions().subscribeOn(getSchedulerProvider().io()).observeOn(getSchedulerProvider().ui()).subscribe(new Consumer<List<Question>>() {
 
-                        if (questionList != null) {
-                            getMvpView().reloadQuestionnaire(questionList);
-                        }
-                    }
-                }));
+            @Override
+            public void accept(List<Question> questionList) throws Exception {
+                if (!isViewAttached()) {
+                    return;
+                }
+                if (questionList != null) {
+                    getMvpView().reloadQuestionnaire(questionList);
+                }
+            }
+        }));
     }
 
     @Override
@@ -135,17 +112,14 @@ public class MainPresenter<V extends MainMvpView> extends BasePresenter<V>
             return;
         }
         getMvpView().updateAppVersion();
-
         final String currentUserName = getDataManager().getCurrentUserName();
         if (currentUserName != null && !currentUserName.isEmpty()) {
             getMvpView().updateUserName(currentUserName);
         }
-
         final String currentUserEmail = getDataManager().getCurrentUserEmail();
         if (currentUserEmail != null && !currentUserEmail.isEmpty()) {
             getMvpView().updateUserEmail(currentUserEmail);
         }
-
         final String profilePicUrl = getDataManager().getCurrentUserProfilePicUrl();
         if (profilePicUrl != null && !profilePicUrl.isEmpty()) {
             getMvpView().updateUserProfilePic(profilePicUrl);

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.main.rating;
 
 import com.mindorks.framework.mvp.ui.base.MvpPresenter;
@@ -20,7 +19,6 @@ import com.mindorks.framework.mvp.ui.base.MvpPresenter;
 /**
  * Created by janisharali on 22/03/17.
  */
-
 public interface RatingDialogMvpPresenter<V extends RatingDialogMvpView> extends MvpPresenter<V> {
 
     void onRatingSubmitted(float rating, String message);

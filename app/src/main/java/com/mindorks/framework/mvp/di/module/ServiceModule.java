@@ -12,17 +12,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.di.module;
 
 import android.app.Service;
-
 import dagger.Module;
 
 /**
  * Created by janisharali on 01/02/17.
  */
-
 @Module
 public class ServiceModule {
 

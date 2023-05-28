@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.prefs;
 
 import com.mindorks.framework.mvp.data.DataManager;
@@ -20,7 +19,6 @@ import com.mindorks.framework.mvp.data.DataManager;
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public interface PreferencesHelper {
 
     int getCurrentUserLoggedInMode();
@@ -46,5 +44,4 @@ public interface PreferencesHelper {
     String getAccessToken();
 
     void setAccessToken(String accessToken);
-
 }

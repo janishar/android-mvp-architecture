@@ -12,27 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.splash;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.ui.base.BaseActivity;
 import com.mindorks.framework.mvp.ui.login.LoginActivity;
 import com.mindorks.framework.mvp.ui.main.MainActivity;
-
 import javax.inject.Inject;
-
 import butterknife.ButterKnife;
-
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public class SplashActivity extends BaseActivity implements SplashMvpView {
 
     @Inject
@@ -47,11 +41,8 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         getActivityComponent().inject(this);
-
         setUnBinder(ButterKnife.bind(this));
-
         mPresenter.onAttach(SplashActivity.this);
     }
 
@@ -74,7 +65,7 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
     @Override
     public void startSyncService() {
-//        SyncService.start(this);
+        //        SyncService.start(this);
     }
 
     @Override
@@ -85,6 +76,5 @@ public class SplashActivity extends BaseActivity implements SplashMvpView {
 
     @Override
     protected void setUp() {
-
     }
 }

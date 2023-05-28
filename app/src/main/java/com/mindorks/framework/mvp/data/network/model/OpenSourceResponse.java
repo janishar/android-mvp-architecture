@@ -12,18 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.network.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 /**
  * Created by janisharali on 28/01/17.
  */
-
 public class OpenSourceResponse {
 
     @Expose
@@ -64,15 +61,16 @@ public class OpenSourceResponse {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof OpenSourceResponse)) return false;
-
+        if (this == o)
+            return true;
+        if (!(o instanceof OpenSourceResponse))
+            return false;
         OpenSourceResponse that = (OpenSourceResponse) o;
-
-        if (!statusCode.equals(that.statusCode)) return false;
-        if (!message.equals(that.message)) return false;
+        if (!statusCode.equals(that.statusCode))
+            return false;
+        if (!message.equals(that.message))
+            return false;
         return data != null ? data.equals(that.data) : that.data == null;
-
     }
 
     @Override
@@ -135,16 +133,18 @@ public class OpenSourceResponse {
 
         @Override
         public boolean equals(Object o) {
-            if (this == o) return true;
-            if (!(o instanceof Repo)) return false;
-
+            if (this == o)
+                return true;
+            if (!(o instanceof Repo))
+                return false;
             Repo repo = (Repo) o;
-
-            if (!projectUrl.equals(repo.projectUrl)) return false;
-            if (!coverImgUrl.equals(repo.coverImgUrl)) return false;
-            if (!title.equals(repo.title)) return false;
+            if (!projectUrl.equals(repo.projectUrl))
+                return false;
+            if (!coverImgUrl.equals(repo.coverImgUrl))
+                return false;
+            if (!title.equals(repo.title))
+                return false;
             return description.equals(repo.description);
-
         }
 
         @Override

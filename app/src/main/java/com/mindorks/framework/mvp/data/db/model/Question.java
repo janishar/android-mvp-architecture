@@ -12,25 +12,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.db.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 import org.greenrobot.greendao.DaoException;
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Property;
 import org.greenrobot.greendao.annotation.ToMany;
-
 import java.util.List;
 
 /**
  * Created by janisharali on 08/12/16.
  */
-
 @Entity(nameInDb = "questions")
 public class Question {
 
@@ -75,8 +71,7 @@ public class Question {
     private transient QuestionDao myDao;
 
     @Generated(hash = 103353390)
-    public Question(Long id, String questionText, String imgUrl, String createdAt,
-                    String updatedAt) {
+    public Question(Long id, String questionText, String imgUrl, String createdAt, String updatedAt) {
         this.id = id;
         this.questionText = questionText;
         this.imgUrl = imgUrl;
@@ -194,11 +189,12 @@ public class Question {
         this.imgUrl = imgUrl;
     }
 
-    /** called by internal mechanisms, do not call yourself. */
+    /**
+     * called by internal mechanisms, do not call yourself.
+     */
     @Generated(hash = 754833738)
     public void __setDaoSession(DaoSession daoSession) {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getQuestionDao() : null;
     }
-    
 }

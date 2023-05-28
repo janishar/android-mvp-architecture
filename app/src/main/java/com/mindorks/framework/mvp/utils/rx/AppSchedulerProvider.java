@@ -7,7 +7,6 @@ import io.reactivex.schedulers.Schedulers;
 /**
  * Created by hrskrs on 5/8/2017.
  */
-
 public class AppSchedulerProvider implements SchedulerProvider {
 
     @Override
@@ -24,5 +23,4 @@ public class AppSchedulerProvider implements SchedulerProvider {
     public Scheduler io() {
         return Schedulers.io();
     }
-
 }

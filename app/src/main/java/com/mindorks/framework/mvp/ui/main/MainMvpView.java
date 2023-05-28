@@ -12,18 +12,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.main;
 
 import com.mindorks.framework.mvp.data.db.model.Question;
 import com.mindorks.framework.mvp.ui.base.MvpView;
-
 import java.util.List;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public interface MainMvpView extends MvpView {
 
     void openLoginActivity();

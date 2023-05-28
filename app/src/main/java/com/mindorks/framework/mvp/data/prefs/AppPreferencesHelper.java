@@ -12,40 +12,39 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.prefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.ApplicationContext;
 import com.mindorks.framework.mvp.di.PreferenceInfo;
 import com.mindorks.framework.mvp.utils.AppConstants;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 @Singleton
 public class AppPreferencesHelper implements PreferencesHelper {
 
     private static final String PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE";
+
     private static final String PREF_KEY_CURRENT_USER_ID = "PREF_KEY_CURRENT_USER_ID";
+
     private static final String PREF_KEY_CURRENT_USER_NAME = "PREF_KEY_CURRENT_USER_NAME";
+
     private static final String PREF_KEY_CURRENT_USER_EMAIL = "PREF_KEY_CURRENT_USER_EMAIL";
-    private static final String PREF_KEY_CURRENT_USER_PROFILE_PIC_URL
-            = "PREF_KEY_CURRENT_USER_PROFILE_PIC_URL";
+
+    private static final String PREF_KEY_CURRENT_USER_PROFILE_PIC_URL = "PREF_KEY_CURRENT_USER_PROFILE_PIC_URL";
+
     private static final String PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN";
 
     private final SharedPreferences mPrefs;
 
     @Inject
-    public AppPreferencesHelper(@ApplicationContext Context context,
-                                @PreferenceInfo String prefFileName) {
+    public AppPreferencesHelper(@ApplicationContext Context context, @PreferenceInfo String prefFileName) {
         mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE);
     }
 
@@ -93,8 +92,7 @@ public class AppPreferencesHelper implements PreferencesHelper {
 
     @Override
     public int getCurrentUserLoggedInMode() {
-        return mPrefs.getInt(PREF_KEY_USER_LOGGED_IN_MODE,
-                DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.getType());
+        return mPrefs.getInt(PREF_KEY_USER_LOGGED_IN_MODE, DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.getType());
     }
 
     @Override

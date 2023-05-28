@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.network.model;
 
 import com.google.gson.annotations.Expose;
@@ -21,7 +20,6 @@ import com.google.gson.annotations.SerializedName;
 /**
  * Created by janisharali on 28/01/17.
  */
-
 public class ApiError {
 
     private int errorCode;
@@ -66,17 +64,16 @@ public class ApiError {
 
     @Override
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-
+        if (this == object)
+            return true;
+        if (object == null || getClass() != object.getClass())
+            return false;
         ApiError apiError = (ApiError) object;
-
-        if (errorCode != apiError.errorCode) return false;
-        if (statusCode != null ? !statusCode.equals(apiError.statusCode)
-                : apiError.statusCode != null)
+        if (errorCode != apiError.errorCode)
+            return false;
+        if (statusCode != null ? !statusCode.equals(apiError.statusCode) : apiError.statusCode != null)
             return false;
         return message != null ? message.equals(apiError.message) : apiError.message == null;
-
     }
 
     @Override

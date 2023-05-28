@@ -12,16 +12,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp;
 
 import android.content.Context;
-
 import com.mindorks.framework.mvp.data.DataManager;
 import com.mindorks.framework.mvp.di.component.DaggerTestComponent;
 import com.mindorks.framework.mvp.di.component.TestComponent;
 import com.mindorks.framework.mvp.di.module.ApplicationTestModule;
-
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
@@ -29,10 +26,10 @@ import org.junit.runners.model.Statement;
 /**
  * Created by amitshekhar on 03/02/17.
  */
-
 public class TestComponentRule implements TestRule {
 
     private TestComponent mTestComponent;
+
     private Context mContext;
 
     public TestComponentRule(Context context) {
@@ -49,15 +46,14 @@ public class TestComponentRule implements TestRule {
 
     private void setupDaggerTestComponentInApplication() {
         MvpApp application = ((MvpApp) mContext.getApplicationContext());
-        mTestComponent = DaggerTestComponent.builder()
-                .applicationTestModule(new ApplicationTestModule(application))
-                .build();
+        mTestComponent = DaggerTestComponent.builder().applicationTestModule(new ApplicationTestModule(application)).build();
         application.setComponent(mTestComponent);
     }
 
     @Override
     public Statement apply(final Statement base, Description description) {
         return new Statement() {
+
             @Override
             public void evaluate() throws Throwable {
                 try {

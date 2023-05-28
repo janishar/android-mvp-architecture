@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.feed;
 
 import com.mindorks.framework.mvp.ui.base.MvpPresenter;
@@ -21,7 +20,5 @@ import com.mindorks.framework.mvp.ui.base.MvpView;
 /**
  * Created by janisharali on 25/05/17.
  */
-
 public interface FeedMvpPresenter<V extends MvpView> extends MvpPresenter<V> {
-
 }

@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.feed.opensource;
 
 import android.content.Intent;
@@ -24,14 +23,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.mindorks.framework.mvp.R;
 import com.mindorks.framework.mvp.data.network.model.OpenSourceResponse;
 import com.mindorks.framework.mvp.ui.base.BaseViewHolder;
-
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -39,13 +35,14 @@ import butterknife.OnClick;
 /**
  * Created by Janisharali on 25-05-2017.
  */
-
 public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public static final int VIEW_TYPE_EMPTY = 0;
+
     public static final int VIEW_TYPE_NORMAL = 1;
 
     private Callback mCallback;
+
     private List<OpenSourceResponse.Repo> mOpenSourceResponseList;
 
     public OpenSourceAdapter(List<OpenSourceResponse.Repo> openSourceResponseList) {
@@ -63,15 +60,12 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-        switch (viewType) {
+        switch(viewType) {
             case VIEW_TYPE_NORMAL:
-                return new ViewHolder(
-                        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_repo_view, parent, false));
+                return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_repo_view, parent, false));
             case VIEW_TYPE_EMPTY:
             default:
-                return new EmptyViewHolder(
-                        LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false));
+                return new EmptyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false));
         }
     }
 
@@ -99,6 +93,7 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
     }
 
     public interface Callback {
+
         void onRepoEmptyViewRetryClick();
     }
 
@@ -126,26 +121,18 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         public void onBind(int position) {
             super.onBind(position);
-
             final OpenSourceResponse.Repo repo = mOpenSourceResponseList.get(position);
-
             if (repo.getCoverImgUrl() != null) {
-                Glide.with(itemView.getContext())
-                        .load(repo.getCoverImgUrl())
-                        .asBitmap()
-                        .centerCrop()
-                        .into(coverImageView);
+                Glide.with(itemView.getContext()).load(repo.getCoverImgUrl()).asBitmap().centerCrop().into(coverImageView);
             }
-
             if (repo.getTitle() != null) {
                 titleTextView.setText(repo.getTitle());
             }
-
             if (repo.getDescription() != null) {
                 contentTextView.setText(repo.getDescription());
             }
-
             itemView.setOnClickListener(new View.OnClickListener() {
+
                 @Override
                 public void onClick(View v) {
                     if (repo.getProjectUrl() != null) {
@@ -175,7 +162,6 @@ public class OpenSourceAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
         @Override
         protected void clear() {
-
         }
 
         @OnClick(R.id.btn_retry)

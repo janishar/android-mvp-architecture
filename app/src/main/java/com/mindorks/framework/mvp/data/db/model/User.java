@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.data.db.model;
 
 import org.greenrobot.greendao.annotation.Entity;
@@ -23,7 +22,6 @@ import org.greenrobot.greendao.annotation.Property;
 /**
  * Created by janisharali on 08/12/16.
  */
-
 @Entity(nameInDb = "user")
 public class User {
 
@@ -39,7 +37,6 @@ public class User {
     @Property(nameInDb = "updated_at")
     private String updatedAt;
 
-
     @Generated(hash = 1543916479)
     public User(Long id, String name, String createdAt, String updatedAt) {
         this.id = id;
@@ -51,7 +48,6 @@ public class User {
     @Generated(hash = 586692638)
     public User() {
     }
-
 
     public Long getId() {
         return this.id;

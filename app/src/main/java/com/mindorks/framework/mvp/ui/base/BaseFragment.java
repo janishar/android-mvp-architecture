@@ -12,7 +12,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License
  */
-
 package com.mindorks.framework.mvp.ui.base;
 
 import android.app.ProgressDialog;
@@ -22,20 +21,19 @@ import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.View;
-
 import com.mindorks.framework.mvp.di.component.ActivityComponent;
 import com.mindorks.framework.mvp.utils.CommonUtils;
-
 import butterknife.Unbinder;
 
 /**
  * Created by janisharali on 27/01/17.
  */
-
 public abstract class BaseFragment extends Fragment implements MvpView {
 
     private BaseActivity mActivity;
+
     private Unbinder mUnBinder;
+
     private ProgressDialog mProgressDialog;
 
     @Override
