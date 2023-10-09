@@ -26,10 +26,9 @@ This repository contains a detailed sample app that implements MVP architecture 
 
 # About The Author
 You can connect with me here:
+* [Janishar Ali](https://janisharali.com)
 * [Twitter](https://twitter.com/janisharali)
 * [YouTube Channel](https://www.youtube.com/@unusualcode)
-* [LinkedIn](https://www.linkedin.com/in/janishar-ali)
-* [Instagram](https://www.instagram.com/janisharali)
 
 # Read the below listed articles. They describe the MVP concepts and the Project structure.
 1. [MVP: Part 1](https://janisharali.com/blog/essential-guide-for-designing-your-android-app-architecture-mvp-part-1-74efaf1cda40#.lkml1yggq)
