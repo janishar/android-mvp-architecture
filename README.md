@@ -24,6 +24,13 @@ This repository contains a detailed sample app that implements MVP architecture 
 ![Structure](https://janishar.github.io/images/mvp-app-pics/mvp-project-structure-diagram.png)
 <br>
 
+# About The Author
+You can connect with me here:
+* [Twitter](https://twitter.com/janisharali)
+* [YouTube Channel](https://www.youtube.com/@unusualcode)
+* [LinkedIn](https://www.linkedin.com/in/janishar-ali)
+* [Instagram](https://www.instagram.com/janisharali)
+
 # Read the below listed articles. They describe the MVP concepts and the Project structure.
 1. [MVP: Part 1](https://janisharali.com/blog/essential-guide-for-designing-your-android-app-architecture-mvp-part-1-74efaf1cda40#.lkml1yggq)
 2. [MVP: Part 2](https://janisharali.com/blog/essential-guide-for-designing-your-android-app-architecture-mvp-part-2-b2ac6f3f9637#.dge0wl8rl)
@@ -87,7 +94,7 @@ Select the folder under which you want to create a new MVP folder. This MVP fold
 
 ### License
 ```
-   Copyright (C) 2022 JANISHAR ALI ANWAR
+   Copyright (C) 2023 JANISHAR ALI ANWAR
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
