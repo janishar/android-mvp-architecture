@@ -36,7 +36,6 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
     private BaseActivity mActivity;
     private Unbinder mUnBinder;
-    private ProgressDialog mProgressDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,14 +61,15 @@ public abstract class BaseFragment extends Fragment implements MvpView {
 
     @Override
     public void showLoading() {
-        hideLoading();
-        mProgressDialog = CommonUtils.showLoadingDialog(this.getContext());
+        if (mActivity != null) {
+            mActivity.showLoading();
+        }
     }
 
     @Override
     public void hideLoading() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.cancel();
+        if (mActivity != null) {
+            mActivity.hideLoading();
         }
     }
 
